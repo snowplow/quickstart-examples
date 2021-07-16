@@ -42,9 +42,9 @@ limitations under the License.
 [deploy-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/setup.png
 [faq-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/roadmap.png
 
-[installguide]: https://docs.snowplowanalytics.com/docs/holding/quick-start-installation-guide/
-[deploysum]: https://docs.snowplowanalytics.com/docs/holding/summary-of-what-you-have-deployed/
-[faq]: https://docs.snowplowanalytics.com/docs/faqs/
+[installguide]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/
+[deploysum]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/
+[faq]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-faqs/
 
 [license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: https://www.apache.org/licenses/LICENSE-2.0

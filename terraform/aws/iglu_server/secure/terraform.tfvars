@@ -36,7 +36,7 @@ iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 # igluctl static push --public schemas/ http://CHANGE-TO-MY-IGLU-URL.elb.amazonaws.com 00000000-0000-0000-0000-000000000000
 
 # See for more information: https://github.com/snowplow-devops/terraform-aws-iglu-server-ec2#telemetry
-# Telemtry policy: https://docs.snowplowanalytics.com/docs/telemetry-policy/
+# Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
 user_provided_id  = ""
 telemetry_enabled = true
 

@@ -56,8 +56,8 @@ pipeline_db_ip_allowlist = ["999.999.999.999/32", "888.888.888.888/32"]
 # While this limit is most important to the Postgres Loader this write capacity will be applied to all consumers.
 pipeline_kcl_write_max_capacity = 50
 
-# See for more information: https://github.com/snowplow-devops/terraform-aws-iglu-server-ec2#telemetry
-# Telemtry policy: https://docs.snowplowanalytics.com/docs/telemetry-policy/
+# See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-kinesis-ec2/aws/latest#telemetry
+# Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
 user_provided_id  = ""
 telemetry_enabled = true
 
