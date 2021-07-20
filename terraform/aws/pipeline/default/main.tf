@@ -107,7 +107,7 @@ module "collector_kinesis" {
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.1.2"
+  version = "0.1.3"
 
   name                 = "${var.prefix}-enrich-server"
   vpc_id               = var.vpc_id
