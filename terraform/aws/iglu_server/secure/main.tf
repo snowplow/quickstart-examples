@@ -7,7 +7,7 @@ resource "aws_key_pair" "pipeline" {
 # 1. Deploy an Iglu Server stack
 module "iglu_rds" {
   source  = "snowplow-devops/rds/aws"
-  version = "0.1.3"
+  version = "0.1.4"
 
   name        = "${var.prefix}-iglu-rds"
   vpc_id      = var.vpc_id
@@ -21,7 +21,7 @@ module "iglu_rds" {
 
 module "iglu_lb" {
   source  = "snowplow-devops/alb/aws"
-  version = "0.1.1"
+  version = "0.1.2"
 
   name              = "${var.prefix}-iglu-lb"
   vpc_id            = var.vpc_id
@@ -36,7 +36,7 @@ module "iglu_lb" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-ec2/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                 = "${var.prefix}-iglu-server"
   vpc_id               = var.vpc_id
@@ -63,4 +63,7 @@ module "iglu_server" {
   associate_public_ip_address = false
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
