@@ -72,3 +72,7 @@ ssl_information = {
 
 # --- Extra Tags to append to created resources (optional)
 tags = {}
+
+# --- CloudWatch logging to ensure logs are saved outside of the server
+cloudwatch_logs_enabled        = true
+cloudwatch_logs_retention_days = 7

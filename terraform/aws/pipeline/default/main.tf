@@ -12,7 +12,7 @@ locals {
 
 module "s3_pipeline_bucket" {
   source  = "snowplow-devops/s3-bucket/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   count = var.s3_bucket_deploy ? 1 : 0
 
@@ -30,7 +30,7 @@ resource "aws_key_pair" "pipeline" {
 # 1. Deploy Kinesis streams
 module "raw_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name = "${var.prefix}-raw-stream"
 
@@ -39,7 +39,7 @@ module "raw_stream" {
 
 module "bad_1_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name = "${var.prefix}-bad-1-stream"
 
@@ -48,7 +48,7 @@ module "bad_1_stream" {
 
 module "enriched_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name = "${var.prefix}-enriched-stream"
 
@@ -57,7 +57,7 @@ module "enriched_stream" {
 
 module "bad_2_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name = "${var.prefix}-bad-2-stream"
 
@@ -67,7 +67,7 @@ module "bad_2_stream" {
 # 2. Deploy Collector stack
 module "collector_lb" {
   source  = "snowplow-devops/alb/aws"
-  version = "0.1.1"
+  version = "0.1.2"
 
   name              = "${var.prefix}-collector-lb"
   vpc_id            = var.vpc_id
@@ -82,7 +82,7 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.1.1"
+  version = "0.1.2"
 
   name               = "${var.prefix}-collector-server"
   vpc_id             = var.vpc_id
@@ -102,12 +102,15 @@ module "collector_kinesis" {
   iam_permissions_boundary = var.iam_permissions_boundary
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.1.3"
+  version = "0.1.4"
 
   name                 = "${var.prefix}-enrich-server"
   vpc_id               = var.vpc_id
@@ -130,12 +133,15 @@ module "enrich_kinesis" {
   kcl_write_max_capacity = var.pipeline_kcl_write_max_capacity
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 # 4. Deploy Postgres Loader
 module "pipeline_rds" {
   source  = "snowplow-devops/rds/aws"
-  version = "0.1.3"
+  version = "0.1.4"
 
   name        = "${var.prefix}-pipeline-rds"
   vpc_id      = var.vpc_id
@@ -152,7 +158,7 @@ module "pipeline_rds" {
 
 module "postgres_loader_enriched" {
   source  = "snowplow-devops/postgres-loader-kinesis-ec2/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name       = "${var.prefix}-postgres-loader-enriched-server"
   vpc_id     = var.vpc_id
@@ -183,11 +189,14 @@ module "postgres_loader_enriched" {
   kcl_write_max_capacity = var.pipeline_kcl_write_max_capacity
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 module "postgres_loader_bad" {
   source  = "snowplow-devops/postgres-loader-kinesis-ec2/aws"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name       = "${var.prefix}-postgres-loader-bad-server"
   vpc_id     = var.vpc_id
@@ -218,12 +227,15 @@ module "postgres_loader_bad" {
   kcl_write_max_capacity = var.pipeline_kcl_write_max_capacity
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 # 5. Save raw, enriched and bad data to Amazon S3
 module "s3_loader_raw" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.1.2"
+  version = "0.1.3"
 
   name             = "${var.prefix}-s3-loader-raw-server"
   vpc_id           = var.vpc_id
@@ -244,11 +256,14 @@ module "s3_loader_raw" {
   kcl_write_max_capacity = var.pipeline_kcl_write_max_capacity
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 module "s3_loader_bad" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.1.2"
+  version = "0.1.3"
 
   name             = "${var.prefix}-s3-loader-bad-server"
   vpc_id           = var.vpc_id
@@ -269,11 +284,14 @@ module "s3_loader_bad" {
   kcl_write_max_capacity = var.pipeline_kcl_write_max_capacity
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 module "s3_loader_enriched" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.1.2"
+  version = "0.1.3"
 
   name             = "${var.prefix}-s3-loader-enriched-server"
   vpc_id           = var.vpc_id
@@ -294,4 +312,7 @@ module "s3_loader_enriched" {
   kcl_write_max_capacity = var.pipeline_kcl_write_max_capacity
 
   tags = var.tags
+
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }

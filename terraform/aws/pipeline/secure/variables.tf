@@ -119,3 +119,15 @@ variable "tags" {
   default     = {}
   type        = map(string)
 }
+
+variable "cloudwatch_logs_enabled" {
+  description = "Whether application logs should be reported to CloudWatch; by default they are only on the server"
+  default     = false
+  type        = bool
+}
+
+variable "cloudwatch_logs_retention_days" {
+  description = "The length of time in days to retain logs for"
+  default     = 7
+  type        = number
+}
