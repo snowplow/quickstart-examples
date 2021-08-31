@@ -82,7 +82,7 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.1.2"
+  version = "0.2.0"
 
   name               = "${var.prefix}-collector-server"
   vpc_id             = var.vpc_id
@@ -112,7 +112,7 @@ module "collector_kinesis" {
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.1.4"
+  version = "0.2.0"
 
   name                 = "${var.prefix}-enrich-server"
   vpc_id               = var.vpc_id
@@ -162,7 +162,7 @@ module "pipeline_rds" {
 
 module "postgres_loader_enriched" {
   source  = "snowplow-devops/postgres-loader-kinesis-ec2/aws"
-  version = "0.1.1"
+  version = "0.2.0"
 
   name       = "${var.prefix}-postgres-loader-enriched-server"
   vpc_id     = var.vpc_id
@@ -202,7 +202,7 @@ module "postgres_loader_enriched" {
 
 module "postgres_loader_bad" {
   source  = "snowplow-devops/postgres-loader-kinesis-ec2/aws"
-  version = "0.1.1"
+  version = "0.2.0"
 
   name       = "${var.prefix}-postgres-loader-bad-server"
   vpc_id     = var.vpc_id
@@ -243,7 +243,7 @@ module "postgres_loader_bad" {
 # 5. Save raw, enriched and bad data to Amazon S3
 module "s3_loader_raw" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.1.3"
+  version = "0.2.0"
 
   name             = "${var.prefix}-s3-loader-raw-server"
   vpc_id           = var.vpc_id
@@ -273,7 +273,7 @@ module "s3_loader_raw" {
 
 module "s3_loader_bad" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.1.3"
+  version = "0.2.0"
 
   name             = "${var.prefix}-s3-loader-bad-server"
   vpc_id           = var.vpc_id
@@ -303,7 +303,7 @@ module "s3_loader_bad" {
 
 module "s3_loader_enriched" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.1.3"
+  version = "0.2.0"
 
   name             = "${var.prefix}-s3-loader-enriched-server"
   vpc_id           = var.vpc_id
