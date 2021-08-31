@@ -82,8 +82,8 @@ variable "tags" {
 }
 
 variable "cloudwatch_logs_enabled" {
-  description = "Whether application logs should be reported to CloudWatch; by default they are only on the server"
-  default     = false
+  description = "Whether application logs should be reported to CloudWatch"
+  default     = true
   type        = bool
 }
 
