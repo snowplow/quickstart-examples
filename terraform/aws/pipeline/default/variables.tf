@@ -80,7 +80,7 @@ variable "pipeline_db_ip_allowlist" {
 }
 
 variable "pipeline_kcl_write_max_capacity" {
-  description = "Increasing this is important to increase throughput"
+  description = "Increasing this is important to increase throughput at very high pipeline volumes"
   type        = number
   default     = 50
 }
@@ -122,8 +122,8 @@ variable "tags" {
 }
 
 variable "cloudwatch_logs_enabled" {
-  description = "Whether application logs should be reported to CloudWatch; by default they are only on the server"
-  default     = false
+  description = "Whether application logs should be reported to CloudWatch"
+  default     = true
   type        = bool
 }
 

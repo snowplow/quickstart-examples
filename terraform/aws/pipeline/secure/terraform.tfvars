@@ -50,10 +50,7 @@ pipeline_db_password = "Hell0W0rld!2"
 # Note: these IP ranges will need to be internal to your VPC like from a Bastion Host
 pipeline_db_ip_allowlist = ["999.999.999.999/32", "888.888.888.888/32"]
 
-# Note: the postgres loader can be limited by KCL throughput - increasing this is crucial for anything over 50 RPS.
-#       There is roughly a 1:1 relationship between this value and Rows per second (RPS).
-#
-# While this limit is most important to the Postgres Loader this write capacity will be applied to all consumers.
+# Controls the write throughput of the KCL tables maintained by the various consumers deployed
 pipeline_kcl_write_max_capacity = 50
 
 # See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-kinesis-ec2/aws/latest#telemetry
