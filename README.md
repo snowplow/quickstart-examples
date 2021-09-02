@@ -1,6 +1,8 @@
 # Quick start examples for Snowplow Deployment
 
+[![Release][release-badge]][release]
 [![License][license-image]][license]
+[![Discourse posts][discourse-image]][discourse]
 
 Examples of how to automate creating a [Snowplow Open Source pipeline](https://github.com/snowplow/snowplow).
 
@@ -12,11 +14,9 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 |------------|-------|-------------|-------------------------------------------------------------|
 | Terraform  | AWS   | Iglu Server | [Published](terraform/aws/iglu_server)                      |
 | Terraform  | AWS   | Pipeline    | [Published](terraform/aws/pipeline)                         |
-| Terraform  | GCP   | Iglu Server | Coming Soon                                                 |
-| Terraform  | GCP   | Pipeline    | Coming Soon                                                 |
+| Terraform  | GCP   | Iglu Server | [Published](terraform/gcp/iglu_server)                      |
+| Terraform  | GCP   | Pipeline    | [Published](terraform/gcp/pipeline)                         |
 |            |       |             |                                                             |
-
-We hope to extend support to other infrastructure tooling in the future.
 
 ## Documentation
 
@@ -48,3 +48,9 @@ limitations under the License.
 
 [license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: https://www.apache.org/licenses/LICENSE-2.0
+
+[discourse-image]: https://img.shields.io/discourse/posts?server=https%3A%2F%2Fdiscourse.snowplowanalytics.com%2F
+[discourse]: http://discourse.snowplowanalytics.com/
+
+[release]: https://github.com/snowplow/snowplow/releases/tag/21.08
+[release-badge]: https://img.shields.io/badge/Snowplow-21.08%20North%20Cascades-6638b8
