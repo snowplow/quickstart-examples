@@ -1,3 +1,8 @@
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
 module "iglu_db" {
   source  = "snowplow-devops/cloud-sql/google"
   version = "0.1.0"
