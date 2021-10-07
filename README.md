@@ -16,7 +16,6 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 | Terraform  | AWS   | Pipeline    | [Published](terraform/aws/pipeline)                         |
 | Terraform  | GCP   | Iglu Server | [Published](terraform/gcp/iglu_server)                      |
 | Terraform  | GCP   | Pipeline    | [Published](terraform/gcp/pipeline)                         |
-|            |       |             |                                                             |
 
 ## Documentation
 
@@ -24,6 +23,23 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 |----------------------------------------|--------------------------------------|-------------------------|
 | ![i1][install-image]                   | ![i2][deploy-image]                  | ![i3][faq-image]        |
 | **[Installation Guide][installguide]** | **[Deployment Summary][deploysum]**  | **[FAQ][faq]**          |
+
+### Updating READMEs
+
+To generate the READMEs, use [terraform-docs][tf-docs].
+
+For example:
+
+```bash
+terraform-docs -c .terraform-docs.yml terraform/aws/iglu_server/default
+terraform-docs -c .terraform-docs.yml terraform/aws/iglu_server/secure
+terraform-docs -c .terraform-docs.yml terraform/aws/pipeline/default
+terraform-docs -c .terraform-docs.yml terraform/aws/pipeline/secure
+terraform-docs -c .terraform-docs.yml terraform/gcp/iglu_server/default
+terraform-docs -c .terraform-docs.yml terraform/gcp/iglu_server/secure
+terraform-docs -c .terraform-docs.yml terraform/gcp/pipeline/default
+terraform-docs -c .terraform-docs.yml terraform/gcp/pipeline/secure
+```
 
 ## Copyright and license
 
@@ -54,3 +70,5 @@ limitations under the License.
 
 [release]: https://github.com/snowplow/snowplow/releases/tag/21.08
 [release-badge]: https://img.shields.io/badge/Snowplow-21.08%20North%20Cascades-6638b8
+
+[tf-docs]: https://github.com/terraform-docs/terraform-docs

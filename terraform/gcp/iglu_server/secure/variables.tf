@@ -3,6 +3,11 @@ variable "prefix" {
   type        = string
 }
 
+variable "project_id" {
+  description = "The project ID in which the stack is being deployed"
+  type        = string
+}
+
 variable "region" {
   description = "The name of the region to deploy within"
   type        = string
