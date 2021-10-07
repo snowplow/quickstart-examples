@@ -2,6 +2,9 @@
 # Use this to easily identify the resources created and provide entropy for subsequent environments
 prefix = "sp"
 
+# The project to deploy the infrastructure into
+project_id = "PROJECT_ID_TO_DEPLOY_INTO"
+
 # Where to deploy the infrastructure
 region = "REGION_TO_DEPLOY_INTO"
 
