@@ -41,7 +41,7 @@ module "enriched_topic" {
 # 2. Deploy Collector stack
 module "collector_pubsub" {
   source  = "snowplow-devops/collector-pubsub-ce/google"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name = "${var.prefix}-collector-server"
 
@@ -81,7 +81,7 @@ module "collector_lb" {
 # 3. Deploy Enrichment
 module "enrich_pubsub" {
   source  = "snowplow-devops/enrich-pubsub-ce/google"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name = "${var.prefix}-enrich-server"
 
@@ -128,7 +128,7 @@ module "pipeline_db" {
 
 module "postgres_loader_enriched" {
   source  = "snowplow-devops/postgres-loader-pubsub-ce/google"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name = "${var.prefix}-pg-loader-enriched-server"
 
@@ -163,7 +163,7 @@ module "postgres_loader_enriched" {
 
 module "postgres_loader_bad" {
   source  = "snowplow-devops/postgres-loader-pubsub-ce/google"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name = "${var.prefix}-pg-loader-bad-server"
 
