@@ -19,7 +19,7 @@ module "iglu_db" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-ce/google"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name = "${var.prefix}-iglu-server"
 
