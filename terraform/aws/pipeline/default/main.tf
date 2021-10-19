@@ -82,7 +82,7 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name               = "${var.prefix}-collector-server"
   vpc_id             = var.vpc_id
