@@ -68,7 +68,7 @@ limitations under the License.
 [discourse-image]: https://img.shields.io/discourse/posts?server=https%3A%2F%2Fdiscourse.snowplowanalytics.com%2F
 [discourse]: http://discourse.snowplowanalytics.com/
 
-[release]: https://github.com/snowplow/snowplow/releases/tag/21.08
-[release-badge]: https://img.shields.io/badge/Snowplow-21.08%20North%20Cascades-6638b8
+[release]: https://github.com/snowplow/snowplow/releases
+[release-badge]: https://img.shields.io/badge/Snowplow-21.08%20North%20Cascades%20%28Patch.2%29-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
