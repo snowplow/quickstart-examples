@@ -46,7 +46,7 @@ module "enriched_topic" {
 # 2. Deploy Collector stack
 module "collector_pubsub" {
   source  = "snowplow-devops/collector-pubsub-ce/google"
-  version = "0.2.1"
+  version = "0.2.2"
 
   name = "${var.prefix}-collector-server"
 
@@ -86,7 +86,7 @@ module "collector_lb" {
 # 3. Deploy Enrichment
 module "enrich_pubsub" {
   source  = "snowplow-devops/enrich-pubsub-ce/google"
-  version = "0.1.1"
+  version = "0.1.2"
 
   name = "${var.prefix}-enrich-server"
 
