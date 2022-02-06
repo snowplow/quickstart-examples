@@ -33,13 +33,6 @@ iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-IP"
 # Change this to the same UUID from when you created the Iglu Server
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
-# NOTE: Needed for Postgres Loader to work
-# igluctl: https://docs.snowplowanalytics.com/docs/pipeline-components-and-applications/iglu/igluctl
-# Ensure you have seeded Iglu Server: 
-# git clone https://github.com/snowplow/iglu-central
-# cd iglu-central
-# igluctl static push --public schemas/ http://CHANGE-TO-MY-IGLU-URL.elb.amazonaws.com 00000000-0000-0000-0000-000000000000
-
 # --- Snowplow Postgres Loader
 pipeline_db_name     = "snowplow"
 pipeline_db_username = "snowplow"
