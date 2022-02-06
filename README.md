@@ -10,19 +10,19 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 ## Supported Platforms
 
-| Tool       | Cloud | Components  | Status                                                      |
-|------------|-------|-------------|-------------------------------------------------------------|
-| Terraform  | AWS   | Iglu Server | [Published](terraform/aws/iglu_server)                      |
-| Terraform  | AWS   | Pipeline    | [Published](terraform/aws/pipeline)                         |
-| Terraform  | GCP   | Iglu Server | [Published](terraform/gcp/iglu_server)                      |
-| Terraform  | GCP   | Pipeline    | [Published](terraform/gcp/pipeline)                         |
+| Tool       | Cloud | Components  | Status                                      | Deployment Summary           |
+|------------|-------|-------------|---------------------------------------------|------------------------------|
+| Terraform  | AWS   | Iglu Server | [Published](terraform/aws/iglu_server)      |                              |
+| Terraform  | AWS   | Pipeline    | [Published](terraform/aws/pipeline)         | [AWS Summary][deploysum-aws] |
+| Terraform  | GCP   | Iglu Server | [Published](terraform/gcp/iglu_server)      |                              |
+| Terraform  | GCP   | Pipeline    | [Published](terraform/gcp/pipeline)         | [GCP Summary][deploysum-gcp] |
 
 ## Documentation
 
-| Installation Guide                     | Deployment Summary                   | FAQ                     |
-|----------------------------------------|--------------------------------------|-------------------------|
-| ![i1][install-image]                   | ![i2][deploy-image]                  | ![i3][faq-image]        |
-| **[Installation Guide][installguide]** | **[Deployment Summary][deploysum]**  | **[FAQ][faq]**          |
+| Installation Guide                     | FAQ                      |
+|----------------------------------------|--------------------------|
+| ![i1][install-image]                   |  ![i3][faq-image]        |
+| **[Installation Guide][installguide]** |  **[FAQ][faq]**          |
 
 ### Updating READMEs
 
@@ -59,8 +59,10 @@ limitations under the License.
 [faq-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/roadmap.png
 
 [installguide]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/
-[deploysum]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/
 [faq]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-faqs/
+
+[deploysum-aws]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/
+[deploysum-gcp]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed-gcp/
 
 [license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: https://www.apache.org/licenses/LICENSE-2.0
