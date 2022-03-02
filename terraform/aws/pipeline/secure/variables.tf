@@ -103,7 +103,7 @@ variable "iam_permissions_boundary" {
 }
 
 variable "ssl_information" {
-  description = "The ARN of an Amazon Certificate Manager certificate to bind to the load balancer"
+  description = "The ARN of an Amazon Certificate Manager certificate to bind to the load balancer (required for HTTPS)"
   type = object({
     enabled         = bool
     certificate_arn = string
