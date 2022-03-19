@@ -11,17 +11,14 @@ s3_bucket_deploy = true
 # To save objects in a particular sub-directory you can pass in an optional prefix (e.g. 'foo/' )
 s3_bucket_object_prefix = ""
 
-# --- VPC
-# Update to the VPC you would like to deploy into which must have public & private subnet layers across which to deploy
-# different layers of the application
-vpc_id             = "vpc-00000000"
-# Load Balancer will be deployed in this layer
-public_subnet_ids  = ["subnet-00000000", "subnet-00000000"]
-# EC2 Servers & RDS will be deployed in this layer
-private_subnet_ids = ["subnet-00000000", "subnet-00000000"]
+# --- Default VPC
+# Update to the VPC you would like to deploy into
+# Find your default: https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#view-default-vpc
+vpc_id            = "vpc-00000000"
+public_subnet_ids = ["subnet-00000000", "subnet-00000001"]
 
 # --- SSH
-# Update this to the internal IP of your Bastion Host
+# Update this to your IP Address
 ssh_ip_allowlist = ["999.999.999.999/32"]
 # Generate a new SSH key locally with `ssh-keygen`
 # ssh-keygen -t rsa -b 4096 
@@ -42,13 +39,15 @@ iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 # igluctl static push --public schemas/ http://CHANGE-TO-MY-IGLU-URL.elb.amazonaws.com 00000000-0000-0000-0000-000000000000
 
 # --- Snowplow Postgres Loader
-pipeline_db_name     = "snowplow"
-pipeline_db_username = "snowplow"
+pg_db_name     = "snowplow"
+pg_db_username = "snowplow"
 # Change and keep this secret!
-pipeline_db_password = "Hell0W0rld!2"
+pg_db_password = "Hell0W0rld!2"
 # IP ranges that you want to query the Pipeline Postgres RDS from
-# Note: these IP ranges will need to be internal to your VPC like from a Bastion Host
-pipeline_db_ip_allowlist = ["999.999.999.999/32", "888.888.888.888/32"]
+# Note: this exposes your data to the internet - take care to ensure your allowlist is strict enough
+#       or provide a way to access the database through the VPC instead
+pg_db_publicly_accessible = true
+pg_db_ip_allowlist        = ["999.999.999.999/32", "888.888.888.888/32"]
 
 # Controls the write throughput of the KCL tables maintained by the various consumers deployed
 pipeline_kcl_write_max_capacity = 50

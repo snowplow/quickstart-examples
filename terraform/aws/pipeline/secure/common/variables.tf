@@ -30,6 +30,11 @@ variable "public_subnet_ids" {
   type        = list(string)
 }
 
+variable "private_subnet_ids" {
+  description = "The list of private subnets to deploy the components across"
+  type        = list(string)
+}
+
 variable "ssh_public_key" {
   description = "The SSH public key to use for the deployment"
   type        = string
@@ -49,34 +54,6 @@ variable "iglu_super_api_key" {
   description = "A UUIDv4 string to use as the master API key for Iglu Server management"
   type        = string
   sensitive   = true
-}
-
-variable "pipeline_db_name" {
-  description = "The name of the database to connect to"
-  type        = string
-}
-
-variable "pipeline_db_username" {
-  description = "The username to use to connect to the database"
-  type        = string
-}
-
-variable "pipeline_db_password" {
-  description = "The password to use to connect to the database"
-  type        = string
-  sensitive   = true
-}
-
-variable "pipeline_db_publicly_accessible" {
-  description = "Whether to make the Postgres RDS instance accessible over the internet"
-  type        = bool
-  default     = false
-}
-
-variable "pipeline_db_ip_allowlist" {
-  description = "An optional list of CIDR ranges to allow traffic from"
-  type        = list(any)
-  default     = []
 }
 
 variable "pipeline_kcl_write_max_capacity" {
