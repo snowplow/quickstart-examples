@@ -3,17 +3,17 @@ output "collector_dns_name" {
   value       = module.collector_lb.dns_name
 }
 
-output "db_address" {
+output "postgres_db_address" {
   description = "The RDS dns name where your data is being streamed"
-  value       = module.pipeline_rds.address
+  value       = local.postgres_enabled ? module.pipeline_rds[0].address : null
 }
 
-output "db_port" {
+output "postgres_db_port" {
   description = "The RDS port where your data is being streamed"
-  value       = module.pipeline_rds.port
+  value       = local.postgres_enabled ? module.pipeline_rds[0].port : null
 }
 
-output "db_id" {
+output "postgres_db_id" {
   description = "The ID of the RDS instance"
-  value       = module.pipeline_rds.id
+  value       = local.postgres_enabled ? module.pipeline_rds[0].id : null
 }

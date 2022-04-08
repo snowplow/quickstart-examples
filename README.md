@@ -10,12 +10,13 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 ## Supported Platforms
 
-| Tool       | Cloud | Components  | Status                                      | Deployment Summary           |
-|------------|-------|-------------|---------------------------------------------|------------------------------|
-| Terraform  | AWS   | Iglu Server | [Published](terraform/aws/iglu_server)      |                              |
-| Terraform  | AWS   | Pipeline    | [Published](terraform/aws/pipeline)         | [AWS Summary][deploysum-aws] |
-| Terraform  | GCP   | Iglu Server | [Published](terraform/gcp/iglu_server)      |                              |
-| Terraform  | GCP   | Pipeline    | [Published](terraform/gcp/pipeline)         | [GCP Summary][deploysum-gcp] |
+| Tool       | Cloud | Components              | Status                                      | Deployment Summary                      |
+|------------|-------|-------------------------|---------------------------------------------|-----------------------------------------|
+| Terraform  | AWS   | Iglu Server             | [Published](terraform/aws/iglu_server)      |                                         |
+| Terraform  | AWS   | Pipeline (PostgreSQL)   | [Published](terraform/aws/pipeline)         | [AWS PostgreSQL Summary][deploysum-aws] |
+| Terraform  | AWS   | Pipeline (Snowflake)    | [Published](terraform/aws/snowflake)        | [AWS Snowflakie Summary][deploysum-aws] |
+| Terraform  | GCP   | Iglu Server             | [Published](terraform/gcp/iglu_server)      |                                         |
+| Terraform  | GCP   | Pipeline (PostgreSQL)   | [Published](terraform/gcp/pipeline)         | [GCP PostgreSQL Summary][deploysum-gcp] |
 
 ## Documentation
 

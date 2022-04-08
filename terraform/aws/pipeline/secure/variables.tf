@@ -56,23 +56,37 @@ variable "iglu_super_api_key" {
   sensitive   = true
 }
 
-variable "pipeline_db_name" {
+variable "pipeline_db" {
+  type = string
+  description = "Database used by pipeline"
+
+  validation {
+    condition     = can(regex("^(postgres|snowflake)$", var.pipeline_db))
+    error_message = "Must be postgres or snowflake."
+  }
+}
+
+variable "postgres_db_name" {
   description = "The name of the database to connect to"
   type        = string
+  default     = ""
+
 }
 
-variable "pipeline_db_username" {
+variable "postgres_db_username" {
   description = "The username to use to connect to the database"
   type        = string
+  default     = ""
 }
 
-variable "pipeline_db_password" {
+variable "postgres_db_password" {
   description = "The password to use to connect to the database"
   type        = string
+  default     = ""
   sensitive   = true
 }
 
-variable "pipeline_db_ip_allowlist" {
+variable "postgres_db_ip_allowlist" {
   description = "An optional list of CIDR ranges to allow traffic from"
   type        = list(any)
   default     = []
@@ -131,3 +145,65 @@ variable "cloudwatch_logs_retention_days" {
   default     = 7
   type        = number
 }
+
+variable "snowflake_account" {
+  description = "Snowflake account to use"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_region" {
+  description = "Region of Snowflake account"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_loader_password" {
+  description = "The password to use for the loader user"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "snowflake_loader_user" {
+  description = "The Snowflake user used by Snowflake Loader"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_database" {
+  description = "Snowflake database name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_schema" {
+  description = "Snowflake schema name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_loader_role" {
+  description = "Snowflake role for loading snowplow data"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_warehouse" {
+  description = "Snowflake warehouse name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_transformed_stage_name" {
+  description = "Name of transformed stage"
+  type        = string
+  default     = ""
+}
+
+variable "transformer_window_period_min" {
+  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
+  type        = number
+  default     = 5
+}
+
