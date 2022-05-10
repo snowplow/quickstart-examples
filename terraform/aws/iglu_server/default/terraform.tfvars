@@ -25,12 +25,9 @@ iglu_db_password = "Hell0W0rld!"
 # Change this to a new UUID and keep it secret!
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
-# NOTE: Needed for Postgres Loader to work
+# NOTE: To push schemas to your Iglu Server, you can use igluctl
 # igluctl: https://docs.snowplowanalytics.com/docs/pipeline-components-and-applications/iglu/igluctl
-# Ensure you have seeded Iglu Server: 
-# git clone https://github.com/snowplow/iglu-central
-# cd iglu-central
-# igluctl static push --public schemas/ http://CHANGE-TO-MY-IGLU-URL.elb.amazonaws.com 00000000-0000-0000-0000-000000000000
+# igluctl static push --public schemas/ http://CHANGE-TO-MY-IGLU-IP 00000000-0000-0000-0000-000000000000
 
 # See for more information: https://github.com/snowplow-devops/terraform-aws-iglu-server-ec2#telemetry
 # Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
