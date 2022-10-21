@@ -115,7 +115,7 @@ module "enrich_pubsub" {
 # 4. Deploy Postgres Loader
 module "pipeline_db" {
   source  = "snowplow-devops/cloud-sql/google"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name = "${var.prefix}-pipeline-db"
 

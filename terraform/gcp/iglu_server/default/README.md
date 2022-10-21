@@ -14,7 +14,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iglu_db"></a> [iglu\_db](#module\_iglu\_db) | snowplow-devops/cloud-sql/google | 0.1.0 |
+| <a name="module_iglu_db"></a> [iglu\_db](#module\_iglu\_db) | snowplow-devops/cloud-sql/google | 0.1.1 |
 | <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/lb/google | 0.1.0 |
 | <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-ce/google | 0.2.1 |
 
