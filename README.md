@@ -59,20 +59,20 @@ limitations under the License.
 [deploy-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/setup.png
 [faq-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/roadmap.png
 
-[installguide]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/
-[faq]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-faqs/
+[installguide]: https://docs.snowplow.io/docs/open-source-quick-start/
+[faq]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-faqs/
 
-[deploypgsum-aws]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-postgres/
-[deploysfsum-aws]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-snowflake/
-[deploysum-gcp]: https://docs.snowplowanalytics.com/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed-gcp/
+[deploypgsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-postgres/
+[deploysfsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-snowflake/
+[deploysum-gcp]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed-gcp/
 
 [license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: https://www.apache.org/licenses/LICENSE-2.0
 
-[discourse-image]: https://img.shields.io/discourse/posts?server=https%3A%2F%2Fdiscourse.snowplowanalytics.com%2F
-[discourse]: http://discourse.snowplowanalytics.com/
+[discourse-image]: https://img.shields.io/discourse/posts?server=https%3A%2F%2Fdiscourse.snowplow.io%2F
+[discourse]: http://discourse.snowplow.io/
 
 [release]: https://github.com/snowplow/snowplow/releases
-[release-badge]: https://img.shields.io/badge/Snowplow-22.01%20Western%20Ghats%20%28Patch.1%29-6638b8
+[release-badge]: https://img.shields.io/badge/Snowplow-22.01%20Western%20Ghats%20%28Patch.2%29-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
