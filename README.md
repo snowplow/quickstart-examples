@@ -10,13 +10,14 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 ## Supported Platforms
 
-| Tool       | Cloud | Components              | Status                                      | Deployment Summary                      |
-|------------|-------|-------------------------|---------------------------------------------|-----------------------------------------|
-| Terraform  | AWS   | Iglu Server             | [Published](terraform/aws/iglu_server)      |                                         |
+| Tool       | Cloud | Components              | Status                                      | Deployment Summary                        |
+|------------|-------|-------------------------|---------------------------------------------|-------------------------------------------|
+| Terraform  | AWS   | Iglu Server             | [Published](terraform/aws/iglu_server)      |                                           |
 | Terraform  | AWS   | Pipeline (PostgreSQL)   | [Published](terraform/aws/pipeline)         | [AWS PostgreSQL Summary][deploypgsum-aws] |
 | Terraform  | AWS   | Pipeline (Snowflake)    | [Published](terraform/aws/snowflake)        | [AWS Snowflake Summary][deploysfsum-aws]  |
-| Terraform  | GCP   | Iglu Server             | [Published](terraform/gcp/iglu_server)      |                                         |
+| Terraform  | GCP   | Iglu Server             | [Published](terraform/gcp/iglu_server)      |                                           |
 | Terraform  | GCP   | Pipeline (PostgreSQL)   | [Published](terraform/gcp/pipeline)         | [GCP PostgreSQL Summary][deploysum-gcp] |
+| Terraform  | GCP   | Pipeline (BigQuery)     | [Published](terraform/gcp/pipeline)         | [GCP BigQuery Summary][deploysum-gcp]   |
 
 ## Documentation
 
@@ -64,7 +65,7 @@ limitations under the License.
 
 [deploypgsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-postgres/
 [deploysfsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-snowflake/
-[deploysum-gcp]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed-gcp/
+[deploysum-gcp]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed/
 
 [license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
 [license]: https://www.apache.org/licenses/LICENSE-2.0
@@ -73,6 +74,6 @@ limitations under the License.
 [discourse]: http://discourse.snowplow.io/
 
 [release]: https://github.com/snowplow/snowplow/releases
-[release-badge]: https://img.shields.io/badge/Snowplow-22.01%20Western%20Ghats%20%28Patch.2%29-6638b8
+[release-badge]: https://img.shields.io/badge/Snowplow-22.01%20Western%20Ghats%20%28Patch.3%29-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
