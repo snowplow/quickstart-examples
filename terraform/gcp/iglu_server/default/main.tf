@@ -19,9 +19,11 @@ module "iglu_db" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-ce/google"
-  version = "0.2.1"
+  version = "0.3.2"
 
   name = "${var.prefix}-iglu-server"
+
+  project_id = var.project_id
 
   network    = var.network
   subnetwork = var.subnetwork
