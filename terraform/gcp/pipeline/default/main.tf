@@ -221,13 +221,20 @@ resource "google_bigquery_dataset" "bigquery_db" {
 }
 
 resource "google_storage_bucket" "bq_loader_dead_letter_bucket" {
-  count = var.bigquery_db_enabled ? 1 : 0
+  count = var.bigquery_db_enabled && var.bigquery_loader_dead_letter_bucket_deploy ? 1 : 0
 
-  name          = "${var.prefix}-bq-loader-dead-letter"
+  name          = var.bigquery_loader_dead_letter_bucket_name
   location      = var.region
   force_destroy = true
 
   labels = var.labels
+}
+
+locals {
+  bq_loader_dead_letter_bucket_name = coalesce(
+    join("", google_storage_bucket.bq_loader_dead_letter_bucket.*.name),
+    var.bigquery_loader_dead_letter_bucket_name,
+  )
 }
 
 module "bigquery_loader" {
@@ -248,7 +255,7 @@ module "bigquery_loader" {
 
   input_topic_name            = module.enriched_topic.name
   bad_rows_topic_name         = join("", module.bad_rows_topic.*.name)
-  gcs_dead_letter_bucket_name = join("", google_storage_bucket.bq_loader_dead_letter_bucket.*.name)
+  gcs_dead_letter_bucket_name = local.bq_loader_dead_letter_bucket_name
   bigquery_dataset_id         = join("", google_bigquery_dataset.bigquery_db.*.dataset_id)
 
   # Linking in the custom Iglu Server here

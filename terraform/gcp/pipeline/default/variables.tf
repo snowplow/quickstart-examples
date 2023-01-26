@@ -91,6 +91,18 @@ variable "bigquery_db_enabled" {
   type        = bool
 }
 
+variable "bigquery_loader_dead_letter_bucket_deploy" {
+  description = "Whether this module should create a new bucket with the specified name - if the bucket already exists set this to false"
+  default     = true
+  type        = bool
+}
+
+variable "bigquery_loader_dead_letter_bucket_name" {
+  description = "The name of the GCS bucket to use for dead-letter output of loader"
+  default     = ""
+  type        = string
+}
+
 variable "telemetry_enabled" {
   description = "Whether or not to send telemetry information back to Snowplow Analytics Ltd"
   type        = bool
