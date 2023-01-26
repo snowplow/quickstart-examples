@@ -51,6 +51,8 @@
 | <a name="input_ssh_ip_allowlist"></a> [ssh\_ip\_allowlist](#input\_ssh\_ip\_allowlist) | The list of CIDR ranges to allow SSH traffic from | `list(any)` | n/a | yes |
 | <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | The name of the sub-network to deploy within | `string` | n/a | yes |
 | <a name="input_bigquery_db_enabled"></a> [bigquery\_db\_enabled](#input\_bigquery\_db\_enabled) | Whether to enable loading into a BigQuery Dataset | `bool` | `false` | no |
+| <a name="input_bigquery_loader_dead_letter_bucket_deploy"></a> [bigquery\_loader\_dead\_letter\_bucket\_deploy](#input\_bigquery\_loader\_dead\_letter\_bucket\_deploy) | Whether this module should create a new bucket with the specified name - if the bucket already exists set this to false | `bool` | `true` | no |
+| <a name="input_bigquery_loader_dead_letter_bucket_name"></a> [bigquery\_loader\_dead\_letter\_bucket\_name](#input\_bigquery\_loader\_dead\_letter\_bucket\_name) | The name of the GCS bucket to use for dead-letter output of loader | `string` | `""` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | The labels to append to the resources in this module | `map(string)` | `{}` | no |
 | <a name="input_postgres_db_authorized_networks"></a> [postgres\_db\_authorized\_networks](#input\_postgres\_db\_authorized\_networks) | The list of CIDR ranges to allow access to the Pipeline Database over | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | <a name="input_postgres_db_enabled"></a> [postgres\_db\_enabled](#input\_postgres\_db\_enabled) | Whether to enable loading into a Postgres Database | `bool` | `false` | no |
