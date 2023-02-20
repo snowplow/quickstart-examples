@@ -57,7 +57,7 @@ variable "iglu_super_api_key" {
 }
 
 variable "pipeline_db" {
-  type = string
+  type        = string
   description = "Database used by pipeline"
 
   validation {
@@ -197,6 +197,42 @@ variable "snowflake_warehouse" {
 
 variable "snowflake_transformed_stage_name" {
   description = "Name of transformed stage"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_catalog" {
+  description = "Databricks deltalake catalog"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_schema" {
+  description = "Databricks deltalake schema"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_host" {
+  description = "Databricks deltalake host"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_port" {
+  description = "Databricks deltalake port"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_http_path" {
+  description = "Databricks deltalake http path"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_auth_token" {
+  description = "Databricks deltalake auth token"
   type        = string
   default     = ""
 }

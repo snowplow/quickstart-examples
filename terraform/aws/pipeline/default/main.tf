@@ -11,22 +11,31 @@ locals {
 
   snowflake_enabled = (
     var.pipeline_db == "snowflake"
-      && var.snowflake_account != ""
-      && var.snowflake_region != ""
-      && var.snowflake_loader_user != ""
-      && var.snowflake_loader_password != ""
-      && var.snowflake_database != ""
-      && var.snowflake_schema != ""
-      && var.snowflake_loader_role != ""
-      && var.snowflake_warehouse != ""
-      && var.snowflake_transformed_stage_name != ""
+    && var.snowflake_account != ""
+    && var.snowflake_region != ""
+    && var.snowflake_loader_user != ""
+    && var.snowflake_loader_password != ""
+    && var.snowflake_database != ""
+    && var.snowflake_schema != ""
+    && var.snowflake_loader_role != ""
+    && var.snowflake_warehouse != ""
+    && var.snowflake_transformed_stage_name != ""
+  )
+
+  databricks_enabled = (
+    var.pipeline_db == "databricks"
+    && var.deltalake_catalog != ""
+    && var.deltalake_schema != ""
+    && var.deltalake_host != ""
+    && var.deltalake_port != ""
+    && var.deltalake_auth_token != ""
   )
 
   postgres_enabled = (
     var.pipeline_db == "postgres"
-      && var.postgres_db_name != ""
-      && var.postgres_db_username != ""
-      && var.postgres_db_password != ""
+    && var.postgres_db_name != ""
+    && var.postgres_db_username != ""
+    && var.postgres_db_password != ""
   )
 }
 
@@ -259,16 +268,16 @@ module "postgres_loader_bad" {
 }
 
 resource "aws_sqs_queue" "message_queue" {
-  count                       = local.snowflake_enabled ? 1 : 0
+  count                       = (local.snowflake_enabled || local.databricks_enabled) ? 1 : 0
   content_based_deduplication = true
   name                        = "${var.prefix}-sf-loader.fifo"
   fifo_queue                  = true
   kms_master_key_id           = "alias/aws/sqs"
 }
 
-module "transformer_enriched" {
-  source = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.1.0"
+module "transformer_enriched_json" {
+  source  = "snowplow-devops/transformer-kinesis-ec2/aws"
+  version = "0.2.2"
 
   count = local.snowflake_enabled ? 1 : 0
 
@@ -291,10 +300,11 @@ module "transformer_enriched" {
   tags                           = var.tags
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+  widerow_file_format            = "json"
 }
 
 module "snowflake_loader" {
-  source = "snowplow-devops/snowflake-loader-ec2/aws"
+  source  = "snowplow-devops/snowflake-loader-ec2/aws"
   version = "0.1.1"
 
   count = local.snowflake_enabled ? 1 : 0
@@ -323,6 +333,64 @@ module "snowflake_loader" {
   tags                                   = var.tags
   cloudwatch_logs_enabled                = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days         = var.cloudwatch_logs_retention_days
+}
+
+module "transformer_enriched_parquet" {
+  source  = "snowplow-devops/transformer-kinesis-ec2/aws"
+  version = "0.2.2"
+
+  count = local.databricks_enabled ? 1 : 0
+
+  name                           = "${var.prefix}-transformer-kinesis-enriched-server"
+  vpc_id                         = var.vpc_id
+  subnet_ids                     = var.public_subnet_ids
+  ssh_key_name                   = aws_key_pair.pipeline.key_name
+  ssh_ip_allowlist               = var.ssh_ip_allowlist
+  stream_name                    = module.enriched_stream.name
+  s3_bucket_name                 = var.s3_bucket_name
+  s3_bucket_object_prefix        = "${var.s3_bucket_object_prefix}transformed/good"
+  window_period_min              = var.transformer_window_period_min
+  sqs_queue_name                 = aws_sqs_queue.message_queue[0].name
+  transformation_type            = "widerow"
+  custom_iglu_resolvers          = local.custom_iglu_resolvers
+  kcl_write_max_capacity         = var.pipeline_kcl_write_max_capacity
+  iam_permissions_boundary       = var.iam_permissions_boundary
+  telemetry_enabled              = var.telemetry_enabled
+  user_provided_id               = var.user_provided_id
+  tags                           = var.tags
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+  widerow_file_format            = "parquet"
+}
+
+module "databricks_loader" {
+  # source  = "snowplow-devops/databricks-loader-ec2/aws"
+  # version = "0.1.0"
+  source = "../../../../../terraform-aws-databricks-loader-ec2"
+
+  count = local.databricks_enabled ? 1 : 0
+
+  name                                    = "${var.prefix}-databricks-loader-server"
+  vpc_id                                  = var.vpc_id
+  subnet_ids                              = var.public_subnet_ids
+  ssh_key_name                            = aws_key_pair.pipeline.key_name
+  sqs_queue_name                          = aws_sqs_queue.message_queue[0].name
+  ssh_ip_allowlist                        = var.ssh_ip_allowlist
+  deltalake_catalog                       = var.deltalake_catalog
+  deltalake_schema                        = var.deltalake_schema
+  deltalake_host                          = var.deltalake_host
+  deltalake_port                          = var.deltalake_port
+  deltalake_http_path                     = var.deltalake_http_path
+  deltalake_auth_token                    = var.deltalake_auth_token
+  databricks_aws_s3_bucket_name           = var.s3_bucket_name
+  databricks_aws_s3_transformed_stage_url = ""
+  iam_permissions_boundary                = var.iam_permissions_boundary
+  telemetry_enabled                       = var.telemetry_enabled
+  user_provided_id                        = var.user_provided_id
+  custom_iglu_resolvers                   = local.custom_iglu_resolvers
+  tags                                    = var.tags
+  cloudwatch_logs_enabled                 = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days          = var.cloudwatch_logs_retention_days
 }
 
 # 5. Save raw, enriched and bad data to Amazon S3

@@ -10,21 +10,22 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 ## Supported Platforms
 
-| Tool       | Cloud | Components              | Status                                      | Deployment Summary                        |
-|------------|-------|-------------------------|---------------------------------------------|-------------------------------------------|
-| Terraform  | AWS   | Iglu Server             | [Published](terraform/aws/iglu_server)      |                                           |
-| Terraform  | AWS   | Pipeline (PostgreSQL)   | [Published](terraform/aws/pipeline)         | [AWS PostgreSQL Summary][deploypgsum-aws] |
-| Terraform  | AWS   | Pipeline (Snowflake)    | [Published](terraform/aws/snowflake)        | [AWS Snowflake Summary][deploysfsum-aws]  |
-| Terraform  | GCP   | Iglu Server             | [Published](terraform/gcp/iglu_server)      |                                           |
-| Terraform  | GCP   | Pipeline (PostgreSQL)   | [Published](terraform/gcp/pipeline)         | [GCP PostgreSQL Summary][deploysum-gcp] |
-| Terraform  | GCP   | Pipeline (BigQuery)     | [Published](terraform/gcp/pipeline)         | [GCP BigQuery Summary][deploysum-gcp]   |
+| Tool      | Cloud | Components            | Status                                 | Deployment Summary                        |
+|-----------|-------|-----------------------|----------------------------------------|-------------------------------------------|
+| Terraform | AWS   | Iglu Server           | [Published](terraform/aws/iglu_server) |                                           |
+| Terraform | AWS   | Pipeline (PostgreSQL) | [Published](terraform/aws/pipeline)    | [AWS PostgreSQL Summary][deploypgsum-aws] |
+| Terraform | AWS   | Pipeline (Snowflake)  | [Published](terraform/aws/snowflake)   | [AWS Snowflake Summary][deploysfsum-aws]  |
+| Terraform | AWS   | Pipeline (Databricks) | [Published](terraform/aws/databricks)  | [AWS Databricks Summary][deploydbsum-aws] |
+| Terraform | GCP   | Iglu Server           | [Published](terraform/gcp/iglu_server) |                                           |
+| Terraform | GCP   | Pipeline (PostgreSQL) | [Published](terraform/gcp/pipeline)    | [GCP PostgreSQL Summary][deploysum-gcp]   |
+| Terraform | GCP   | Pipeline (BigQuery)   | [Published](terraform/gcp/pipeline)    | [GCP BigQuery Summary][deploysum-gcp]     |
 
 ## Documentation
 
-| Installation Guide                     | FAQ                      |
-|----------------------------------------|--------------------------|
-| ![i1][install-image]                   |  ![i3][faq-image]        |
-| **[Installation Guide][installguide]** |  **[FAQ][faq]**          |
+| Installation Guide                     | FAQ              |
+|----------------------------------------|------------------|
+| ![i1][install-image]                   | ![i3][faq-image] |
+| **[Installation Guide][installguide]** | **[FAQ][faq]**   |
 
 ### Updating READMEs
 
@@ -65,6 +66,7 @@ limitations under the License.
 
 [deploypgsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-postgres/
 [deploysfsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-snowflake/
+[deploydbsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-databricks/
 [deploysum-gcp]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed/
 
 [license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
