@@ -304,8 +304,9 @@ module "transformer_enriched_json" {
 }
 
 module "snowflake_loader" {
-  source  = "snowplow-devops/snowflake-loader-ec2/aws"
-  version = "0.1.1"
+  # source  = "snowplow-devops/snowflake-loader-ec2/aws"
+  # version = "0.1.1"
+  source = "../../../../../terraform-aws-snowflake-loader-ec2"
 
   count = local.snowflake_enabled ? 1 : 0
 
