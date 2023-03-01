@@ -371,27 +371,26 @@ module "databricks_loader" {
 
   count = local.databricks_enabled ? 1 : 0
 
-  name                                    = "${var.prefix}-databricks-loader-server"
-  vpc_id                                  = var.vpc_id
-  subnet_ids                              = var.public_subnet_ids
-  ssh_key_name                            = aws_key_pair.pipeline.key_name
-  sqs_queue_name                          = aws_sqs_queue.message_queue[0].name
-  ssh_ip_allowlist                        = var.ssh_ip_allowlist
-  deltalake_catalog                       = var.deltalake_catalog
-  deltalake_schema                        = var.deltalake_schema
-  deltalake_host                          = var.deltalake_host
-  deltalake_port                          = var.deltalake_port
-  deltalake_http_path                     = var.deltalake_http_path
-  deltalake_auth_token                    = var.deltalake_auth_token
-  databricks_aws_s3_bucket_name           = var.s3_bucket_name
-  databricks_aws_s3_transformed_stage_url = ""
-  iam_permissions_boundary                = var.iam_permissions_boundary
-  telemetry_enabled                       = var.telemetry_enabled
-  user_provided_id                        = var.user_provided_id
-  custom_iglu_resolvers                   = local.custom_iglu_resolvers
-  tags                                    = var.tags
-  cloudwatch_logs_enabled                 = var.cloudwatch_logs_enabled
-  cloudwatch_logs_retention_days          = var.cloudwatch_logs_retention_days
+  name                           = "${var.prefix}-databricks-loader-server"
+  vpc_id                         = var.vpc_id
+  subnet_ids                     = var.public_subnet_ids
+  ssh_key_name                   = aws_key_pair.pipeline.key_name
+  sqs_queue_name                 = aws_sqs_queue.message_queue[0].name
+  ssh_ip_allowlist               = var.ssh_ip_allowlist
+  deltalake_catalog              = var.deltalake_catalog
+  deltalake_schema               = var.deltalake_schema
+  deltalake_host                 = var.deltalake_host
+  deltalake_port                 = var.deltalake_port
+  deltalake_http_path            = var.deltalake_http_path
+  deltalake_auth_token           = var.deltalake_auth_token
+  databricks_aws_s3_bucket_name  = var.s3_bucket_name
+  iam_permissions_boundary       = var.iam_permissions_boundary
+  telemetry_enabled              = var.telemetry_enabled
+  user_provided_id               = var.user_provided_id
+  custom_iglu_resolvers          = local.custom_iglu_resolvers
+  tags                           = var.tags
+  cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
+  cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
 }
 
 # 5. Save raw, enriched and bad data to Amazon S3
