@@ -35,7 +35,7 @@ iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-IP"
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
 # --- Snowplow BigQuery Loader
-bigquery_db_enabled  = true
+pipeline_db = "bigquery"
 # To use an existing bucket set this to false
 bigquery_loader_dead_letter_bucket_deploy = true
 # Must be globally unique so will need to be updated before applying

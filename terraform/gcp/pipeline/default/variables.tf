@@ -48,6 +48,16 @@ variable "iglu_super_api_key" {
   sensitive   = true
 }
 
+variable "pipeline_db" {
+  type        = string
+  description = "Database used by pipeline"
+
+  validation {
+    condition     = can(regex("^(postgres|bigquery|snowflake)$", var.pipeline_db))
+    error_message = "Must be postgres or bigquery or snowflake."
+  }
+}
+
 variable "postgres_db_enabled" {
   description = "Whether to enable loading into a Postgres Database"
   default     = false
@@ -57,17 +67,20 @@ variable "postgres_db_enabled" {
 variable "postgres_db_name" {
   description = "The name of the database to connect to"
   type        = string
+  default     = ""
 }
 
 variable "postgres_db_username" {
   description = "The username to use to connect to the database"
   type        = string
+  default     = ""
 }
 
 variable "postgres_db_password" {
   description = "The password to use to connect to the database"
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "postgres_db_authorized_networks" {
@@ -131,4 +144,77 @@ variable "labels" {
   description = "The labels to append to the resources in this module"
   default     = {}
   type        = map(string)
+}
+
+variable "snowflake_account" {
+  description = "Snowflake account to use"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_region" {
+  description = "Region of Snowflake account"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_loader_password" {
+  description = "The password to use for the loader user"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "snowflake_loader_user" {
+  description = "The Snowflake user used by Snowflake Loader"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_database" {
+  description = "Snowflake database name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_schema" {
+  description = "Snowflake schema name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_loader_role" {
+  description = "Snowflake role for loading snowplow data"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_warehouse" {
+  description = "Snowflake warehouse name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_transformed_stage_name" {
+  description = "Name of transformed stage"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_callback_iam" {
+  description = "Snowflake callback IAM from STORAGE INTEGRATION"
+  type        = string
+  default     = ""
+}
+
+variable "transformer_window_period_min" {
+  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
+  type        = number
+  default     = 5
+}
+
+variable "transformer_bucket_name" {
+  description = "Transformer bucket name, prefixed with the prefix value"
+  type        = string
+  default     = "qs-transformed"
 }

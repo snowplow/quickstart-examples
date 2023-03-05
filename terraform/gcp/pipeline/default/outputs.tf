@@ -27,3 +27,13 @@ output "bq_loader_bad_rows_topic_name" {
   description = "The name of the topic for bad rows emitted from the BigQuery loader"
   value       = join("", module.bad_rows_topic.*.name)
 }
+
+output "transformer_topic_name" {
+  description = "The name of the topic for transformed rows emitted from the Transformer"
+  value       = join("", module.transformed_topic.*.name)
+}
+
+output "transformer_bucket_name" {
+  description = "The name of the GCS bucket for transformerd events emitted from the Transformer"
+  value       = join("", google_storage_bucket.transformer_bucket.*.name)
+}
