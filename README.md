@@ -15,7 +15,7 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 | Terraform | AWS   | Iglu Server           | [Published](terraform/aws/iglu_server) |                                           |
 | Terraform | AWS   | Pipeline (PostgreSQL) | [Published](terraform/aws/pipeline)    | [AWS PostgreSQL Summary][deploypgsum-aws] |
 | Terraform | AWS   | Pipeline (Snowflake)  | [Published](terraform/aws/snowflake)   | [AWS Snowflake Summary][deploysfsum-aws]  |
-| Terraform | AWS   | Pipeline (Databricks) | [Published](terraform/aws/databricks)  | [AWS Databricks Summary][deploydbsum-aws] |
+| Terraform | AWS   | Pipeline (Databricks) | [Published](terraform/aws/pipeline)    | [AWS Databricks Summary][deploydbsum-aws] |
 | Terraform | GCP   | Iglu Server           | [Published](terraform/gcp/iglu_server) |                                           |
 | Terraform | GCP   | Pipeline (PostgreSQL) | [Published](terraform/gcp/pipeline)    | [GCP PostgreSQL Summary][deploysum-gcp]   |
 | Terraform | GCP   | Pipeline (BigQuery)   | [Published](terraform/gcp/pipeline)    | [GCP BigQuery Summary][deploysum-gcp]     |
