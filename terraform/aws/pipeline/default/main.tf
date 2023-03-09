@@ -304,9 +304,9 @@ module "transformer_enriched_json" {
 }
 
 module "snowflake_loader" {
-  # source  = "snowplow-devops/snowflake-loader-ec2/aws"
-  # version = "0.1.1"
-  source = "../../../../../terraform-aws-snowflake-loader-ec2"
+  source  = "snowplow-devops/snowflake-loader-ec2/aws"
+  version = "0.2.0"
+  # source = "../../../../../terraform-aws-snowflake-loader-ec2"
 
   count = local.snowflake_enabled ? 1 : 0
 
@@ -322,11 +322,8 @@ module "snowflake_loader" {
   snowflake_password                     = var.snowflake_loader_password
   snowflake_database                     = var.snowflake_database
   snowflake_schema                       = var.snowflake_schema
-  snowflake_loader_role                  = var.snowflake_loader_role
   snowflake_warehouse                    = var.snowflake_warehouse
-  snowflake_transformed_stage_name       = var.snowflake_transformed_stage_name
-  snowflake_aws_s3_stage_bucket_name     = var.s3_bucket_name
-  snowflake_aws_s3_transformed_stage_url = ""
+  snowflake_aws_s3_bucket_name           = var.s3_bucket_name
   iam_permissions_boundary               = var.iam_permissions_boundary
   telemetry_enabled                      = var.telemetry_enabled
   user_provided_id                       = var.user_provided_id
@@ -365,9 +362,9 @@ module "transformer_enriched_parquet" {
 }
 
 module "databricks_loader" {
-  # source  = "snowplow-devops/databricks-loader-ec2/aws"
-  # version = "0.1.0"
-  source = "../../../../../terraform-aws-databricks-loader-ec2"
+  source  = "snowplow-devops/databricks-loader-ec2/aws"
+  version = "0.1.0"
+  # source = "../../../../../terraform-aws-databricks-loader-ec2"
 
   count = local.databricks_enabled ? 1 : 0
 

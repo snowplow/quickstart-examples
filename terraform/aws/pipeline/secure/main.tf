@@ -312,13 +312,13 @@ module "transformer_enriched" {
 
 module "snowflake_loader" {
   source  = "snowplow-devops/snowflake-loader-ec2/aws"
-  version = "0.1.1"
+  version = "0.2.0"
 
   count = local.snowflake_enabled ? 1 : 0
 
   name                                   = "${var.prefix}-snowflake-loader-server"
   vpc_id                                 = var.vpc_id
-  subnet_ids                             = var.private_subnet_ids
+  subnet_ids                             = var.public_subnet_ids
   ssh_key_name                           = aws_key_pair.pipeline.key_name
   sqs_queue_name                         = aws_sqs_queue.message_queue[0].name
   ssh_ip_allowlist                       = var.ssh_ip_allowlist
@@ -328,11 +328,8 @@ module "snowflake_loader" {
   snowflake_password                     = var.snowflake_loader_password
   snowflake_database                     = var.snowflake_database
   snowflake_schema                       = var.snowflake_schema
-  snowflake_loader_role                  = var.snowflake_loader_role
   snowflake_warehouse                    = var.snowflake_warehouse
-  snowflake_transformed_stage_name       = var.snowflake_transformed_stage_name
-  snowflake_aws_s3_stage_bucket_name     = var.s3_bucket_name
-  snowflake_aws_s3_transformed_stage_url = ""
+  snowflake_aws_s3_bucket_name           = var.s3_bucket_name
   iam_permissions_boundary               = var.iam_permissions_boundary
   telemetry_enabled                      = var.telemetry_enabled
   user_provided_id                       = var.user_provided_id
@@ -371,9 +368,8 @@ module "transformer_enriched_parquet" {
 }
 
 module "databricks_loader" {
-  # source  = "snowplow-devops/databricks-loader-ec2/aws"
-  # version = "0.1.0"
-  source = "../../../../../terraform-aws-databricks-loader-ec2"
+  source  = "snowplow-devops/databricks-loader-ec2/aws"
+  version = "0.1.0"
 
   count = local.databricks_enabled ? 1 : 0
 
