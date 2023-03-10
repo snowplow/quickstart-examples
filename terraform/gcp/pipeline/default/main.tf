@@ -75,8 +75,6 @@ module "enriched_topic" {
 }
 
 module "transformed_topic" {
-  # count = local.snowflake_enabled ? 1 : 0
-
   source  = "snowplow-devops/pubsub-topic/google"
   version = "0.1.0"
 
@@ -309,7 +307,7 @@ module "bigquery_loader" {
   labels = var.labels
 }
 
-# 6. Deploy Transformer and Snowflake loader
+# 6. Deploy Transformer and Snowflake/Databricks loader
 resource "google_storage_bucket" "transformer_bucket" {
   count = local.snowflake_enabled ? 1 : 0
 
