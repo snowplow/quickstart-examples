@@ -28,6 +28,11 @@ locals {
     && var.snowflake_transformed_stage_name != ""
   )
 
+  databricks_enabled = (
+    var.pipeline_db == "snowflake"
+    # Add Databricks required tfvars
+  )
+
   postgres_enabled = (
     var.pipeline_db == "postgres"
     && var.postgres_db_name != ""
@@ -320,7 +325,7 @@ module "transformer_pubsub_enriched" {
   # version = "0.1.0"
   source = "../../../../../terraform-google-transformer-pubsub-ce"
 
-  count = local.snowflake_enabled ? 1 : 0
+  count = (local.snowflake_enabled || local.databricks_enabled) ? 1 : 0
 
   network    = var.network
   subnetwork = var.subnetwork
@@ -356,6 +361,42 @@ module "snowflake_loader" {
   project_id = var.project_id
 
   name                                  = "${var.prefix}-snowflake"
+  ssh_key_pairs                         = var.ssh_key_pairs
+  input_topic_name                      = module.transformed_topic.name
+  ssh_ip_allowlist                      = var.ssh_ip_allowlist
+  snowflake_region                      = var.snowflake_region
+  snowflake_account                     = var.snowflake_account
+  snowflake_loader_user                 = var.snowflake_loader_user
+  snowflake_password                    = var.snowflake_loader_password
+  snowflake_database                    = var.snowflake_database
+  snowflake_schema                      = var.snowflake_schema
+  snowflake_loader_role                 = var.snowflake_loader_role
+  snowflake_warehouse                   = var.snowflake_warehouse
+  snowflake_transformed_stage_name      = var.snowflake_transformed_stage_name
+  snowflake_folder_monitoring_stage_url = ""
+  snowflake_callback_iam                = var.snowflake_callback_iam
+  telemetry_enabled                     = var.telemetry_enabled
+  user_provided_id                      = var.user_provided_id
+  custom_iglu_resolvers                 = local.custom_iglu_resolvers
+
+  transformer_output = "gs://${google_storage_bucket.transformer_bucket[0].name}"
+
+  labels = var.labels
+}
+
+module "databricks_loader" {
+  # source = "snowplow-devops/snowflake-loader-google-ce/gcp"
+  # version = "0.1.0"
+  source = "../../../../../terraform-google-databricks-loader-pubsub-ce"
+
+  count = local.databricks_enabled ? 1 : 0
+
+  network    = var.network
+  subnetwork = var.subnetwork
+  region     = var.region
+  project_id = var.project_id
+
+  name                                  = "${var.prefix}-databricks"
   ssh_key_pairs                         = var.ssh_key_pairs
   input_topic_name                      = module.transformed_topic.name
   ssh_ip_allowlist                      = var.ssh_ip_allowlist

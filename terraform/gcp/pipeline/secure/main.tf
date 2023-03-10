@@ -8,6 +8,37 @@ locals {
       vendor_prefixes = []
     }
   ]
+
+  bigquery_enabled = (
+    var.pipeline_db == "bigquery"
+    && var.bigquery_loader_dead_letter_bucket_deploy != ""
+    && var.bigquery_loader_dead_letter_bucket_name != ""
+  )
+
+  snowflake_enabled = (
+    var.pipeline_db == "snowflake"
+    && var.snowflake_account != ""
+    && var.snowflake_region != ""
+    && var.snowflake_loader_user != ""
+    && var.snowflake_loader_password != ""
+    && var.snowflake_database != ""
+    && var.snowflake_schema != ""
+    && var.snowflake_loader_role != ""
+    && var.snowflake_warehouse != ""
+    && var.snowflake_transformed_stage_name != ""
+  )
+
+  databricks_enabled = (
+    var.pipeline_db == "snowflake"
+    # Add Databricks required tfvars
+  )
+
+  postgres_enabled = (
+    var.pipeline_db == "postgres"
+    && var.postgres_db_name != ""
+    && var.postgres_db_username != ""
+    && var.postgres_db_password != ""
+  )
 }
 
 provider "google" {
@@ -39,6 +70,15 @@ module "enriched_topic" {
   version = "0.1.0"
 
   name = "${var.prefix}-enriched-topic"
+
+  labels = var.labels
+}
+
+module "transformed_topic" {
+  source  = "snowplow-devops/pubsub-topic/google"
+  version = "0.1.0"
+
+  name = "${var.prefix}-transformed-topic"
 
   labels = var.labels
 }
@@ -117,7 +157,7 @@ module "postgres_db" {
   source  = "snowplow-devops/cloud-sql/google"
   version = "0.1.1"
 
-  count = var.postgres_db_enabled ? 1 : 0
+  count = local.postgres_enabled ? 1 : 0
 
   name = "${var.prefix}-postgres-db"
 
@@ -137,7 +177,7 @@ module "postgres_loader_enriched" {
   source  = "snowplow-devops/postgres-loader-pubsub-ce/google"
   version = "0.2.1"
 
-  count = var.postgres_db_enabled ? 1 : 0
+  count = local.postgres_enabled ? 1 : 0
 
   name = "${var.prefix}-pg-loader-enriched-server"
 
@@ -172,7 +212,7 @@ module "postgres_loader_bad" {
   source  = "snowplow-devops/postgres-loader-pubsub-ce/google"
   version = "0.2.1"
 
-  count = var.postgres_db_enabled ? 1 : 0
+  count = local.postgres_enabled ? 1 : 0
 
   name = "${var.prefix}-pg-loader-bad-server"
 
@@ -208,7 +248,7 @@ module "bad_rows_topic" {
   source  = "snowplow-devops/pubsub-topic/google"
   version = "0.1.0"
 
-  count = var.bigquery_db_enabled ? 1 : 0
+  count = local.bigquery_enabled ? 1 : 0
 
   name = "${var.prefix}-bq-bad-rows-topic"
 
@@ -216,7 +256,7 @@ module "bad_rows_topic" {
 }
 
 resource "google_bigquery_dataset" "bigquery_db" {
-  count = var.bigquery_db_enabled ? 1 : 0
+  count = local.bigquery_enabled ? 1 : 0
 
   dataset_id = replace("${var.prefix}_snowplow_db", "-", "_")
   location   = var.region
@@ -225,7 +265,7 @@ resource "google_bigquery_dataset" "bigquery_db" {
 }
 
 resource "google_storage_bucket" "bq_loader_dead_letter_bucket" {
-  count = var.bigquery_db_enabled && var.bigquery_loader_dead_letter_bucket_deploy ? 1 : 0
+  count = local.bigquery_enabled && var.bigquery_loader_dead_letter_bucket_deploy ? 1 : 0
 
   name          = var.bigquery_loader_dead_letter_bucket_name
   location      = var.region
@@ -245,7 +285,7 @@ module "bigquery_loader" {
   source  = "snowplow-devops/bigquery-loader-pubsub-ce/google"
   version = "0.1.0"
 
-  count = var.bigquery_db_enabled ? 1 : 0
+  count = local.bigquery_enabled ? 1 : 0
 
   name = "${var.prefix}-bq-loader-server"
 
@@ -267,6 +307,117 @@ module "bigquery_loader" {
 
   telemetry_enabled = var.telemetry_enabled
   user_provided_id  = var.user_provided_id
+
+  labels = var.labels
+}
+
+# 6. Deploy Transformer and Snowflake/Databricks loader
+resource "google_storage_bucket" "transformer_bucket" {
+  count = local.snowflake_enabled ? 1 : 0
+
+  name          = "${var.prefix}-${var.transformer_bucket_name}"
+  location      = var.region
+  force_destroy = true
+
+  labels = var.labels
+}
+
+module "transformer_pubsub_enriched" {
+  # source  = "snowplow-devops/transformer-pubsub-ce/google"
+  # version = "0.1.0"
+  source = "../../../../../terraform-google-transformer-pubsub-ce"
+
+  count = (local.snowflake_enabled || local.databricks_enabled) ? 1 : 0
+
+  network    = var.network
+  subnetwork = var.subnetwork
+  region     = var.region
+  project_id = var.project_id
+
+  input_topic_name         = module.enriched_topic.name
+  message_queue_topic_name = module.transformed_topic.name
+
+  name                  = "${var.prefix}-transformer"
+  ssh_key_pairs         = var.ssh_key_pairs
+  ssh_ip_allowlist      = var.ssh_ip_allowlist
+  transformation_type   = "widerow"
+  widerow_file_format   = "json"
+  custom_iglu_resolvers = local.custom_iglu_resolvers
+  telemetry_enabled     = var.telemetry_enabled
+  user_provided_id      = var.user_provided_id
+  transformer_output    = "gs://${google_storage_bucket.transformer_bucket[0].name}"
+
+  labels = var.labels
+}
+
+module "snowflake_loader" {
+  # source = "snowplow-devops/snowflake-loader-google-ce/gcp"
+  # version = "0.1.0"
+  source = "../../../../../terraform-google-snowflake-loader-pubsub-ce"
+
+  count = local.snowflake_enabled ? 1 : 0
+
+  network    = var.network
+  subnetwork = var.subnetwork
+  region     = var.region
+  project_id = var.project_id
+
+  name                                  = "${var.prefix}-snowflake"
+  ssh_key_pairs                         = var.ssh_key_pairs
+  input_topic_name                      = module.transformed_topic.name
+  ssh_ip_allowlist                      = var.ssh_ip_allowlist
+  snowflake_region                      = var.snowflake_region
+  snowflake_account                     = var.snowflake_account
+  snowflake_loader_user                 = var.snowflake_loader_user
+  snowflake_password                    = var.snowflake_loader_password
+  snowflake_database                    = var.snowflake_database
+  snowflake_schema                      = var.snowflake_schema
+  snowflake_loader_role                 = var.snowflake_loader_role
+  snowflake_warehouse                   = var.snowflake_warehouse
+  snowflake_transformed_stage_name      = var.snowflake_transformed_stage_name
+  snowflake_folder_monitoring_stage_url = ""
+  snowflake_callback_iam                = var.snowflake_callback_iam
+  telemetry_enabled                     = var.telemetry_enabled
+  user_provided_id                      = var.user_provided_id
+  custom_iglu_resolvers                 = local.custom_iglu_resolvers
+
+  transformer_output = "gs://${google_storage_bucket.transformer_bucket[0].name}"
+
+  labels = var.labels
+}
+
+module "databricks_loader" {
+  # source = "snowplow-devops/snowflake-loader-google-ce/gcp"
+  # version = "0.1.0"
+  source = "../../../../../terraform-google-databricks-loader-pubsub-ce"
+
+  count = local.databricks_enabled ? 1 : 0
+
+  network    = var.network
+  subnetwork = var.subnetwork
+  region     = var.region
+  project_id = var.project_id
+
+  name                                  = "${var.prefix}-databricks"
+  ssh_key_pairs                         = var.ssh_key_pairs
+  input_topic_name                      = module.transformed_topic.name
+  ssh_ip_allowlist                      = var.ssh_ip_allowlist
+  snowflake_region                      = var.snowflake_region
+  snowflake_account                     = var.snowflake_account
+  snowflake_loader_user                 = var.snowflake_loader_user
+  snowflake_password                    = var.snowflake_loader_password
+  snowflake_database                    = var.snowflake_database
+  snowflake_schema                      = var.snowflake_schema
+  snowflake_loader_role                 = var.snowflake_loader_role
+  snowflake_warehouse                   = var.snowflake_warehouse
+  snowflake_transformed_stage_name      = var.snowflake_transformed_stage_name
+  snowflake_folder_monitoring_stage_url = ""
+  snowflake_callback_iam                = var.snowflake_callback_iam
+  telemetry_enabled                     = var.telemetry_enabled
+  user_provided_id                      = var.user_provided_id
+  custom_iglu_resolvers                 = local.custom_iglu_resolvers
+
+  transformer_output = "gs://${google_storage_bucket.transformer_bucket[0].name}"
 
   labels = var.labels
 }
