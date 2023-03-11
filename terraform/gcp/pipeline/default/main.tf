@@ -29,8 +29,13 @@ locals {
   )
 
   databricks_enabled = (
-    var.pipeline_db == "snowflake"
-    # Add Databricks required tfvars
+    var.pipeline_db == "databricks"
+    && var.deltalake_catalog != ""
+    && var.deltalake_schema != ""
+    && var.deltalake_host != ""
+    && var.deltalake_port != ""
+    && var.deltalake_http_path != ""
+    && var.deltalake_auth_token != ""
   )
 
   postgres_enabled = (
@@ -309,7 +314,7 @@ module "bigquery_loader" {
 
 # 6. Deploy Transformer and Snowflake/Databricks loader
 resource "google_storage_bucket" "transformer_bucket" {
-  count = local.snowflake_enabled ? 1 : 0
+  count = (local.snowflake_enabled || local.databricks_enabled) ? 1 : 0
 
   name          = "${var.prefix}-${var.transformer_bucket_name}"
   location      = var.region
@@ -394,24 +399,21 @@ module "databricks_loader" {
   region     = var.region
   project_id = var.project_id
 
-  name                                  = "${var.prefix}-databricks"
-  ssh_key_pairs                         = var.ssh_key_pairs
-  input_topic_name                      = module.transformed_topic.name
-  ssh_ip_allowlist                      = var.ssh_ip_allowlist
-  snowflake_region                      = var.snowflake_region
-  snowflake_account                     = var.snowflake_account
-  snowflake_loader_user                 = var.snowflake_loader_user
-  snowflake_password                    = var.snowflake_loader_password
-  snowflake_database                    = var.snowflake_database
-  snowflake_schema                      = var.snowflake_schema
-  snowflake_loader_role                 = var.snowflake_loader_role
-  snowflake_warehouse                   = var.snowflake_warehouse
-  snowflake_transformed_stage_name      = var.snowflake_transformed_stage_name
-  snowflake_folder_monitoring_stage_url = ""
-  snowflake_callback_iam                = var.snowflake_callback_iam
-  telemetry_enabled                     = var.telemetry_enabled
-  user_provided_id                      = var.user_provided_id
-  custom_iglu_resolvers                 = local.custom_iglu_resolvers
+  name                    = "${var.prefix}-databricks"
+  ssh_key_pairs           = var.ssh_key_pairs
+  input_topic_name        = module.transformed_topic.name
+  ssh_ip_allowlist        = var.ssh_ip_allowlist
+  deltalake_catalog       = var.deltalake_catalog
+  deltalake_schema        = var.deltalake_schema
+  deltalake_host          = var.deltalake_host
+  deltalake_port          = var.deltalake_port
+  deltalake_http_path     = var.deltalake_http_path
+  deltalake_auth_token    = var.deltalake_auth_token
+  databricks_callback_iam = var.databricks_callback_iam
+  databricks_folder_monitoring_stage_url = ""
+  telemetry_enabled       = var.telemetry_enabled
+  user_provided_id        = var.user_provided_id
+  custom_iglu_resolvers   = local.custom_iglu_resolvers
 
   transformer_output = "gs://${google_storage_bucket.transformer_bucket[0].name}"
 

@@ -53,8 +53,8 @@ variable "pipeline_db" {
   description = "Database used by pipeline"
 
   validation {
-    condition     = can(regex("^(postgres|bigquery|snowflake)$", var.pipeline_db))
-    error_message = "Must be postgres or bigquery or snowflake."
+    condition     = can(regex("^(postgres|bigquery|snowflake|databricks)$", var.pipeline_db))
+    error_message = "Must be postgres or bigquery or snowflake or databricks."
   }
 }
 
@@ -217,4 +217,46 @@ variable "transformer_bucket_name" {
   description = "Transformer bucket name, prefixed with the prefix value"
   type        = string
   default     = "qs-transformed"
+}
+
+variable "deltalake_catalog" {
+  description = "Databricks deltalake catalog"
+  type        = string
+  default     = "hive_metastore"
+}
+
+variable "deltalake_schema" {
+  description = "Databricks deltalake schema"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_host" {
+  description = "Databricks deltalake host"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_port" {
+  description = "Databricks deltalake port"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_http_path" {
+  description = "Databricks deltalake http path"
+  type        = string
+  default     = ""
+}
+
+variable "deltalake_auth_token" {
+  description = "Databricks deltalake auth token"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "databricks_callback_iam" {
+  description = "Databricks callback IAM to allow access to GCS bucket"
+  type        = string
 }
