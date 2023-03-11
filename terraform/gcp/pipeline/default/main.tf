@@ -342,11 +342,11 @@ module "transformer_pubsub_enriched" {
   ssh_key_pairs         = var.ssh_key_pairs
   ssh_ip_allowlist      = var.ssh_ip_allowlist
   transformation_type   = "widerow"
-  widerow_file_format   = "json"
+  widerow_file_format   = local.snowflake_enabled ? "json" : "parquet"
   custom_iglu_resolvers = local.custom_iglu_resolvers
   telemetry_enabled     = var.telemetry_enabled
   user_provided_id      = var.user_provided_id
-  transformer_output    = "gs://${google_storage_bucket.transformer_bucket[0].name}"
+  transformer_output    = google_storage_bucket.transformer_bucket[0].name
 
   labels = var.labels
 }
@@ -382,7 +382,7 @@ module "snowflake_loader" {
   user_provided_id                      = var.user_provided_id
   custom_iglu_resolvers                 = local.custom_iglu_resolvers
 
-  transformer_output = "gs://${google_storage_bucket.transformer_bucket[0].name}"
+  transformer_output = google_storage_bucket.transformer_bucket[0].name
 
   labels = var.labels
 }
@@ -399,23 +399,23 @@ module "databricks_loader" {
   region     = var.region
   project_id = var.project_id
 
-  name                    = "${var.prefix}-databricks"
-  ssh_key_pairs           = var.ssh_key_pairs
-  input_topic_name        = module.transformed_topic.name
-  ssh_ip_allowlist        = var.ssh_ip_allowlist
-  deltalake_catalog       = var.deltalake_catalog
-  deltalake_schema        = var.deltalake_schema
-  deltalake_host          = var.deltalake_host
-  deltalake_port          = var.deltalake_port
-  deltalake_http_path     = var.deltalake_http_path
-  deltalake_auth_token    = var.deltalake_auth_token
-  databricks_callback_iam = var.databricks_callback_iam
+  name                                   = "${var.prefix}-databricks"
+  ssh_key_pairs                          = var.ssh_key_pairs
+  input_topic_name                       = module.transformed_topic.name
+  ssh_ip_allowlist                       = var.ssh_ip_allowlist
+  deltalake_catalog                      = var.deltalake_catalog
+  deltalake_schema                       = var.deltalake_schema
+  deltalake_host                         = var.deltalake_host
+  deltalake_port                         = var.deltalake_port
+  deltalake_http_path                    = var.deltalake_http_path
+  deltalake_auth_token                   = var.deltalake_auth_token
+  databricks_callback_iam                = var.databricks_callback_iam
   databricks_folder_monitoring_stage_url = ""
-  telemetry_enabled       = var.telemetry_enabled
-  user_provided_id        = var.user_provided_id
-  custom_iglu_resolvers   = local.custom_iglu_resolvers
+  telemetry_enabled                      = var.telemetry_enabled
+  user_provided_id                       = var.user_provided_id
+  custom_iglu_resolvers                  = local.custom_iglu_resolvers
 
-  transformer_output = "gs://${google_storage_bucket.transformer_bucket[0].name}"
+  transformer_output = google_storage_bucket.transformer_bucket[0].name
 
   labels = var.labels
 }
