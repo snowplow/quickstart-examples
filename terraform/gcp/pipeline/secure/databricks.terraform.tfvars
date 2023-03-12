@@ -8,12 +8,11 @@ project_id = "PROJECT_ID_TO_DEPLOY_INTO"
 # Where to deploy the infrastructure
 region = "REGION_TO_DEPLOY_INTO"
 
-# --- Default Network
-# Update to the network you would like to deploy into
-#
-# Note: If you opt to use your own network then you will need to define a subnetwork to deploy into as well
-network    = "default"
-subnetwork = ""
+# --- Network
+# NOTE: The network & sub-network configured must be configured with a Cloud NAT to allow the deployed Compute Engine instances to
+#       connect to the internet to download the required assets
+network    = "YOUR_NETWORK_HERE"
+subnetwork = "YOUR_SUB_NETWORK_HERE"
 
 # --- SSH
 # Update this to your IP Address
