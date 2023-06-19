@@ -2,23 +2,23 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.45.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.45.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/alb/aws | 0.1.2 |
-| <a name="module_iglu_rds"></a> [iglu\_rds](#module\_iglu\_rds) | snowplow-devops/rds/aws | 0.1.4 |
-| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-ec2/aws | 0.2.0 |
+| <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/alb/aws | 0.2.0 |
+| <a name="module_iglu_rds"></a> [iglu\_rds](#module\_iglu\_rds) | snowplow-devops/rds/aws | 0.4.0 |
+| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-ec2/aws | 0.4.3 |
 
 ## Resources
 
