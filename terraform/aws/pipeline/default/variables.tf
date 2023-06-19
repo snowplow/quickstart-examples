@@ -220,3 +220,104 @@ variable "snowflake_transformer_window_period_min" {
   type        = number
   default     = 5
 }
+
+# --- Target: Databricks
+
+variable "databricks_enabled" {
+  description = "Whether to enable loading into a Databricks Database"
+  default     = false
+  type        = bool
+}
+
+variable "databricks_catalog" {
+  description = "Databricks deltalake catalog"
+  type        = string
+  default     = "hive_metastore"
+}
+
+variable "databricks_schema" {
+  description = "Databricks deltalake schema"
+  type        = string
+  default     = ""
+}
+
+variable "databricks_host" {
+  description = "Databricks deltalake host"
+  type        = string
+  default     = ""
+}
+
+variable "databricks_port" {
+  description = "Databricks deltalake port"
+  type        = number
+  default     = 443
+}
+
+variable "databricks_http_path" {
+  description = "Databricks deltalake http path"
+  type        = string
+  default     = ""
+}
+
+variable "databricks_auth_token" {
+  description = "Databricks deltalake auth token"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "databricks_transformer_window_period_min" {
+  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
+  type        = number
+  default     = 5
+}
+
+# --- Target: Redshift
+
+variable "redshift_enabled" {
+  description = "Whether to enable loading into a Redshift Database"
+  default     = false
+  type        = bool
+}
+
+variable "redshift_host" {
+  description = "Redshift cluster hostname"
+  type        = string
+  default     = ""
+}
+
+variable "redshift_database" {
+  description = "Redshift database name"
+  type        = string
+  default     = ""
+}
+
+variable "redshift_port" {
+  description = "Redshift port"
+  type        = number
+  default     = 5439
+}
+
+variable "redshift_schema" {
+  description = "Redshift schema name"
+  type        = string
+  default     = ""
+}
+
+variable "redshift_loader_user" {
+  description = "Name of the user that will be used for loading data"
+  type        = string
+  default     = ""
+}
+
+variable "redshift_loader_password" {
+  description = "Password for redshift_loader_user used by loader to perform loading"
+  type        = string
+  sensitive   = true
+}
+
+variable "redshift_transformer_window_period_min" {
+  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
+  type        = number
+  default     = 5
+}
