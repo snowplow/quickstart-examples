@@ -5,9 +5,9 @@ prefix = "sp"
 # --- VPC
 # Update to the VPC you would like to deploy into which must have public & private subnet layers across which to deploy
 # different layers of the application
-vpc_id             = "vpc-00000000"
+vpc_id = "vpc-00000000"
 # Load Balancer will be deployed in this layer
-public_subnet_ids  = ["subnet-00000000", "subnet-00000000"]
+public_subnet_ids = ["subnet-00000000", "subnet-00000000"]
 # EC2 Servers & RDS will be deployed in this layer
 private_subnet_ids = ["subnet-00000000", "subnet-00000000"]
 
@@ -22,7 +22,7 @@ ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQA0jSi9//bRsHW4M6czodTs6smCXsxZ0g
 iglu_db_name     = "iglu"
 iglu_db_username = "iglu"
 # Change and keep this secret!
-iglu_db_password = "Hell0W0rld!"
+iglu_db_password = "<PASSWORD>"
 
 # Used for API actions on the Iglu Server
 # Change this to a new UUID and keep it secret!
