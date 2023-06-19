@@ -56,42 +56,6 @@ variable "iglu_super_api_key" {
   sensitive   = true
 }
 
-variable "pipeline_db" {
-  type = string
-  description = "Database used by pipeline"
-
-  validation {
-    condition     = can(regex("^(postgres|snowflake)$", var.pipeline_db))
-    error_message = "Must be postgres or snowflake."
-  }
-}
-
-variable "postgres_db_name" {
-  description = "The name of the database to connect to"
-  type        = string
-  default     = ""
-
-}
-
-variable "postgres_db_username" {
-  description = "The username to use to connect to the database"
-  type        = string
-  default     = ""
-}
-
-variable "postgres_db_password" {
-  description = "The password to use to connect to the database"
-  type        = string
-  default     = ""
-  sensitive   = true
-}
-
-variable "postgres_db_ip_allowlist" {
-  description = "An optional list of CIDR ranges to allow traffic from"
-  type        = list(any)
-  default     = []
-}
-
 variable "pipeline_kcl_write_max_capacity" {
   description = "Increasing this is important to increase throughput at very high pipeline volumes"
   type        = number
@@ -146,6 +110,67 @@ variable "cloudwatch_logs_retention_days" {
   type        = number
 }
 
+# --- Target: Amazon S3
+
+variable "s3_raw_enabled" {
+  description = "Whether to enable loading of raw data into S3 from Kinesis"
+  default     = false
+  type        = bool
+}
+
+variable "s3_bad_enabled" {
+  description = "Whether to enable loading of bad data into S3 from Kinesis"
+  default     = true
+  type        = bool
+}
+
+variable "s3_enriched_enabled" {
+  description = "Whether to enable loading of enriched data into S3 from Kinesis"
+  default     = true
+  type        = bool
+}
+
+# --- Target: PostgreSQL
+
+variable "postgres_db_enabled" {
+  description = "Whether to enable loading into a Postgres Database"
+  default     = false
+  type        = bool
+}
+
+variable "postgres_db_name" {
+  description = "The name of the database to connect to"
+  type        = string
+  default     = ""
+}
+
+variable "postgres_db_username" {
+  description = "The username to use to connect to the database"
+  type        = string
+  default     = ""
+}
+
+variable "postgres_db_password" {
+  description = "The password to use to connect to the database"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "postgres_db_ip_allowlist" {
+  description = "An optional list of CIDR ranges to allow traffic from"
+  type        = list(any)
+  default     = []
+}
+
+# --- Target: SnowflakeDB
+
+variable "snowflake_enabled" {
+  description = "Whether to enable loading into a Snowflake Database"
+  default     = false
+  type        = bool
+}
+
 variable "snowflake_account" {
   description = "Snowflake account to use"
   type        = string
@@ -183,27 +208,14 @@ variable "snowflake_schema" {
   default     = ""
 }
 
-variable "snowflake_loader_role" {
-  description = "Snowflake role for loading snowplow data"
-  type        = string
-  default     = ""
-}
-
 variable "snowflake_warehouse" {
   description = "Snowflake warehouse name"
   type        = string
   default     = ""
 }
 
-variable "snowflake_transformed_stage_name" {
-  description = "Name of transformed stage"
-  type        = string
-  default     = ""
-}
-
-variable "transformer_window_period_min" {
+variable "snowflake_transformer_window_period_min" {
   description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
   type        = number
   default     = 5
 }
-
