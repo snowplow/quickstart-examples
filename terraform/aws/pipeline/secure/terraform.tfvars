@@ -62,16 +62,43 @@ postgres_db_ip_allowlist        = ["999.999.999.999/32", "888.888.888.888/32"]
 # https://github.com/snowplow-devops/terraform-aws-snowflake-loader-ec2#usage
 snowflake_enabled = false
 
-snowflake_account = "sf_account"
-snowflake_region  = "us-west-2"
-# Change and keep this secret!
-snowflake_loader_password = "Hell0W0rld!2"
-snowflake_loader_user     = "SF_LOADER_USER"
-snowflake_database        = "SF_DB_NAME"
-snowflake_schema          = "ATOMIC"
-snowflake_warehouse       = "SF_WAREHOUSE"
+snowflake_account         = "<ACCOUNT>"
+snowflake_region          = "<REGION>"
+snowflake_loader_user     = "<USER>"
+snowflake_loader_password = "<PASSWORD>"
+snowflake_database        = "<DATABASE>"
+snowflake_schema          = "<SCHEMA>"
+snowflake_warehouse       = "<WAREHOUSE>"
 # This controls how often data will be loading into Snowflake
 snowflake_transformer_window_period_min = 1
+
+# --- Target: Databricks
+# Follow the guide to get input values for the loader:
+# https://github.com/snowplow-devops/terraform-aws-databricks-loader-ec2#usage
+databricks_enabled = false
+
+databricks_catalog    = "hive_metastore"
+databricks_schema     = "<SCHEMA>"
+databricks_host       = "<HOST>"
+databricks_port       = 443
+databricks_http_path  = "<HTTP_PATH>"
+databricks_auth_token = "<AUTH_TOKEN>"
+# This controls how often data will be loading into Databricks
+databricks_transformer_window_period_min = 1
+
+# --- Target: Redshift
+# Follow the guide to get input values for the loader:
+# https://github.com/snowplow-devops/terraform-aws-redshift-loader-ec2#usage
+redshift_enabled = false
+
+redshift_host            = "<HOST>"
+redshift_database        = "<DATABASE>"
+redshift_port            = 5439
+redshift_schema          = "<SCHEMA>"
+redshift_loader_user     = "<LOADER_USER>"
+redshift_loader_password = "<PASSWORD>"
+# This controls how often data will be loading into Redshift
+redshift_transformer_window_period_min = 1
 
 # --- ADVANCED CONFIGURATION ZONE --- #
 

@@ -20,12 +20,16 @@
 | <a name="module_bad_2_stream"></a> [bad\_2\_stream](#module\_bad\_2\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_collector_kinesis"></a> [collector\_kinesis](#module\_collector\_kinesis) | snowplow-devops/collector-kinesis-ec2/aws | 0.5.1 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/alb/aws | 0.2.0 |
+| <a name="module_db_loader"></a> [db\_loader](#module\_db\_loader) | snowplow-devops/databricks-loader-ec2/aws | 0.1.1 |
+| <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.3.3 |
 | <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.5.1 |
 | <a name="module_enriched_stream"></a> [enriched\_stream](#module\_enriched\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.4.1 |
 | <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.4.1 |
 | <a name="module_postgres_loader_rds"></a> [postgres\_loader\_rds](#module\_postgres\_loader\_rds) | snowplow-devops/rds/aws | 0.3.0 |
 | <a name="module_raw_stream"></a> [raw\_stream](#module\_raw\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
+| <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.1.0 |
+| <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.3.3 |
 | <a name="module_s3_loader_bad"></a> [s3\_loader\_bad](#module\_s3\_loader\_bad) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.4.1 |
 | <a name="module_s3_loader_enriched"></a> [s3\_loader\_enriched](#module\_s3\_loader\_enriched) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.4.1 |
 | <a name="module_s3_loader_raw"></a> [s3\_loader\_raw](#module\_s3\_loader\_raw) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.4.1 |
@@ -38,6 +42,8 @@
 | Name | Type |
 |------|------|
 | [aws_key_pair.pipeline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
+| [aws_sqs_queue.db_message_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
+| [aws_sqs_queue.rs_message_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue.sf_message_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 
 ## Inputs
@@ -48,12 +54,21 @@
 | <a name="input_iglu_super_api_key"></a> [iglu\_super\_api\_key](#input\_iglu\_super\_api\_key) | A UUIDv4 string to use as the master API key for Iglu Server management | `string` | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | Will be prefixed to all resource names. Use to easily identify the resources created | `string` | n/a | yes |
 | <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | The list of public subnets to deploy the components across | `list(string)` | n/a | yes |
+| <a name="input_redshift_loader_password"></a> [redshift\_loader\_password](#input\_redshift\_loader\_password) | Password for redshift\_loader\_user used by loader to perform loading | `string` | n/a | yes |
 | <a name="input_s3_bucket_name"></a> [s3\_bucket\_name](#input\_s3\_bucket\_name) | The name of the S3 bucket events will be loaded into | `string` | n/a | yes |
 | <a name="input_ssh_ip_allowlist"></a> [ssh\_ip\_allowlist](#input\_ssh\_ip\_allowlist) | The list of CIDR ranges to allow SSH traffic from | `list(any)` | n/a | yes |
 | <a name="input_ssh_public_key"></a> [ssh\_public\_key](#input\_ssh\_public\_key) | The SSH public key to use for the deployment | `string` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC to deploy the components within | `string` | n/a | yes |
 | <a name="input_cloudwatch_logs_enabled"></a> [cloudwatch\_logs\_enabled](#input\_cloudwatch\_logs\_enabled) | Whether application logs should be reported to CloudWatch | `bool` | `true` | no |
 | <a name="input_cloudwatch_logs_retention_days"></a> [cloudwatch\_logs\_retention\_days](#input\_cloudwatch\_logs\_retention\_days) | The length of time in days to retain logs for | `number` | `7` | no |
+| <a name="input_databricks_auth_token"></a> [databricks\_auth\_token](#input\_databricks\_auth\_token) | Databricks deltalake auth token | `string` | `""` | no |
+| <a name="input_databricks_catalog"></a> [databricks\_catalog](#input\_databricks\_catalog) | Databricks deltalake catalog | `string` | `"hive_metastore"` | no |
+| <a name="input_databricks_enabled"></a> [databricks\_enabled](#input\_databricks\_enabled) | Whether to enable loading into a Databricks Database | `bool` | `false` | no |
+| <a name="input_databricks_host"></a> [databricks\_host](#input\_databricks\_host) | Databricks deltalake host | `string` | `""` | no |
+| <a name="input_databricks_http_path"></a> [databricks\_http\_path](#input\_databricks\_http\_path) | Databricks deltalake http path | `string` | `""` | no |
+| <a name="input_databricks_port"></a> [databricks\_port](#input\_databricks\_port) | Databricks deltalake port | `number` | `443` | no |
+| <a name="input_databricks_schema"></a> [databricks\_schema](#input\_databricks\_schema) | Databricks deltalake schema | `string` | `""` | no |
+| <a name="input_databricks_transformer_window_period_min"></a> [databricks\_transformer\_window\_period\_min](#input\_databricks\_transformer\_window\_period\_min) | Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes | `number` | `5` | no |
 | <a name="input_iam_permissions_boundary"></a> [iam\_permissions\_boundary](#input\_iam\_permissions\_boundary) | The permissions boundary ARN to set on IAM roles created | `string` | `""` | no |
 | <a name="input_pipeline_kcl_write_max_capacity"></a> [pipeline\_kcl\_write\_max\_capacity](#input\_pipeline\_kcl\_write\_max\_capacity) | Increasing this is important to increase throughput at very high pipeline volumes | `number` | `50` | no |
 | <a name="input_postgres_db_enabled"></a> [postgres\_db\_enabled](#input\_postgres\_db\_enabled) | Whether to enable loading into a Postgres Database | `bool` | `false` | no |
@@ -62,6 +77,13 @@
 | <a name="input_postgres_db_password"></a> [postgres\_db\_password](#input\_postgres\_db\_password) | The password to use to connect to the database | `string` | `""` | no |
 | <a name="input_postgres_db_publicly_accessible"></a> [postgres\_db\_publicly\_accessible](#input\_postgres\_db\_publicly\_accessible) | Whether to make the Postgres RDS instance accessible over the internet | `bool` | `false` | no |
 | <a name="input_postgres_db_username"></a> [postgres\_db\_username](#input\_postgres\_db\_username) | The username to use to connect to the database | `string` | `""` | no |
+| <a name="input_redshift_database"></a> [redshift\_database](#input\_redshift\_database) | Redshift database name | `string` | `""` | no |
+| <a name="input_redshift_enabled"></a> [redshift\_enabled](#input\_redshift\_enabled) | Whether to enable loading into a Redshift Database | `bool` | `false` | no |
+| <a name="input_redshift_host"></a> [redshift\_host](#input\_redshift\_host) | Redshift cluster hostname | `string` | `""` | no |
+| <a name="input_redshift_loader_user"></a> [redshift\_loader\_user](#input\_redshift\_loader\_user) | Name of the user that will be used for loading data | `string` | `""` | no |
+| <a name="input_redshift_port"></a> [redshift\_port](#input\_redshift\_port) | Redshift port | `number` | `5439` | no |
+| <a name="input_redshift_schema"></a> [redshift\_schema](#input\_redshift\_schema) | Redshift schema name | `string` | `""` | no |
+| <a name="input_redshift_transformer_window_period_min"></a> [redshift\_transformer\_window\_period\_min](#input\_redshift\_transformer\_window\_period\_min) | Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes | `number` | `5` | no |
 | <a name="input_s3_bad_enabled"></a> [s3\_bad\_enabled](#input\_s3\_bad\_enabled) | Whether to enable loading of bad data into S3 from Kinesis | `bool` | `true` | no |
 | <a name="input_s3_bucket_deploy"></a> [s3\_bucket\_deploy](#input\_s3\_bucket\_deploy) | Whether this module should create a new bucket with the specified name - if the bucket already exists set this to false | `bool` | `true` | no |
 | <a name="input_s3_bucket_object_prefix"></a> [s3\_bucket\_object\_prefix](#input\_s3\_bucket\_object\_prefix) | An optional prefix under which Snowplow data will be saved (Note: your prefix must end with a trailing '/') | `string` | `""` | no |
