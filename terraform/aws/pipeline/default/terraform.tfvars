@@ -2,37 +2,48 @@
 # Use this to easily identify the resources created and provide entropy for subsequent environments
 prefix = "sp"
 
-# --- S3
+# WARNING: You MUST change this as each bucket must be globally unique
 s3_bucket_name = "snowplow-terraform-sample-bucket-1"
 
-# To use an existing bucket set this to false
+# To use an existing bucket set this to false and update the name above
 s3_bucket_deploy = true
 
-# To save objects in a particular sub-directory you can pass in an optional prefix (e.g. 'foo/' )
+# To save objects in a particular sub-directory you can pass in an optional prefix (e.g. 'foo/')
 s3_bucket_object_prefix = ""
 
-# --- Default VPC
 # Update to the VPC you would like to deploy into
 # Find your default: https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#view-default-vpc
 vpc_id            = "vpc-00000000"
 public_subnet_ids = ["subnet-00000000", "subnet-00000001"]
 
-# --- SSH
 # Update this to your IP Address
 ssh_ip_allowlist = ["999.999.999.999/32"]
 # Generate a new SSH key locally with `ssh-keygen`
-# ssh-keygen -t rsa -b 4096 
+# ssh-keygen -t rsa -b 4096
 ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQA0jSi9//bRsHW4M6czodTs6smCXsxZ0gijzth0aBmycE= snowplow@Snowplows-MacBook-Pro.local"
 
-# --- Iglu Server Configuration
 # Iglu Server DNS output from the Iglu Server stack
-iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-URL.elb.amazonaws.com"
+iglu_server_dns_name = "http://<CHANGE-TO-MY-IGLU-DNS-NAME>"
 # Used for API actions on the Iglu Server
 # Change this to the same UUID from when you created the Iglu Server
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
-# --- Snowplow Postgres Loader
-pipeline_db = "postgres"
+# Collector SSL Configuration (optional)
+ssl_information = {
+  certificate_arn = ""
+  enabled         = false
+}
+
+# --- TARGETS CONFIGURATION ZONE --- #
+
+# --- Target: Amazon S3
+s3_raw_enabled      = false
+s3_bad_enabled      = true
+s3_enriched_enabled = true
+
+# --- Target: PostgreSQL
+postgres_db_enabled = false
+
 postgres_db_name     = "snowplow"
 postgres_db_username = "snowplow"
 # Change and keep this secret!
@@ -43,26 +54,37 @@ postgres_db_password = "Hell0W0rld!2"
 postgres_db_publicly_accessible = true
 postgres_db_ip_allowlist        = ["999.999.999.999/32", "888.888.888.888/32"]
 
+# --- Target: SnowflakeDB
+# Follow the guide to get input values for the loader:
+# https://github.com/snowplow-devops/terraform-aws-snowflake-loader-ec2#usage
+snowflake_enabled = false
+
+snowflake_account = "sf_account"
+snowflake_region  = "us-west-2"
+# Change and keep this secret!
+snowflake_loader_password = "Hell0W0rld!2"
+snowflake_loader_user     = "SF_LOADER_USER"
+snowflake_database        = "SF_DB_NAME"
+snowflake_schema          = "ATOMIC"
+snowflake_warehouse       = "SF_WAREHOUSE"
+# This controls how often data will be loading into Snowflake
+snowflake_transformer_window_period_min = 1
+
+# --- ADVANCED CONFIGURATION ZONE --- #
+
 # Controls the write throughput of the KCL tables maintained by the various consumers deployed
 pipeline_kcl_write_max_capacity = 50
+# A boundary policy ARN (e.g. "arn:aws:iam::0000000000:policy/MyAccountBoundary")
+iam_permissions_boundary = ""
 
 # See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-kinesis-ec2/aws/latest#telemetry
 # Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
 user_provided_id  = ""
 telemetry_enabled = true
 
-# --- AWS IAM (advanced setting)
-iam_permissions_boundary = "" # e.g. "arn:aws:iam::0000000000:policy/MyAccountBoundary"
-
-# --- SSL Configuration (optional)
-ssl_information = {
-  certificate_arn = ""
-  enabled         = false
-}
-
-# --- Extra Tags to append to created resources (optional)
-tags = {}
-
-# --- CloudWatch logging to ensure logs are saved outside of the server
+# CloudWatch logging to ensure logs are saved outside of the server
 cloudwatch_logs_enabled        = true
 cloudwatch_logs_retention_days = 7
+
+# Extra Tags to append to created resources (optional)
+tags = {}
