@@ -1,6 +1,6 @@
 module "s3_loader_raw" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.4.1"
+  version = "0.4.2"
 
   count = var.s3_raw_enabled ? 1 : 0
 
@@ -30,7 +30,7 @@ module "s3_loader_raw" {
 
 module "s3_loader_bad" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.4.1"
+  version = "0.4.2"
 
   count = var.s3_bad_enabled ? 1 : 0
 
@@ -40,7 +40,10 @@ module "s3_loader_bad" {
   in_stream_name   = module.bad_1_stream.name
   bad_stream_name  = module.bad_2_stream.name
   s3_bucket_name   = local.s3_pipeline_bucket_name
-  s3_object_prefix = "${var.s3_bucket_object_prefix}bad/"
+  s3_object_prefix = "${var.s3_bucket_object_prefix}bad/partitioned/"
+
+  purpose          = "SELF_DESCRIBING"
+  partition_format = "{vendor}.{schema}"
 
   ssh_key_name     = aws_key_pair.pipeline.key_name
   ssh_ip_allowlist = var.ssh_ip_allowlist
@@ -60,7 +63,7 @@ module "s3_loader_bad" {
 
 module "s3_loader_enriched" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.4.1"
+  version = "0.4.2"
 
   count = var.s3_enriched_enabled ? 1 : 0
 
@@ -71,6 +74,8 @@ module "s3_loader_enriched" {
   bad_stream_name  = module.bad_1_stream.name
   s3_bucket_name   = local.s3_pipeline_bucket_name
   s3_object_prefix = "${var.s3_bucket_object_prefix}enriched/"
+
+  purpose = "ENRICHED_EVENTS"
 
   ssh_key_name     = aws_key_pair.pipeline.key_name
   ssh_ip_allowlist = var.ssh_ip_allowlist
