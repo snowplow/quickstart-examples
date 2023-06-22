@@ -57,9 +57,9 @@ postgres_db_password = "Hell0W0rld!2"
 postgres_db_publicly_accessible = true
 postgres_db_ip_allowlist        = ["999.999.999.999/32", "888.888.888.888/32"]
 
-# --- Target: SnowflakeDB
+# --- Target: Snowflake
 # Follow the guide to get input values for the loader:
-# https://github.com/snowplow-devops/terraform-aws-snowflake-loader-ec2#usage
+# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start-aws
 snowflake_enabled = false
 
 snowflake_account         = "<ACCOUNT>"
@@ -74,7 +74,7 @@ snowflake_transformer_window_period_min = 1
 
 # --- Target: Databricks
 # Follow the guide to get input values for the loader:
-# https://github.com/snowplow-devops/terraform-aws-databricks-loader-ec2#usage
+# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start-aws
 databricks_enabled = false
 
 databricks_catalog    = "hive_metastore"
@@ -88,7 +88,7 @@ databricks_transformer_window_period_min = 1
 
 # --- Target: Redshift
 # Follow the guide to get input values for the loader:
-# https://github.com/snowplow-devops/terraform-aws-redshift-loader-ec2#usage
+# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start-aws
 redshift_enabled = false
 
 redshift_host            = "<HOST>"
