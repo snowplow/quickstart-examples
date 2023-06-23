@@ -10,14 +10,18 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 ## Supported Platforms
 
-| Tool       | Cloud | Components              | Status                                      | Deployment Summary                        |
-|------------|-------|-------------------------|---------------------------------------------|-------------------------------------------|
-| Terraform  | AWS   | Iglu Server             | [Published](terraform/aws/iglu_server)      |                                           |
-| Terraform  | AWS   | Pipeline (PostgreSQL)   | [Published](terraform/aws/pipeline)         | [AWS PostgreSQL Summary][deploypgsum-aws] |
-| Terraform  | AWS   | Pipeline (Snowflake)    | [Published](terraform/aws/snowflake)        | [AWS Snowflake Summary][deploysfsum-aws]  |
-| Terraform  | GCP   | Iglu Server             | [Published](terraform/gcp/iglu_server)      |                                           |
-| Terraform  | GCP   | Pipeline (PostgreSQL)   | [Published](terraform/gcp/pipeline)         | [GCP PostgreSQL Summary][deploysum-gcp] |
-| Terraform  | GCP   | Pipeline (BigQuery)     | [Published](terraform/gcp/pipeline)         | [GCP BigQuery Summary][deploysum-gcp]   |
+| Tool       | Cloud | Components              | Status                                      | Deployment Summary                           |
+|------------|-------|-------------------------|---------------------------------------------|----------------------------------------------|
+| Terraform  | AWS   | Iglu Server             | [Published](terraform/aws/iglu_server)      |                                              |
+| Terraform  | AWS   | Pipeline (PostgreSQL)   | [Published](terraform/aws/pipeline)         | [AWS PostgreSQL Summary][deploypgsum-aws]    |
+| Terraform  | AWS   | Pipeline (Snowflake)    | [Published](terraform/aws/pipeline)         | [AWS Snowflake Summary][deploysfsum-aws]     |
+| Terraform  | AWS   | Pipeline (Redshift)     | [Published](terraform/aws/pipeline)         | [AWS Redshift Summary][deployrssum-aws]      |
+| Terraform  | AWS   | Pipeline (Databricks)   | [Published](terraform/aws/pipeline)         | [AWS Databricks Summary][deploydbsum-aws]    |
+| Terraform  | GCP   | Iglu Server             | [Published](terraform/gcp/iglu_server)      |                                              |
+| Terraform  | GCP   | Pipeline (PostgreSQL)   | [Published](terraform/gcp/pipeline)         | [GCP PostgreSQL Summary][deploypgsum-gcp]    |
+| Terraform  | GCP   | Pipeline (BigQuery)     | [Published](terraform/gcp/pipeline)         | [GCP BigQuery Summary][deploybqsum-gcp]      |
+| Terraform  | Azure | Iglu Server             | [Published](terraform/azure/iglu_server)    |                                              |
+| Terraform  | Azure | Pipeline (Snowflake)    | [Published](terraform/azure/pipeline)       | [Azure Snowflake Summary][deploysfsum-azure] |
 
 ## Documentation
 
@@ -45,16 +49,9 @@ terraform-docs -c .terraform-docs.yml terraform/gcp/pipeline/secure
 
 ## Copyright and license
 
-The Snowplow Quick start examples are copyright 2022 Snowplow Analytics Ltd.
+Copyright (c) 2022-present Snowplow Analytics Ltd. All rights reserved.
 
-Licensed under the **[Apache License, Version 2.0][license]** (the "License");
-you may not use this software except in compliance with the License.
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Licensed under the [Snowplow Community License](https://docs.snowplow.io/community-license-1.0). _(If you are uncertain how it applies to your use case, check our answers to [frequently asked questions](https://docs.snowplow.io/docs/contributing/community-license-faq/).)_
 
 [install-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/techdocs.png
 [deploy-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/setup.png
@@ -63,12 +60,16 @@ limitations under the License.
 [installguide]: https://docs.snowplow.io/docs/open-source-quick-start/
 [faq]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-faqs/
 
-[deploypgsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-postgres/
-[deploysfsum-aws]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-aws/summary-of-what-you-have-deployed/aws-and-snowflake/
-[deploysum-gcp]: https://docs.snowplow.io/docs/open-source-quick-start/quick-start-installation-guide-on-gcp/summary-of-what-you-have-deployed/
+[deploypgsum-aws]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=postgres&cloud=aws
+[deploysfsum-aws]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=snowflake&cloud=aws
+[deployrssum-aws]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=redshift&cloud=aws
+[deploydbsum-aws]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=databricks&cloud=aws
+[deploypgsum-gcp]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=postgres&cloud=gcp
+[deploybqsum-gcp]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=bigquery&cloud=gcp
+[deploysfsum-azure]: https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/what-is-deployed/?warehouse=snowflake&cloud=azure
 
-[license-image]: https://img.shields.io/badge/license-Apache--2-blue.svg?style=flat
-[license]: https://www.apache.org/licenses/LICENSE-2.0
+[license]: https://docs.snowplow.io/docs/contributing/community-license-faq/
+[license-image]: https://img.shields.io/badge/license-Snowplow--Community-blue.svg?style=flat
 
 [discourse-image]: https://img.shields.io/discourse/posts?server=https%3A%2F%2Fdiscourse.snowplow.io%2F
 [discourse]: http://discourse.snowplow.io/
