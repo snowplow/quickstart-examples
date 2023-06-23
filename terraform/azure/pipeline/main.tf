@@ -1,4 +1,4 @@
-# 1. Deploy EventHubs topics
+# 1. Deploy EventHubs topics and storage container
 module "eh_namespace" {
   source  = "snowplow-devops/event-hub-namespace/azurerm"
   version = "0.1.0"
@@ -34,6 +34,30 @@ module "enriched_eh_topic" {
   name                = "${var.prefix}-enriched-topic"
   namespace_name      = module.eh_namespace.name
   resource_group_name = var.resource_group_name
+}
+
+module "queue_eh_topic" {
+  source  = "snowplow-devops/event-hub/azurerm"
+  version = "0.1.0"
+
+  name                = "${var.prefix}-queue-topic"
+  namespace_name      = module.eh_namespace.name
+  resource_group_name = var.resource_group_name
+}
+
+module "storage_account" {
+  source = "snowplow-devops/storage-account/azurerm"
+  version = "0.1.0"
+
+  name                = "${var.prefix}storage"
+  resource_group_name = var.resource_group_name
+}
+
+module "storage_container" {
+  source = "snowplow-devops/storage-container/azurerm"
+
+  name                 = "${var.prefix}-transformed"
+  storage_account_name = module.storage_account.name
 }
 
 # 2. Deploy Collector stack
@@ -97,6 +121,34 @@ module "enrich_eh" {
   bad_topic_name                            = module.bad_1_eh_topic.name
   eh_namespace_broker                       = module.eh_namespace.broker
   eh_namespace_read_write_connection_string = module.eh_namespace.read_write_primary_connection_string
+
+  telemetry_enabled = var.telemetry_enabled
+  user_provided_id  = var.user_provided_id
+
+  tags = var.tags
+}
+
+# 4. Deploy Transformer stack
+
+module "transformer_eh" {
+  # source = "snowplow-devops/transformer-event-hub-vmss/azurerm"
+  # version = "0.1.0"
+  source = "/Users/cog/GitHub/terraform-azurerm-transformer-event-hub-vmss"
+
+  name                = "${var.prefix}-transformer-server"
+  resource_group_name = var.resource_group_name
+  subnet_id           = var.subnet_id_servers
+
+  ssh_public_key   = var.ssh_public_key
+  ssh_ip_allowlist = var.ssh_ip_allowlist
+
+  event_hub_broker_string              = module.eh_namespace.broker
+  enriched_event_hub_name              = module.enriched_eh_topic.name
+  enriched_event_hub_connection_string = module.eh_namespace.read_write_primary_connection_string
+  queue_event_hub_name                 = module.queue_eh_topic.name
+  queue_event_hub_connection_string    = module.queue_eh_topic.read_write_primary_connection_string
+  storage_account_name                 = module.storage_account.name
+  storage_container_name               = module.storage_container.name
 
   telemetry_enabled = var.telemetry_enabled
   user_provided_id  = var.user_provided_id
