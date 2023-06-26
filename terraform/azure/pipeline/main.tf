@@ -98,8 +98,10 @@ module "collector_eh" {
 
 # 3. Deploy Enrich stack
 module "enrich_eh" {
-  source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
-  version = "0.1.0"
+  # source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
+  # version = "0.1.1"
+
+  source = "/Users/jbeemster/Documents/Github/terraform-azurerm-enrich-event-hub-vmss"
 
   name                = "${var.prefix}-enrich"
   resource_group_name = var.resource_group_name
@@ -111,6 +113,7 @@ module "enrich_eh" {
   raw_topic_name                            = module.raw_eh_topic.name
   good_topic_name                           = module.enriched_eh_topic.name
   bad_topic_name                            = module.bad_1_eh_topic.name
+  eh_namespace_name                         = module.eh_namespace.name
   eh_namespace_broker                       = module.eh_namespace.broker
   eh_namespace_read_write_connection_string = module.eh_namespace.read_write_primary_connection_string
 
