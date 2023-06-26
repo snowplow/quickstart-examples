@@ -110,12 +110,14 @@ module "enrich_eh" {
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist
 
-  raw_topic_name                            = module.raw_eh_topic.name
-  good_topic_name                           = module.enriched_eh_topic.name
-  bad_topic_name                            = module.bad_1_eh_topic.name
-  eh_namespace_name                         = module.eh_namespace.name
-  eh_namespace_broker                       = module.eh_namespace.broker
-  eh_namespace_read_write_connection_string = module.eh_namespace.read_write_primary_connection_string
+  raw_topic_name               = module.raw_eh_topic.name
+  raw_topic_connection_string  = module.raw_eh_topic.read_only_primary_connection_string
+  good_topic_name              = module.enriched_eh_topic.name
+  good_topic_connection_string = module.enriched_eh_topic.read_write_primary_connection_string
+  bad_topic_name               = module.bad_1_eh_topic.name
+  bad_topic_connection_string  = module.bad_1_eh_topic.read_write_primary_connection_string
+  eh_namespace_name            = module.eh_namespace.name
+  eh_namespace_broker          = module.eh_namespace.broker
 
   telemetry_enabled = var.telemetry_enabled
   user_provided_id  = var.user_provided_id
