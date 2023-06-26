@@ -33,6 +33,7 @@ module "db_transformer_wrp" {
 
   enriched_topic_name                       = module.enriched_eh_topic.name
   queue_topic_name                          = module.db_message_queue_eh_topic[0].name
+  eh_namespace_name                         = module.eh_namespace.name
   eh_namespace_broker                       = module.eh_namespace.broker
   eh_namespace_read_write_connection_string = module.eh_namespace.read_write_primary_connection_string
 
