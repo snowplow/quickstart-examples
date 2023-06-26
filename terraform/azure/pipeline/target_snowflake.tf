@@ -31,11 +31,12 @@ module "sf_transformer_wrj" {
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
 
-  enriched_topic_name                       = module.enriched_eh_topic.name
-  queue_topic_name                          = module.sf_message_queue_eh_topic[0].name
-  eh_namespace_name                         = module.eh_namespace.name
-  eh_namespace_broker                       = module.eh_namespace.broker
-  eh_namespace_read_write_connection_string = module.eh_namespace.read_write_primary_connection_string
+  enriched_topic_name              = module.enriched_eh_topic.name
+  enriched_topic_connection_string = module.enriched_eh_topic.read_only_primary_connection_string
+  queue_topic_name                 = module.sf_message_queue_eh_topic[0].name
+  queue_topic_connection_string    = module.sf_message_queue_eh_topic[0].read_write_primary_connection_string
+  eh_namespace_name                = module.eh_namespace.name
+  eh_namespace_broker              = module.eh_namespace.broker
 
   storage_account_name   = local.storage_account_name
   storage_container_name = module.sf_transformer_storage_container[0].name
