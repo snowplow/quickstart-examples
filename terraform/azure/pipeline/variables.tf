@@ -3,6 +3,17 @@ variable "prefix" {
   type        = string
 }
 
+variable "storage_account_name" {
+  description = "The name of the Storage Account the data will be loaded into"
+  type        = string
+}
+
+variable "storage_account_deploy" {
+  description = "Whether this module should create a new storage account with the specified name - if the account already exists set this to false"
+  type        = bool
+  default     = true
+}
+
 variable "resource_group_name" {
   description = "The name of the resource group to deploy resources within"
   type        = string
@@ -59,4 +70,32 @@ variable "tags" {
   description = "The tags to append to the resources in this module"
   default     = {}
   type        = map(string)
+}
+
+# --- Target: SnowflakeDB
+
+variable "snowflake_enabled" {
+  description = "Whether to enable loading into a Snowflake Database"
+  default     = false
+  type        = bool
+}
+
+variable "snowflake_transformer_window_period_min" {
+  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
+  type        = number
+  default     = 5
+}
+
+# --- Target: Databricks
+
+variable "databricks_enabled" {
+  description = "Whether to enable loading into a Databricks Database"
+  default     = false
+  type        = bool
+}
+
+variable "databricks_transformer_window_period_min" {
+  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
+  type        = number
+  default     = 5
 }
