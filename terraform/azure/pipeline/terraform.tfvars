@@ -2,6 +2,12 @@
 # Use this to easily identify the resources created and provide entropy for subsequent environments
 prefix = "pipeline"
 
+# WARNING: You MUST change this as each account must be globally unique
+storage_account_name = "snowplowstorage1"
+
+# To use an existing account set this to false and update the name above
+storage_account_deploy = true
+
 # The name of the resource group to deploy the pipeline into
 resource_group_name = "<ADD_ME>"
 

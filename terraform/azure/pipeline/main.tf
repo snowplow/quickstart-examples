@@ -1,3 +1,19 @@
+module "storage_account" {
+  source  = "snowplow-devops/storage-account/azurerm"
+  version = "0.1.0"
+
+  count = var.storage_account_deploy ? 1 : 0
+
+  name                = var.storage_account_name
+  resource_group_name = var.resource_group_name
+
+  tags = var.tags
+}
+
+locals {
+  storage_account_name = var.storage_account_deploy ? join("", module.storage_account.*.name) : var.storage_account_name
+}
+
 # 1. Deploy EventHubs topics
 module "eh_namespace" {
   source  = "snowplow-devops/event-hub-namespace/azurerm"
@@ -13,7 +29,7 @@ module "raw_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
   version = "0.1.0"
 
-  name                = "${var.prefix}-raw-topic"
+  name                = "raw-topic"
   namespace_name      = module.eh_namespace.name
   resource_group_name = var.resource_group_name
 }
@@ -22,7 +38,7 @@ module "bad_1_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
   version = "0.1.0"
 
-  name                = "${var.prefix}-bad-1-topic"
+  name                = "bad-1-topic"
   namespace_name      = module.eh_namespace.name
   resource_group_name = var.resource_group_name
 }
@@ -31,7 +47,7 @@ module "enriched_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
   version = "0.1.0"
 
-  name                = "${var.prefix}-enriched-topic"
+  name                = "enriched-topic"
   namespace_name      = module.eh_namespace.name
   resource_group_name = var.resource_group_name
 }
@@ -58,7 +74,7 @@ module "collector_eh" {
   source  = "snowplow-devops/collector-event-hub-vmss/azurerm"
   version = "0.1.0"
 
-  name                = "${var.prefix}-collector-server"
+  name                = "${var.prefix}-collector"
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
 
@@ -85,7 +101,7 @@ module "enrich_eh" {
   source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
   version = "0.1.0"
 
-  name                = "${var.prefix}-enrich-server"
+  name                = "${var.prefix}-enrich"
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
 
