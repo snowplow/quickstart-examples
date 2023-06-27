@@ -98,10 +98,8 @@ module "collector_eh" {
 
 # 3. Deploy Enrich stack
 module "enrich_eh" {
-  # source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
-  # version = "0.1.1"
-
-  source = "/Users/jbeemster/Documents/Github/terraform-azurerm-enrich-event-hub-vmss"
+  source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
+  version = "0.1.1"
 
   name                = "${var.prefix}-enrich"
   resource_group_name = var.resource_group_name
