@@ -18,7 +18,7 @@ module "sf_transformer_storage_container" {
   name                 = "snowflake-transformer-container"
   storage_account_name = local.storage_account_name
 }
-
+/**
 module "sf_transformer_wrj" {
   # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
   # version = "0.1.0"
@@ -54,3 +54,4 @@ module "sf_transformer_wrj" {
 
   depends_on = [module.sf_transformer_storage_container]
 }
+*/
