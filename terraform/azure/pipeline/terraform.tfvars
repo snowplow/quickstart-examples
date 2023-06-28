@@ -34,6 +34,31 @@ ssl_information = {
   enabled  = false
 }
 
+# --- Target: SnowflakeDB
+# Follow the guide to get input values for the loader:
+# https://github.com/snowplow-devops/terraform-azurerm-snowflake-loader-vmss#usage
+snowflake_enabled = false
+
+snowflake_account         = "<ACCOUNT>"
+snowflake_region          = "<REGION>"
+snowflake_loader_user     = "<USER>"
+snowflake_loader_password = "<PASSWORD>"
+snowflake_database        = "<DATABASE>"
+snowflake_schema          = "<SCHEMA>"
+snowflake_warehouse       = "<WAREHOUSE>"
+# This controls how often data will be loading into Snowflake
+snowflake_transformer_window_period_min = 1
+
+# --- Target: Databricks
+# Follow the guide to get input values for the loader:
+# https://github.com/snowplow-devops/terraform-azurerm-databricks-loader-vmss#usage
+databricks_enabled = false
+
+# This controls how often data will be loading into Databricks
+databricks_transformer_window_period_min = 1
+
+# --- ADVANCED CONFIGURATION ZONE --- #
+
 # Extra Tags to append to created resources (optional)
 tags = {}
 

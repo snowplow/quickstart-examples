@@ -80,6 +80,50 @@ variable "snowflake_enabled" {
   type        = bool
 }
 
+
+variable "snowflake_account" {
+  description = "Snowflake account to use"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_region" {
+  description = "Region of Snowflake account"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_loader_password" {
+  description = "The password to use for the loader user"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "snowflake_loader_user" {
+  description = "The Snowflake user used by Snowflake Loader"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_database" {
+  description = "Snowflake database name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_schema" {
+  description = "Snowflake schema name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_warehouse" {
+  description = "Snowflake warehouse name"
+  type        = string
+  default     = ""
+}
+
 variable "snowflake_transformer_window_period_min" {
   description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
   type        = number
