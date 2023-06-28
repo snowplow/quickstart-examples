@@ -18,7 +18,7 @@ module "sf_transformer_storage_container" {
   name                 = "snowflake-transformer-container"
   storage_account_name = local.storage_account_name
 }
-/**
+
 module "sf_transformer_wrj" {
   # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
   # version = "0.1.0"
@@ -54,4 +54,40 @@ module "sf_transformer_wrj" {
 
   depends_on = [module.sf_transformer_storage_container]
 }
-*/
+
+module "sf_loader" {
+  # source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
+  # version = "0.1.0"
+
+  source = "/Users/jbeemster/Documents/Github/terraform-azurerm-snowflake-loader-vmss"
+
+  count = var.snowflake_enabled ? 1 : 0
+
+  name                = "${var.prefix}-snowflake-loader"
+  resource_group_name = var.resource_group_name
+  subnet_id           = var.subnet_id_servers
+
+  queue_topic_name              = module.sf_message_queue_eh_topic[0].name
+  queue_topic_connection_string = module.sf_message_queue_eh_topic[0].read_only_primary_connection_string
+  eh_namespace_name             = module.eh_namespace.name
+  eh_namespace_broker           = module.eh_namespace.broker
+
+  storage_account_name                          = local.storage_account_name
+  storage_container_name_for_transformer_output = module.sf_transformer_storage_container[0].name
+
+  snowflake_loader_user = var.snowflake_loader_user
+  snowflake_password    = var.snowflake_loader_password
+  snowflake_warehouse   = var.snowflake_warehouse
+  snowflake_database    = var.snowflake_database
+  snowflake_schema      = var.snowflake_schema
+  snowflake_region      = var.snowflake_region
+  snowflake_account     = var.snowflake_account
+
+  ssh_public_key   = var.ssh_public_key
+  ssh_ip_allowlist = var.ssh_ip_allowlist
+
+  telemetry_enabled = var.telemetry_enabled
+  user_provided_id  = var.user_provided_id
+
+  tags = var.tags
+}
