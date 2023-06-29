@@ -90,4 +90,6 @@ module "sf_loader" {
   user_provided_id  = var.user_provided_id
 
   tags = var.tags
+
+  depends_on = [module.sf_transformer_storage_container]
 }
