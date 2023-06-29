@@ -18,7 +18,7 @@ module "db_transformer_storage_container" {
   name                 = "databricks-transformer-container"
   storage_account_name = local.storage_account_name
 }
-/**
+
 module "db_transformer_wrp" {
   # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
   # version = "0.1.0"
@@ -54,4 +54,3 @@ module "db_transformer_wrp" {
 
   depends_on = [module.db_transformer_storage_container]
 }
-*/
