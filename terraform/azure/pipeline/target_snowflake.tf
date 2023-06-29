@@ -23,7 +23,7 @@ module "sf_transformer_wrj" {
   # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
   # version = "0.1.0"
 
-  source = "/Users/jbeemster/Documents/Github/terraform-azurerm-transformer-event-hub-vmss"
+  source = "git::https://github.com/snowplow-devops/terraform-azurerm-transformer-event-hub-vmss.git?ref=josh-tweaks"
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -59,7 +59,7 @@ module "sf_loader" {
   # source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
   # version = "0.1.0"
 
-  source = "/Users/jbeemster/Documents/Github/terraform-azurerm-snowflake-loader-vmss"
+  source = "git::https://github.com/snowplow-devops/terraform-azurerm-snowflake-loader-vmss.git?ref=release/0.1.0"
 
   count = var.snowflake_enabled ? 1 : 0
 
