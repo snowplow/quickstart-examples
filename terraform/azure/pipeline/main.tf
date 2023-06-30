@@ -1,6 +1,8 @@
 module "storage_account" {
-  source  = "snowplow-devops/storage-account/azurerm"
-  version = "0.1.0"
+  # source  = "snowplow-devops/storage-account/azurerm"
+  # version = "0.1.1"
+
+  source = "git::https://github.com/snowplow-devops/terraform-azurerm-storage-account.git?ref=release/0.1.1"
 
   count = var.storage_account_deploy ? 1 : 0
 
