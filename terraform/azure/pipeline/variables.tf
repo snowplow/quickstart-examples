@@ -130,6 +130,12 @@ variable "snowflake_transformer_window_period_min" {
   default     = 5
 }
 
+variable "snowflake_folder_monitoring_enabled" {
+  description = "Whether to enable Snowflake Loader folder monitoring"
+  default     = false
+  type        = bool
+}
+
 # --- Target: Databricks
 
 variable "databricks_enabled" {

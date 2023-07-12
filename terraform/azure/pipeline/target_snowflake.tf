@@ -82,7 +82,8 @@ module "sf_loader" {
   snowflake_schema      = var.snowflake_schema
   snowflake_region      = var.snowflake_region
   snowflake_account     = var.snowflake_account
-
+  folder_monitoring_enabled = var.snowflake_folder_monitoring_enabled 
+          
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist
 
