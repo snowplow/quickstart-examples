@@ -136,6 +136,12 @@ variable "snowflake_folder_monitoring_enabled" {
   type        = bool
 }
 
+variable "snowflake_folder_monitoring_period" {
+  description = "Snowflake folder monitoring period" 
+  default     = "8 hours" 
+  type        = string 
+}
+
 # --- Target: Databricks
 
 variable "databricks_enabled" {

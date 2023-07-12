@@ -19,6 +19,16 @@ module "sf_transformer_storage_container" {
   storage_account_name = local.storage_account_name
 }
 
+module "sf_transformer_staging_container" {
+  source  = "snowplow-devops/storage-container/azurerm"
+  version = "0.1.0"
+
+  count = var.snowflake_enabled ? 1 : 0
+
+  name                 = "snowflake-staging-container"
+  storage_account_name = local.storage_account_name
+}
+
 module "sf_transformer_wrj" {
   # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
   # version = "0.1.0"
@@ -74,6 +84,7 @@ module "sf_loader" {
 
   storage_account_name                          = local.storage_account_name
   storage_container_name_for_transformer_output = module.sf_transformer_storage_container[0].name
+  storage_container_name_for_folder_monitoring_staging = module.sf_transformer_staging_container[0].name 
 
   snowflake_loader_user = var.snowflake_loader_user
   snowflake_password    = var.snowflake_loader_password
@@ -83,6 +94,7 @@ module "sf_loader" {
   snowflake_region      = var.snowflake_region
   snowflake_account     = var.snowflake_account
   folder_monitoring_enabled = var.snowflake_folder_monitoring_enabled 
+  folder_monitoring_period = var.snowflake_folder_monitoring_period 
           
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist
