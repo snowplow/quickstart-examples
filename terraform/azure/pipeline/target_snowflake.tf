@@ -97,6 +97,8 @@ module "sf_loader" {
   snowflake_account     = var.snowflake_account
   folder_monitoring_enabled = var.snowflake_folder_monitoring_enabled 
   folder_monitoring_period = var.snowflake_folder_monitoring_period 
+  folder_monitoring_since = var.snowflake_folder_monitoring_since 
+  folder_monitoring_until = var.snowflake_folder_monitoring_until 
           
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist
