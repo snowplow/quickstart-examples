@@ -33,7 +33,7 @@ module "sf_transformer_wrj" {
   # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
   # version = "0.1.0"
 
-  source = "git::https://github.com/snowplow-devops/terraform-azurerm-transformer-event-hub-vmss.git?ref=release/0.1.0"
+  source = "git::https://github.com/snowplow-devops/terraform-azurerm-transformer-event-hub-vmss.git?ref=final-tweaks"
 
   count = var.snowflake_enabled ? 1 : 0
 
