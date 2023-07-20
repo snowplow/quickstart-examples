@@ -54,6 +54,7 @@ module "sf_transformer_wrj" {
   window_period_min      = var.snowflake_transformer_window_period_min
 
   widerow_file_format = "json"
+  transformer_compression = var.transformer_compression 
 
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist

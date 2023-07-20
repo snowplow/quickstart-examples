@@ -130,6 +130,12 @@ variable "snowflake_transformer_window_period_min" {
   default     = 5
 }
 
+variable "transformer_compression" {
+  description = "Transformer compression" 
+  default = "GZIP"
+  type        = string 
+}
+
 variable "snowflake_folder_monitoring_enabled" {
   description = "Whether to enable Snowflake Loader folder monitoring"
   default     = false
