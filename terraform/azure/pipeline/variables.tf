@@ -154,6 +154,16 @@ variable "snowflake_folder_monitoring_until" {
   type        = string 
 }
 
+variable "azure_vault_name" {
+  description = "Vault name" 
+  type        = string 
+}
+
+variable "snowflake_password_parameter_name" {
+  description = "Vault parameter name" 
+  type        = string 
+}
+
 # --- Target: Databricks
 
 variable "databricks_enabled" {

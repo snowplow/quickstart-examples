@@ -70,7 +70,7 @@ module "sf_loader" {
   # source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
   # version = "0.1.0"
 
-  source = "git::https://github.com/snowplow-devops/terraform-azurerm-snowflake-loader-vmss.git?ref=final-tweaks-frozen"
+  source = "git::https://github.com/snowplow-devops/terraform-azurerm-snowflake-loader-vmss.git?ref=piotrp-tweaks"
 
   count = var.snowflake_enabled ? 1 : 0
   app_version = "5.7.0-rc4"
@@ -98,7 +98,9 @@ module "sf_loader" {
   folder_monitoring_enabled = var.snowflake_folder_monitoring_enabled 
   folder_monitoring_period = var.snowflake_folder_monitoring_period 
   folder_monitoring_since = var.snowflake_folder_monitoring_since 
-  folder_monitoring_until = var.snowflake_folder_monitoring_until 
+  folder_monitoring_until = var.snowflake_folder_monitoring_until
+  azure_vault_name = var.azure_vault_name
+  sf_password_parameter_name = var.snowflake_password_parameter_name
           
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist
