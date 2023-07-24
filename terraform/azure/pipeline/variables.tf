@@ -129,17 +129,3 @@ variable "snowflake_transformer_window_period_min" {
   type        = number
   default     = 5
 }
-
-# --- Target: Databricks
-
-variable "databricks_enabled" {
-  description = "Whether to enable loading into a Databricks Database"
-  default     = false
-  type        = bool
-}
-
-variable "databricks_transformer_window_period_min" {
-  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
-  type        = number
-  default     = 5
-}

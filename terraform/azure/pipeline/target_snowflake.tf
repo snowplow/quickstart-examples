@@ -1,6 +1,6 @@
 module "sf_message_queue_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -11,7 +11,7 @@ module "sf_message_queue_eh_topic" {
 
 module "sf_transformer_storage_container" {
   source  = "snowplow-devops/storage-container/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   count = var.snowflake_enabled ? 1 : 0
 

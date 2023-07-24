@@ -1,6 +1,6 @@
 module "storage_account" {
   source  = "snowplow-devops/storage-account/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = var.storage_account_deploy ? 1 : 0
 
@@ -17,7 +17,7 @@ locals {
 # 1. Deploy EventHubs topics
 module "eh_namespace" {
   source  = "snowplow-devops/event-hub-namespace/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "${var.prefix}-namespace"
   resource_group_name = var.resource_group_name
@@ -27,7 +27,7 @@ module "eh_namespace" {
 
 module "raw_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "raw-topic"
   namespace_name      = module.eh_namespace.name
@@ -36,7 +36,7 @@ module "raw_eh_topic" {
 
 module "bad_1_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "bad-1-topic"
   namespace_name      = module.eh_namespace.name
@@ -45,7 +45,7 @@ module "bad_1_eh_topic" {
 
 module "enriched_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "enriched-topic"
   namespace_name      = module.eh_namespace.name
@@ -55,7 +55,7 @@ module "enriched_eh_topic" {
 # 2. Deploy Collector stack
 module "collector_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "${var.prefix}-collector-lb"
   resource_group_name = var.resource_group_name
