@@ -15,7 +15,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vnet"></a> [vnet](#module\_vnet) | snowplow-devops/vnet/azurerm | 0.1.1 |
+| <a name="module_vnet"></a> [vnet](#module\_vnet) | snowplow-devops/vnet/azurerm | 0.1.2 |
 
 ## Resources
 
