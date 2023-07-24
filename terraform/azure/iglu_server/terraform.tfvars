@@ -21,7 +21,7 @@ ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQA0jSi9//bRsHW4M6czodTs6smCXsxZ0g
 iglu_db_name     = "iglu"
 iglu_db_username = "iglu"
 # Change and keep this secret!
-iglu_db_password = "Hell0W0rld!"
+iglu_db_password = "<PASSWORD>"
 
 # Used for API actions on the Iglu Server
 # Change this to a new UUID and keep it secret!

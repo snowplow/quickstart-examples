@@ -1,6 +1,6 @@
 module "iglu_db" {
   source  = "snowplow-devops/postgresql-server/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "${var.prefix}-iglu-db"
   resource_group_name = var.resource_group_name
@@ -18,7 +18,7 @@ module "iglu_db" {
 
 module "iglu_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "${var.prefix}-iglu-lb"
   resource_group_name = var.resource_group_name
