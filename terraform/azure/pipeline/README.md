@@ -14,16 +14,16 @@ No providers.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bad_1_eh_topic"></a> [bad\_1\_eh\_topic](#module\_bad\_1\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
-| <a name="module_collector_eh"></a> [collector\_eh](#module\_collector\_eh) | snowplow-devops/collector-event-hub-vmss/azurerm | 0.1.0 |
+| <a name="module_collector_eh"></a> [collector\_eh](#module\_collector\_eh) | snowplow-devops/collector-event-hub-vmss/azurerm | 0.1.1 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/azurerm | 0.1.1 |
 | <a name="module_eh_namespace"></a> [eh\_namespace](#module\_eh\_namespace) | snowplow-devops/event-hub-namespace/azurerm | 0.1.1 |
-| <a name="module_enrich_eh"></a> [enrich\_eh](#module\_enrich\_eh) | snowplow-devops/enrich-event-hub-vmss/azurerm | 0.1.1 |
+| <a name="module_enrich_eh"></a> [enrich\_eh](#module\_enrich\_eh) | snowplow-devops/enrich-event-hub-vmss/azurerm | 0.1.2 |
 | <a name="module_enriched_eh_topic"></a> [enriched\_eh\_topic](#module\_enriched\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
 | <a name="module_raw_eh_topic"></a> [raw\_eh\_topic](#module\_raw\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
-| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | git::https://github.com/snowplow-devops/terraform-azurerm-snowflake-loader-vmss.git | release/0.1.0 |
+| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-vmss/azurerm | 0.1.0 |
 | <a name="module_sf_message_queue_eh_topic"></a> [sf\_message\_queue\_eh\_topic](#module\_sf\_message\_queue\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
 | <a name="module_sf_transformer_storage_container"></a> [sf\_transformer\_storage\_container](#module\_sf\_transformer\_storage\_container) | snowplow-devops/storage-container/azurerm | 0.1.1 |
-| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | git::https://github.com/snowplow-devops/terraform-azurerm-transformer-event-hub-vmss.git | release/0.1.0 |
+| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-event-hub-vmss/azurerm | 0.1.0 |
 | <a name="module_storage_account"></a> [storage\_account](#module\_storage\_account) | snowplow-devops/storage-account/azurerm | 0.1.2 |
 
 ## Resources

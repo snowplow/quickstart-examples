@@ -20,10 +20,8 @@ module "sf_transformer_storage_container" {
 }
 
 module "sf_transformer_wrj" {
-  # source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
-  # version = "0.1.0"
-
-  source = "git::https://github.com/snowplow-devops/terraform-azurerm-transformer-event-hub-vmss.git?ref=release/0.1.0"
+  source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
+  version = "0.1.0"
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -56,10 +54,8 @@ module "sf_transformer_wrj" {
 }
 
 module "sf_loader" {
-  # source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
-  # version = "0.1.0"
-
-  source = "git::https://github.com/snowplow-devops/terraform-azurerm-snowflake-loader-vmss.git?ref=release/0.1.0"
+  source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
+  version = "0.1.0"
 
   count = var.snowflake_enabled ? 1 : 0
 
