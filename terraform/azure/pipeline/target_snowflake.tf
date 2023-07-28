@@ -48,6 +48,8 @@ module "sf_transformer_wrj" {
   telemetry_enabled = var.telemetry_enabled
   user_provided_id  = var.user_provided_id
 
+  custom_iglu_resolvers = local.custom_iglu_resolvers
+
   tags = var.tags
 
   depends_on = [module.sf_transformer_storage_container]
@@ -84,6 +86,8 @@ module "sf_loader" {
 
   telemetry_enabled = var.telemetry_enabled
   user_provided_id  = var.user_provided_id
+
+  custom_iglu_resolvers = local.custom_iglu_resolvers
 
   tags = var.tags
 

@@ -39,6 +39,17 @@ variable "ssh_ip_allowlist" {
   type        = list(any)
 }
 
+variable "iglu_server_dns_name" {
+  description = "The DNS name of your Iglu Server"
+  type        = string
+}
+
+variable "iglu_super_api_key" {
+  description = "A UUIDv4 string to use as the master API key for Iglu Server management"
+  type        = string
+  sensitive   = true
+}
+
 variable "ssl_information" {
   description = "SSL certificate information to optionally bind to the load balancer"
   type = object({

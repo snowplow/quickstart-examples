@@ -1,3 +1,15 @@
+locals {
+  custom_iglu_resolvers = [
+    {
+      name            = "Iglu Server"
+      priority        = 0
+      uri             = "${var.iglu_server_dns_name}/api"
+      api_key         = var.iglu_super_api_key
+      vendor_prefixes = []
+    }
+  ]
+}
+
 module "storage_account" {
   source  = "snowplow-devops/storage-account/azurerm"
   version = "0.1.2"
@@ -119,6 +131,8 @@ module "enrich_eh" {
 
   telemetry_enabled = var.telemetry_enabled
   user_provided_id  = var.user_provided_id
+
+  custom_iglu_resolvers = local.custom_iglu_resolvers
 
   tags = var.tags
 }
