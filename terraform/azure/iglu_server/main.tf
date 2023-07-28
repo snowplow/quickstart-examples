@@ -35,7 +35,7 @@ module "iglu_lb" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-vmss/azurerm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   name                = "${var.prefix}-iglu-server"
   resource_group_name = var.resource_group_name

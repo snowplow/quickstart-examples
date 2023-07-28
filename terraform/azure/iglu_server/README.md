@@ -15,7 +15,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_iglu_db"></a> [iglu\_db](#module\_iglu\_db) | snowplow-devops/postgresql-server/azurerm | 0.1.1 |
 | <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/lb/azurerm | 0.1.1 |
-| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-vmss/azurerm | 0.1.0 |
+| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-vmss/azurerm | 0.1.1 |
 
 ## Resources
 
