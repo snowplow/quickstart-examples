@@ -18,7 +18,7 @@ module "iglu_db" {
 
 module "iglu_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.1.1"
+  version = "0.2.0"
 
   name                = "${var.prefix}-iglu-lb"
   resource_group_name = var.resource_group_name

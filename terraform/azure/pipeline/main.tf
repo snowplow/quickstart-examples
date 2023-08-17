@@ -67,7 +67,7 @@ module "enriched_eh_topic" {
 # 2. Deploy Collector stack
 module "collector_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.1.1"
+  version = "0.2.0"
 
   name                = "${var.prefix}-collector-lb"
   resource_group_name = var.resource_group_name
