@@ -15,7 +15,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_bad_1_eh_topic"></a> [bad\_1\_eh\_topic](#module\_bad\_1\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
 | <a name="module_collector_eh"></a> [collector\_eh](#module\_collector\_eh) | snowplow-devops/collector-event-hub-vmss/azurerm | 0.1.1 |
-| <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/azurerm | 0.1.1 |
+| <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/azurerm | 0.2.0 |
 | <a name="module_eh_namespace"></a> [eh\_namespace](#module\_eh\_namespace) | snowplow-devops/event-hub-namespace/azurerm | 0.1.1 |
 | <a name="module_enrich_eh"></a> [enrich\_eh](#module\_enrich\_eh) | snowplow-devops/enrich-event-hub-vmss/azurerm | 0.1.2 |
 | <a name="module_enriched_eh_topic"></a> [enriched\_eh\_topic](#module\_enriched\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
