@@ -37,6 +37,11 @@ variable "ssh_public_key" {
 variable "ssh_ip_allowlist" {
   description = "The list of CIDR ranges to allow SSH traffic from"
   type        = list(any)
+
+  validation {
+    condition     = length(var.ssh_ip_allowlist) > 0
+    error_message = "At least one CIDR range must be supplied for SSH"
+  }
 }
 
 variable "iglu_server_dns_name" {
