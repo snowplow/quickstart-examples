@@ -2,31 +2,31 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | ~> 3.90.1 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 3.90 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | ~> 3.90.1 |
+| <a name="provider_google"></a> [google](#provider\_google) | >= 3.90 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_bad_1_topic"></a> [bad\_1\_topic](#module\_bad\_1\_topic) | snowplow-devops/pubsub-topic/google | 0.1.0 |
-| <a name="module_bad_rows_topic"></a> [bad\_rows\_topic](#module\_bad\_rows\_topic) | snowplow-devops/pubsub-topic/google | 0.1.0 |
-| <a name="module_bigquery_loader"></a> [bigquery\_loader](#module\_bigquery\_loader) | snowplow-devops/bigquery-loader-pubsub-ce/google | 0.1.0 |
-| <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/google | 0.1.0 |
-| <a name="module_collector_pubsub"></a> [collector\_pubsub](#module\_collector\_pubsub) | snowplow-devops/collector-pubsub-ce/google | 0.2.2 |
-| <a name="module_enrich_pubsub"></a> [enrich\_pubsub](#module\_enrich\_pubsub) | snowplow-devops/enrich-pubsub-ce/google | 0.1.2 |
-| <a name="module_enriched_topic"></a> [enriched\_topic](#module\_enriched\_topic) | snowplow-devops/pubsub-topic/google | 0.1.0 |
-| <a name="module_postgres_db"></a> [postgres\_db](#module\_postgres\_db) | snowplow-devops/cloud-sql/google | 0.1.1 |
-| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.2.1 |
-| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.2.1 |
-| <a name="module_raw_topic"></a> [raw\_topic](#module\_raw\_topic) | snowplow-devops/pubsub-topic/google | 0.1.0 |
+| <a name="module_bad_1_topic"></a> [bad\_1\_topic](#module\_bad\_1\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
+| <a name="module_bigquery_loader"></a> [bigquery\_loader](#module\_bigquery\_loader) | snowplow-devops/bigquery-loader-pubsub-ce/google | 0.2.0 |
+| <a name="module_bq_bad_rows_topic"></a> [bq\_bad\_rows\_topic](#module\_bq\_bad\_rows\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
+| <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/google | 0.3.0 |
+| <a name="module_collector_pubsub"></a> [collector\_pubsub](#module\_collector\_pubsub) | snowplow-devops/collector-pubsub-ce/google | 0.4.0 |
+| <a name="module_enrich_pubsub"></a> [enrich\_pubsub](#module\_enrich\_pubsub) | snowplow-devops/enrich-pubsub-ce/google | 0.2.0 |
+| <a name="module_enriched_topic"></a> [enriched\_topic](#module\_enriched\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
+| <a name="module_postgres_db"></a> [postgres\_db](#module\_postgres\_db) | snowplow-devops/cloud-sql/google | 0.3.0 |
+| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.3.0 |
+| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.3.0 |
+| <a name="module_raw_topic"></a> [raw\_topic](#module\_raw\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 
 ## Resources
 
@@ -70,5 +70,5 @@
 | <a name="output_bq_loader_bad_rows_topic_name"></a> [bq\_loader\_bad\_rows\_topic\_name](#output\_bq\_loader\_bad\_rows\_topic\_name) | The name of the topic for bad rows emitted from the BigQuery loader |
 | <a name="output_bq_loader_dead_letter_bucket_name"></a> [bq\_loader\_dead\_letter\_bucket\_name](#output\_bq\_loader\_dead\_letter\_bucket\_name) | The name of the GCS bucket for dead letter events emitted from the BigQuery loader |
 | <a name="output_collector_ip_address"></a> [collector\_ip\_address](#output\_collector\_ip\_address) | The IP address for the Pipeline Collector |
-| <a name="output_postgres_db_ip_address"></a> [postgres\_db\_ip\_address](#output\_postgres\_db\_ip\_address) | The IP address of the database where your data is being streamed |
+| <a name="output_postgres_db_address"></a> [postgres\_db\_address](#output\_postgres\_db\_address) | The IP address of the database where your data is being streamed |
 | <a name="output_postgres_db_port"></a> [postgres\_db\_port](#output\_postgres\_db\_port) | The port of the database where your data is being streamed |

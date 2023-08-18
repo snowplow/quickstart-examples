@@ -8,14 +8,12 @@ project_id = "PROJECT_ID_TO_DEPLOY_INTO"
 # Where to deploy the infrastructure
 region = "REGION_TO_DEPLOY_INTO"
 
-# --- Default Network
 # Update to the network you would like to deploy into
 #
 # Note: If you opt to use your own network then you will need to define a subnetwork to deploy into as well
 network    = "default"
 subnetwork = ""
 
-# --- SSH
 # Update this to your IP Address
 ssh_ip_allowlist = ["999.999.999.999/32"]
 # Generate a new SSH key locally with `ssh-keygen`
@@ -27,15 +25,22 @@ ssh_key_pairs = [
   }
 ]
 
-# --- Iglu Server Configuration
 # Iglu Server DNS output from the Iglu Server stack
-iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-IP"
+iglu_server_dns_name = "http://<CHANGE-TO-MY-IGLU-IP>"
 # Used for API actions on the Iglu Server
 # Change this to the same UUID from when you created the Iglu Server
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
-# --- Snowplow Postgres Loader
-postgres_db_enabled  = true
+# Collector SSL Configuration (optional)
+ssl_information = {
+  certificate_id = ""
+  enabled        = false
+}
+
+# --- TARGETS CONFIGURATION ZONE --- #
+
+# --- Target: PostgreSQL
+postgres_db_enabled = false
 
 postgres_db_name     = "snowplow"
 postgres_db_username = "snowplow"
@@ -61,16 +66,20 @@ postgres_db_authorized_networks = [
 # a sufficiently powerful database tier is important to not running out of connection slots
 postgres_db_tier = "db-g1-small"
 
+# --- Target: BigQuery
+bigquery_db_enabled = false
+
+# To use an existing bucket set this to false
+bigquery_loader_dead_letter_bucket_deploy = true
+# Must be globally unique so will need to be updated before applying
+bigquery_loader_dead_letter_bucket_name = "sp-bq-loader-dead-letter"
+
+# --- ADVANCED CONFIGURATION ZONE --- #
+
 # See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-pubsub-ce/google/latest#telemetry
 # Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
 user_provided_id  = ""
 telemetry_enabled = true
-
-# --- SSL Configuration (optional)
-ssl_information = {
-  certificate_id = ""
-  enabled        = false
-}
 
 # --- Extra Labels to append to created resources (optional)
 labels = {}

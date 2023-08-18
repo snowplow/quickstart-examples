@@ -8,13 +8,11 @@ project_id = "PROJECT_ID_TO_DEPLOY_INTO"
 # Where to deploy the infrastructure
 region = "REGION_TO_DEPLOY_INTO"
 
-# --- Network
 # NOTE: The network & sub-network configured must be configured with a Cloud NAT to allow the deployed Compute Engine instances to
 #       connect to the internet to download the required assets
 network    = "YOUR_NETWORK_HERE"
 subnetwork = "YOUR_SUB_NETWORK_HERE"
 
-# --- SSH
 # Update this to the internal IP of your Bastion Host
 ssh_ip_allowlist = ["999.999.999.999/32"]
 # Generate a new SSH key locally with `ssh-keygen`
@@ -26,30 +24,61 @@ ssh_key_pairs = [
   }
 ]
 
-# --- Iglu Server Configuration
 # Iglu Server DNS output from the Iglu Server stack
-iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-IP"
+iglu_server_dns_name = "http://<CHANGE-TO-MY-IGLU-IP>"
 # Used for API actions on the Iglu Server
 # Change this to the same UUID from when you created the Iglu Server
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
-# --- Snowplow BigQuery Loader
-bigquery_db_enabled  = true
+# Collector SSL Configuration (optional)
+ssl_information = {
+  certificate_id = ""
+  enabled        = false
+}
+
+# --- TARGETS CONFIGURATION ZONE --- #
+
+# --- Target: PostgreSQL
+postgres_db_enabled = false
+
+postgres_db_name     = "snowplow"
+postgres_db_username = "snowplow"
+# Change and keep this secret!
+postgres_db_password = "Hell0W0rld!2"
+# IP ranges that you want to query the Pipeline Postgres Cloud SQL instance from directly over the internet.  An alternative access method is to leverage
+# the Cloud SQL Proxy service which creates an IAM authenticated tunnel to the instance
+#
+# Details: https://cloud.google.com/sql/docs/postgres/sql-proxy
+#
+# Note: this exposes your data to the internet - take care to ensure your allowlist is strict enough
+postgres_db_authorized_networks = [
+  {
+    name  = "foo"
+    value = "999.999.999.999/32"
+  },
+  {
+    name  = "bar"
+    value = "888.888.888.888/32"
+  }
+]
+# Note: the size of the database instance determines the number of concurrent connections - each Postgres Loader instance creates 10 open connections so having
+# a sufficiently powerful database tier is important to not running out of connection slots
+postgres_db_tier = "db-g1-small"
+
+# --- Target: BigQuery
+bigquery_db_enabled = false
+
 # To use an existing bucket set this to false
 bigquery_loader_dead_letter_bucket_deploy = true
 # Must be globally unique so will need to be updated before applying
 bigquery_loader_dead_letter_bucket_name = "sp-bq-loader-dead-letter"
 
+# --- ADVANCED CONFIGURATION ZONE --- #
+
 # See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-pubsub-ce/google/latest#telemetry
 # Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
 user_provided_id  = ""
 telemetry_enabled = true
-
-# --- SSL Configuration (optional)
-ssl_information = {
-  certificate_id = ""
-  enabled        = false
-}
 
 # --- Extra Labels to append to created resources (optional)
 labels = {}
