@@ -3,7 +3,7 @@ output "collector_ip_address" {
   value       = module.collector_lb.ip_address
 }
 
-output "postgres_db_ip_address" {
+output "postgres_db_address" {
   description = "The IP address of the database where your data is being streamed"
   value       = join("", module.postgres_db.*.first_ip_address)
 }
@@ -25,5 +25,5 @@ output "bq_loader_dead_letter_bucket_name" {
 
 output "bq_loader_bad_rows_topic_name" {
   description = "The name of the topic for bad rows emitted from the BigQuery loader"
-  value       = join("", module.bad_rows_topic.*.name)
+  value       = join("", module.bq_bad_rows_topic.*.name)
 }

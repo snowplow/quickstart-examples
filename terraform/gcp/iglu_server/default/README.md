@@ -2,9 +2,9 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | ~> 3.90.1 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 3.90 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3 |
 
 ## Providers
 
@@ -14,9 +14,9 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iglu_db"></a> [iglu\_db](#module\_iglu\_db) | snowplow-devops/cloud-sql/google | 0.1.1 |
-| <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/lb/google | 0.1.0 |
-| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-ce/google | 0.3.2 |
+| <a name="module_iglu_db"></a> [iglu\_db](#module\_iglu\_db) | snowplow-devops/cloud-sql/google | 0.3.0 |
+| <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/lb/google | 0.3.0 |
+| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-ce/google | 0.4.0 |
 
 ## Resources
 
