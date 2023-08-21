@@ -1,0 +1,60 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  DEFAULT_BRANCH: origin/main
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+
+    outputs:
+      modules: ${{ steps.get-changed-modules.outputs.modules}}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7
+
+      - name: Get changed terraform modules
+        id: get-changed-modules
+        run: |
+          echo "modules=$(git diff --name-only \
+            origin/${{ steps.branch-name.outputs.current_branch }} \
+            ${{ env.DEFAULT_BRANCH }} | \
+            grep '.tf' | \
+            xargs dirname | \
+            sort -u | \
+            jq -R -s -c 'split("\n")[:-1]')" >> "$GITHUB_OUTPUT"
+
+  validate-fmt-check:
+    needs: [changes]
+    if: ${{ needs.changes.outputs.modules != '[]' && needs.changes.outputs.modules != '' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        module: ${{fromJson(needs.changes.outputs.modules)}}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: terraform validate
+        uses: dflook/terraform-validate@v1
+        with:
+          path: "${{ matrix.module }}"
+
+      - name: terraform fmt
+        uses: dflook/terraform-fmt-check@v1
+        with:
+          path: "${{ matrix.module }}"
