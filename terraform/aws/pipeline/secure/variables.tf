@@ -48,6 +48,11 @@ variable "ssh_ip_allowlist" {
 variable "iglu_server_dns_name" {
   description = "The DNS name of your Iglu Server"
   type        = string
+
+  validation {
+    condition     = can(regex("^http[s]?://.*$", var.iglu_server_dns_name))
+    error_message = "Value must contain a http/s prefix"
+  }
 }
 
 variable "iglu_super_api_key" {
