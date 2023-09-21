@@ -96,7 +96,6 @@ variable "snowflake_enabled" {
   type        = bool
 }
 
-
 variable "snowflake_account" {
   description = "Snowflake account to use"
   type        = string
@@ -144,4 +143,12 @@ variable "snowflake_transformer_window_period_min" {
   description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
   type        = number
   default     = 5
+}
+
+# --- Target: Lake
+
+variable "lake_enabled" {
+  description = "Whether to load all data into a Storage Container to build a data-lake based on Delta format"
+  default     = false
+  type        = bool
 }
