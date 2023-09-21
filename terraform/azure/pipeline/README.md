@@ -19,6 +19,8 @@ No providers.
 | <a name="module_eh_namespace"></a> [eh\_namespace](#module\_eh\_namespace) | snowplow-devops/event-hub-namespace/azurerm | 0.1.1 |
 | <a name="module_enrich_eh"></a> [enrich\_eh](#module\_enrich\_eh) | snowplow-devops/enrich-event-hub-vmss/azurerm | 0.1.2 |
 | <a name="module_enriched_eh_topic"></a> [enriched\_eh\_topic](#module\_enriched\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
+| <a name="module_lake_loader"></a> [lake\_loader](#module\_lake\_loader) | snowplow-devops/lake-loader-vmss/azurerm | 0.1.1 |
+| <a name="module_lake_storage_container"></a> [lake\_storage\_container](#module\_lake\_storage\_container) | snowplow-devops/storage-container/azurerm | 0.1.1 |
 | <a name="module_raw_eh_topic"></a> [raw\_eh\_topic](#module\_raw\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
 | <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-vmss/azurerm | 0.1.1 |
 | <a name="module_sf_message_queue_eh_topic"></a> [sf\_message\_queue\_eh\_topic](#module\_sf\_message\_queue\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
@@ -43,6 +45,7 @@ No resources.
 | <a name="input_storage_account_name"></a> [storage\_account\_name](#input\_storage\_account\_name) | The name of the Storage Account the data will be loaded into | `string` | n/a | yes |
 | <a name="input_subnet_id_lb"></a> [subnet\_id\_lb](#input\_subnet\_id\_lb) | The ID of the subnet to deploy the load balancer into (e.g. collector-agw1) | `string` | n/a | yes |
 | <a name="input_subnet_id_servers"></a> [subnet\_id\_servers](#input\_subnet\_id\_servers) | The ID of the subnet to deploy the servers into (e.g. pipeline1) | `string` | n/a | yes |
+| <a name="input_lake_enabled"></a> [lake\_enabled](#input\_lake\_enabled) | Whether to load all data into a Storage Container to build a data-lake based on Delta format | `bool` | `false` | no |
 | <a name="input_snowflake_account"></a> [snowflake\_account](#input\_snowflake\_account) | Snowflake account to use | `string` | `""` | no |
 | <a name="input_snowflake_database"></a> [snowflake\_database](#input\_snowflake\_database) | Snowflake database name | `string` | `""` | no |
 | <a name="input_snowflake_enabled"></a> [snowflake\_enabled](#input\_snowflake\_enabled) | Whether to enable loading into a Snowflake Database | `bool` | `false` | no |

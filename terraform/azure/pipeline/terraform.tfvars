@@ -51,6 +51,11 @@ snowflake_warehouse       = "<WAREHOUSE>"
 # This controls how often data will be loading into Snowflake
 snowflake_transformer_window_period_min = 1
 
+# --- Target: Lake
+# Follow the guide to get input values for the loader:
+# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start/
+lake_enabled = false
+
 # --- ADVANCED CONFIGURATION ZONE --- #
 
 # Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
