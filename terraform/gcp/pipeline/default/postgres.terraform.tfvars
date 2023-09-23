@@ -35,7 +35,7 @@ iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-IP"
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
 # --- Snowplow Postgres Loader
-postgres_db_enabled  = true
+pipeline_db = "postgres"
 
 postgres_db_name     = "snowplow"
 postgres_db_username = "snowplow"

@@ -15,7 +15,7 @@ network    = "YOUR_NETWORK_HERE"
 subnetwork = "YOUR_SUB_NETWORK_HERE"
 
 # --- SSH
-# Update this to the internal IP of your Bastion Host
+# Update this to your IP Address
 ssh_ip_allowlist = ["999.999.999.999/32"]
 # Generate a new SSH key locally with `ssh-keygen`
 # ssh-keygen -t rsa -b 4096 
@@ -33,12 +33,17 @@ iglu_server_dns_name = "http://CHANGE-TO-MY-IGLU-IP"
 # Change this to the same UUID from when you created the Iglu Server
 iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
 
-# --- Snowplow BigQuery Loader
-pipeline_db = "bigquery"
-# To use an existing bucket set this to false
-bigquery_loader_dead_letter_bucket_deploy = true
-# Must be globally unique so will need to be updated before applying
-bigquery_loader_dead_letter_bucket_name = "sp-bq-loader-dead-letter"
+# --- Snowplow Databricks Loader
+pipeline_db                   = "databricks"
+deltalake_catalog             = "DB_CATALOG"
+deltalake_schema              = "DB_SCHEMA"
+deltalake_host                = "DB_HOST"
+deltalake_port                = "DB_PORT"
+deltalake_http_path           = "DB_HTTP_PATH"
+deltalake_auth_token          = "DB_AUTH_TOKEN"
+transformer_window_period_min = 10
+transformer_bucket_name       = "transformer-bucket"
+databricks_callback_iam       = "DB_CALLBACK_IAM"
 
 # See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-pubsub-ce/google/latest#telemetry
 # Telemetry principles: https://docs.snowplowanalytics.com/docs/open-source-quick-start/what-is-the-quick-start-for-open-source/telemetry-principles/
