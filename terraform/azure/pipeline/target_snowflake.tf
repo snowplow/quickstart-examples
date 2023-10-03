@@ -2,11 +2,15 @@ module "sf_message_queue_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
   version = "0.1.1"
 
-  count = var.snowflake_enabled ? 1 : 0
+  count = local.use_azure_event_hubs && var.snowflake_enabled ? 1 : 0
 
   name                = "snowflake-loader-topic"
-  namespace_name      = module.eh_namespace.name
+  namespace_name      = join("", module.eh_namespace.*.name)
   resource_group_name = var.resource_group_name
+}
+
+locals {
+  snowflake_loader_topic_name = local.use_azure_event_hubs ? join("", module.sf_message_queue_eh_topic.*.name) : var.confluent_cloud_snowflake_loader_topic_name
 }
 
 module "sf_transformer_storage_container" {
@@ -21,7 +25,7 @@ module "sf_transformer_storage_container" {
 
 module "sf_transformer_wrj" {
   source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
-  version = "0.1.1"
+  version = "0.2.1"
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -29,12 +33,16 @@ module "sf_transformer_wrj" {
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
 
-  enriched_topic_name              = module.enriched_eh_topic.name
-  enriched_topic_connection_string = module.enriched_eh_topic.read_only_primary_connection_string
-  queue_topic_name                 = module.sf_message_queue_eh_topic[0].name
-  queue_topic_connection_string    = module.sf_message_queue_eh_topic[0].read_write_primary_connection_string
-  eh_namespace_name                = module.eh_namespace.name
-  eh_namespace_broker              = module.eh_namespace.broker
+  enriched_topic_name           = local.enriched_topic_name
+  enriched_topic_kafka_username = local.kafka_username
+  enriched_topic_kafka_password = local.use_azure_event_hubs ? join("", module.enriched_eh_topic.*.read_only_primary_connection_string) : var.confluent_cloud_api_secret
+  queue_topic_name              = local.snowflake_loader_topic_name
+  queue_topic_kafka_username    = local.kafka_username
+  queue_topic_kafka_password    = local.use_azure_event_hubs ? join("", module.sf_message_queue_eh_topic.*.read_write_primary_connection_string) : var.confluent_cloud_api_secret
+  eh_namespace_name             = local.eh_namespace_name
+  kafka_brokers                 = local.kafka_brokers
+
+  kafka_source = var.stream_type
 
   storage_account_name   = local.storage_account_name
   storage_container_name = module.sf_transformer_storage_container[0].name
@@ -57,7 +65,7 @@ module "sf_transformer_wrj" {
 
 module "sf_loader" {
   source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
-  version = "0.1.1"
+  version = "0.2.1"
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -65,10 +73,13 @@ module "sf_loader" {
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
 
-  queue_topic_name              = module.sf_message_queue_eh_topic[0].name
-  queue_topic_connection_string = module.sf_message_queue_eh_topic[0].read_only_primary_connection_string
-  eh_namespace_name             = module.eh_namespace.name
-  eh_namespace_broker           = module.eh_namespace.broker
+  queue_topic_name           = local.snowflake_loader_topic_name
+  queue_topic_kafka_username = local.kafka_username
+  queue_topic_kafka_password = local.use_azure_event_hubs ? join("", module.sf_message_queue_eh_topic.*.read_only_primary_connection_string) : var.confluent_cloud_api_secret
+  eh_namespace_name          = local.eh_namespace_name
+  kafka_brokers              = local.kafka_brokers
+
+  kafka_source = var.stream_type
 
   storage_account_name                          = local.storage_account_name
   storage_container_name_for_transformer_output = module.sf_transformer_storage_container[0].name
