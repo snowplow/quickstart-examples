@@ -36,6 +36,30 @@ ssl_information = {
   enabled  = false
 }
 
+# --- Stream Selection
+
+# The stream type to use between deployed components:
+#
+# 1. azure_event_hubs: If selected will deploy a namespace and topics into the same resource
+#                      group as all other assets (no extra steps required)
+# 2. confluent_cloud: If selected you will need to manually deploy a Cluster and associated
+#                     topics for the applications to stream data into
+stream_type = "azure_event_hubs"
+
+# --- Stream: Confluent Cloud
+# API Key details for your deployed cluster
+confluent_cloud_api_key    = ""
+confluent_cloud_api_secret = ""
+
+# Bootstrap server for your deployed cluster
+confluent_cloud_bootstrap_server = ""
+
+# Names of the created topics within the deployed cluster
+confluent_cloud_raw_topic_name              = "raw"
+confluent_cloud_enriched_topic_name         = "enriched"
+confluent_cloud_bad_1_topic_name            = "bad-1"
+confluent_cloud_snowflake_loader_topic_name = "snowflake-loader"
+
 # --- Target: Snowflake
 # Follow the guide to get input values for the loader:
 # https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start/

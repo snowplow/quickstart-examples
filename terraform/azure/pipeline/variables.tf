@@ -88,6 +88,60 @@ variable "tags" {
   type        = map(string)
 }
 
+# --- Stream Selection
+
+variable "stream_type" {
+  description = "The stream type to use as the Kafka Cluster between components (options: azure_event_hubs, confluent_cloud)"
+  default     = "azure_event_hubs"
+  type        = string
+}
+
+# --- Stream: Confluent Cloud
+
+variable "confluent_cloud_api_key" {
+  description = "Confluent Cloud API Key"
+  default     = ""
+  type        = string
+  sensitive   = true
+}
+
+variable "confluent_cloud_api_secret" {
+  description = "Confluent Cloud API Secret"
+  default     = ""
+  type        = string
+  sensitive   = true
+}
+
+variable "confluent_cloud_bootstrap_server" {
+  description = "Confluent Cloud cluster bootstrap server"
+  default     = ""
+  type        = string
+}
+
+variable "confluent_cloud_raw_topic_name" {
+  description = "Confluent Cloud 'raw' topic name"
+  default     = "raw"
+  type        = string
+}
+
+variable "confluent_cloud_enriched_topic_name" {
+  description = "Confluent Cloud 'enriched' topic name"
+  default     = "enriched"
+  type        = string
+}
+
+variable "confluent_cloud_bad_1_topic_name" {
+  description = "Confluent Cloud 'bad-1' topic name"
+  default     = "bad-1"
+  type        = string
+}
+
+variable "confluent_cloud_snowflake_loader_topic_name" {
+  description = "Confluent Cloud 'snowflake-loader' topic name"
+  default     = "snowflake-loader"
+  type        = string
+}
+
 # --- Target: SnowflakeDB
 
 variable "snowflake_enabled" {
