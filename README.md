@@ -79,6 +79,6 @@ Licensed under the [Snowplow Community License](https://docs.snowplow.io/communi
 [discourse]: http://discourse.snowplow.io/
 
 [release]: https://github.com/snowplow/snowplow/releases
-[release-badge]: https://img.shields.io/badge/Snowplow-23.07%20%28Patch.3%29-6638b8
+[release-badge]: https://img.shields.io/badge/Snowplow-23.07%20%28Patch.4%29-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
