@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "db_message_queue" {
 
 module "db_transformer_wrp" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.3.4"
+  version = "0.3.9"
 
   count = var.databricks_enabled ? 1 : 0
 
@@ -48,7 +48,7 @@ module "db_transformer_wrp" {
 
 module "db_loader" {
   source  = "snowplow-devops/databricks-loader-ec2/aws"
-  version = "0.1.2"
+  version = "0.1.3"
 
   count = var.databricks_enabled ? 1 : 0
 

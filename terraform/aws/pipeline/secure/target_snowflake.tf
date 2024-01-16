@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "sf_message_queue" {
 
 module "sf_transformer_wrj" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.3.4"
+  version = "0.3.9"
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -48,7 +48,7 @@ module "sf_transformer_wrj" {
 
 module "sf_loader" {
   source  = "snowplow-devops/snowflake-loader-ec2/aws"
-  version = "0.2.3"
+  version = "0.2.4"
 
   count = var.snowflake_enabled ? 1 : 0
 
