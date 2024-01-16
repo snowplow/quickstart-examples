@@ -19,7 +19,7 @@ module "postgres_loader_rds" {
 
 module "postgres_loader_enriched" {
   source  = "snowplow-devops/postgres-loader-kinesis-ec2/aws"
-  version = "0.4.2"
+  version = "0.4.3"
 
   count = var.postgres_db_enabled ? 1 : 0
 
@@ -59,7 +59,7 @@ module "postgres_loader_enriched" {
 
 module "postgres_loader_bad" {
   source  = "snowplow-devops/postgres-loader-kinesis-ec2/aws"
-  version = "0.4.2"
+  version = "0.4.3"
 
   count = var.postgres_db_enabled ? 1 : 0
 
