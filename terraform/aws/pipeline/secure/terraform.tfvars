@@ -54,8 +54,7 @@ postgres_db_password = "Hell0W0rld!2"
 # IP ranges that you want to query the Pipeline Postgres RDS from
 # Note: this exposes your data to the internet - take care to ensure your allowlist is strict enough
 #       or provide a way to access the database through the VPC instead
-postgres_db_publicly_accessible = true
-postgres_db_ip_allowlist        = ["999.999.999.999/32", "888.888.888.888/32"]
+postgres_db_ip_allowlist = ["999.999.999.999/32", "888.888.888.888/32"]
 
 # --- Target: Snowflake
 # Follow the guide to get input values for the loader:
