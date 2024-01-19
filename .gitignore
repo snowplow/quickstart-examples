@@ -15,5 +15,8 @@ override.tfvars
 *.tfstate.*
 *.terraform.lock.hcl
 
+# infracost files
+.infracost
+
 # Crash log files
 crash.log

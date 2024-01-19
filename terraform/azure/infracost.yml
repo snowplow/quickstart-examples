@@ -1,0 +1,8 @@
+version: 0.1
+projects:
+  - path: base
+    usage_file: base/infracost-usage.yml
+  - path: iglu_server
+    usage_file: iglu_server/infracost-usage.yml
+  - path: pipeline
+    usage_file: pipeline/infracost-usage.yml
