@@ -1,3 +1,6 @@
+# Please accept the terms of the Snowplow Limited Use License Agreement to proceed. (https://docs.snowplow.io/limited-use-license-1.0/)
+accept_limited_use_license = false
+
 # Will be prefixed to all resource names
 # Use this to easily identify the resources created and provide entropy for subsequent environments
 prefix = "snowplow"

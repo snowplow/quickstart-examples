@@ -15,7 +15,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_iglu_db"></a> [iglu\_db](#module\_iglu\_db) | snowplow-devops/postgresql-server/azurerm | 0.1.1 |
 | <a name="module_iglu_lb"></a> [iglu\_lb](#module\_iglu\_lb) | snowplow-devops/lb/azurerm | 0.2.0 |
-| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-vmss/azurerm | 0.1.1 |
+| <a name="module_iglu_server"></a> [iglu\_server](#module\_iglu\_server) | snowplow-devops/iglu-server-vmss/azurerm | 0.2.0 |
 
 ## Resources
 
@@ -35,6 +35,7 @@ No resources.
 | <a name="input_ssh_public_key"></a> [ssh\_public\_key](#input\_ssh\_public\_key) | The SSH public key to use for the deployment | `string` | n/a | yes |
 | <a name="input_subnet_id_lb"></a> [subnet\_id\_lb](#input\_subnet\_id\_lb) | The ID of the subnet to deploy the load balancer into (e.g. iglu-agw1) | `string` | n/a | yes |
 | <a name="input_subnet_id_servers"></a> [subnet\_id\_servers](#input\_subnet\_id\_servers) | The ID of the subnet to deploy the servers into (e.g. iglu1) | `string` | n/a | yes |
+| <a name="input_accept_limited_use_license"></a> [accept\_limited\_use\_license](#input\_accept\_limited\_use\_license) | Acceptance of the SLULA terms (https://docs.snowplow.io/limited-use-license-1.0/) | `bool` | `false` | no |
 | <a name="input_iglu_db_ip_allowlist"></a> [iglu\_db\_ip\_allowlist](#input\_iglu\_db\_ip\_allowlist) | An optional list of CIDR ranges to allow traffic from | `list(any)` | `[]` | no |
 | <a name="input_ssl_information"></a> [ssl\_information](#input\_ssl\_information) | SSL certificate information to optionally bind to the load balancer | <pre>object({<br>    enabled  = bool<br>    data     = string<br>    password = string<br>  })</pre> | <pre>{<br>  "data": "",<br>  "enabled": false,<br>  "password": ""<br>}</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to append to the resources in this module | `map(string)` | `{}` | no |

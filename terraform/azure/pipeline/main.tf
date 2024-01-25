@@ -111,7 +111,9 @@ module "collector_lb" {
 
 module "collector_eh" {
   source  = "snowplow-devops/collector-event-hub-vmss/azurerm"
-  version = "0.2.1"
+  version = "0.3.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   name                = "${var.prefix}-collector"
   resource_group_name = var.resource_group_name
@@ -124,11 +126,13 @@ module "collector_eh" {
   ssh_public_key   = var.ssh_public_key
   ssh_ip_allowlist = var.ssh_ip_allowlist
 
-  good_topic_name = local.raw_topic_name
-  bad_topic_name  = local.bad_1_topic_name
-  kafka_brokers   = local.kafka_brokers
-  kafka_username  = local.kafka_username
-  kafka_password  = local.use_azure_event_hubs ? join("", module.eh_namespace.*.read_write_primary_connection_string) : var.confluent_cloud_api_secret
+  good_topic_name           = local.raw_topic_name
+  good_topic_kafka_username = local.kafka_username
+  good_topic_kafka_password = local.use_azure_event_hubs ? join("", module.raw_eh_topic.*.read_write_primary_connection_string) : var.confluent_cloud_api_secret
+  bad_topic_name            = local.bad_1_topic_name
+  bad_topic_kafka_username  = local.kafka_username
+  bad_topic_kafka_password  = local.use_azure_event_hubs ? join("", module.bad_1_eh_topic.*.read_write_primary_connection_string) : var.confluent_cloud_api_secret
+  kafka_brokers             = local.kafka_brokers
 
   kafka_source = var.stream_type
 
@@ -141,7 +145,9 @@ module "collector_eh" {
 # 4. Deploy Enrich stack
 module "enrich_eh" {
   source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
-  version = "0.2.1"
+  version = "0.3.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   name                = "${var.prefix}-enrich"
   resource_group_name = var.resource_group_name
