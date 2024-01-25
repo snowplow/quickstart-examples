@@ -25,7 +25,9 @@ module "sf_transformer_storage_container" {
 
 module "sf_transformer_wrj" {
   source  = "snowplow-devops/transformer-event-hub-vmss/azurerm"
-  version = "0.2.1"
+  version = "0.3.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.snowflake_enabled ? 1 : 0
 
@@ -65,7 +67,9 @@ module "sf_transformer_wrj" {
 
 module "sf_loader" {
   source  = "snowplow-devops/snowflake-loader-vmss/azurerm"
-  version = "0.2.1"
+  version = "0.3.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.snowflake_enabled ? 1 : 0
 

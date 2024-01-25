@@ -14,18 +14,18 @@ No providers.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bad_1_eh_topic"></a> [bad\_1\_eh\_topic](#module\_bad\_1\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
-| <a name="module_collector_eh"></a> [collector\_eh](#module\_collector\_eh) | snowplow-devops/collector-event-hub-vmss/azurerm | 0.2.1 |
+| <a name="module_collector_eh"></a> [collector\_eh](#module\_collector\_eh) | snowplow-devops/collector-event-hub-vmss/azurerm | 0.3.0 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/azurerm | 0.2.0 |
 | <a name="module_eh_namespace"></a> [eh\_namespace](#module\_eh\_namespace) | snowplow-devops/event-hub-namespace/azurerm | 0.1.1 |
-| <a name="module_enrich_eh"></a> [enrich\_eh](#module\_enrich\_eh) | snowplow-devops/enrich-event-hub-vmss/azurerm | 0.2.1 |
+| <a name="module_enrich_eh"></a> [enrich\_eh](#module\_enrich\_eh) | snowplow-devops/enrich-event-hub-vmss/azurerm | 0.3.0 |
 | <a name="module_enriched_eh_topic"></a> [enriched\_eh\_topic](#module\_enriched\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
-| <a name="module_lake_loader"></a> [lake\_loader](#module\_lake\_loader) | snowplow-devops/lake-loader-vmss/azurerm | 0.2.1 |
+| <a name="module_lake_loader"></a> [lake\_loader](#module\_lake\_loader) | snowplow-devops/lake-loader-vmss/azurerm | 0.3.0 |
 | <a name="module_lake_storage_container"></a> [lake\_storage\_container](#module\_lake\_storage\_container) | snowplow-devops/storage-container/azurerm | 0.1.1 |
 | <a name="module_raw_eh_topic"></a> [raw\_eh\_topic](#module\_raw\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
-| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-vmss/azurerm | 0.2.1 |
+| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-vmss/azurerm | 0.3.0 |
 | <a name="module_sf_message_queue_eh_topic"></a> [sf\_message\_queue\_eh\_topic](#module\_sf\_message\_queue\_eh\_topic) | snowplow-devops/event-hub/azurerm | 0.1.1 |
 | <a name="module_sf_transformer_storage_container"></a> [sf\_transformer\_storage\_container](#module\_sf\_transformer\_storage\_container) | snowplow-devops/storage-container/azurerm | 0.1.1 |
-| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-event-hub-vmss/azurerm | 0.2.1 |
+| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-event-hub-vmss/azurerm | 0.3.0 |
 | <a name="module_storage_account"></a> [storage\_account](#module\_storage\_account) | snowplow-devops/storage-account/azurerm | 0.1.2 |
 
 ## Resources
@@ -45,6 +45,7 @@ No resources.
 | <a name="input_storage_account_name"></a> [storage\_account\_name](#input\_storage\_account\_name) | The name of the Storage Account the data will be loaded into | `string` | n/a | yes |
 | <a name="input_subnet_id_lb"></a> [subnet\_id\_lb](#input\_subnet\_id\_lb) | The ID of the subnet to deploy the load balancer into (e.g. collector-agw1) | `string` | n/a | yes |
 | <a name="input_subnet_id_servers"></a> [subnet\_id\_servers](#input\_subnet\_id\_servers) | The ID of the subnet to deploy the servers into (e.g. pipeline1) | `string` | n/a | yes |
+| <a name="input_accept_limited_use_license"></a> [accept\_limited\_use\_license](#input\_accept\_limited\_use\_license) | Acceptance of the SLULA terms (https://docs.snowplow.io/limited-use-license-1.0/) | `bool` | `false` | no |
 | <a name="input_confluent_cloud_api_key"></a> [confluent\_cloud\_api\_key](#input\_confluent\_cloud\_api\_key) | Confluent Cloud API Key | `string` | `""` | no |
 | <a name="input_confluent_cloud_api_secret"></a> [confluent\_cloud\_api\_secret](#input\_confluent\_cloud\_api\_secret) | Confluent Cloud API Secret | `string` | `""` | no |
 | <a name="input_confluent_cloud_bad_1_topic_name"></a> [confluent\_cloud\_bad\_1\_topic\_name](#input\_confluent\_cloud\_bad\_1\_topic\_name) | Confluent Cloud 'bad-1' topic name | `string` | `"bad-1"` | no |
