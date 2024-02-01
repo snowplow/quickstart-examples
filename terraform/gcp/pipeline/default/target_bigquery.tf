@@ -37,7 +37,9 @@ locals {
 
 module "bigquery_loader" {
   source  = "snowplow-devops/bigquery-loader-pubsub-ce/google"
-  version = "0.2.0"
+  version = "0.3.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.bigquery_db_enabled ? 1 : 0
 
