@@ -17,15 +17,15 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bad_1_topic"></a> [bad\_1\_topic](#module\_bad\_1\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
-| <a name="module_bigquery_loader"></a> [bigquery\_loader](#module\_bigquery\_loader) | snowplow-devops/bigquery-loader-pubsub-ce/google | 0.2.0 |
+| <a name="module_bigquery_loader"></a> [bigquery\_loader](#module\_bigquery\_loader) | snowplow-devops/bigquery-loader-pubsub-ce/google | 0.3.0 |
 | <a name="module_bq_bad_rows_topic"></a> [bq\_bad\_rows\_topic](#module\_bq\_bad\_rows\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/google | 0.3.0 |
-| <a name="module_collector_pubsub"></a> [collector\_pubsub](#module\_collector\_pubsub) | snowplow-devops/collector-pubsub-ce/google | 0.4.0 |
-| <a name="module_enrich_pubsub"></a> [enrich\_pubsub](#module\_enrich\_pubsub) | snowplow-devops/enrich-pubsub-ce/google | 0.2.0 |
+| <a name="module_collector_pubsub"></a> [collector\_pubsub](#module\_collector\_pubsub) | snowplow-devops/collector-pubsub-ce/google | 0.5.0 |
+| <a name="module_enrich_pubsub"></a> [enrich\_pubsub](#module\_enrich\_pubsub) | snowplow-devops/enrich-pubsub-ce/google | 0.3.0 |
 | <a name="module_enriched_topic"></a> [enriched\_topic](#module\_enriched\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 | <a name="module_postgres_db"></a> [postgres\_db](#module\_postgres\_db) | snowplow-devops/cloud-sql/google | 0.3.0 |
-| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.3.0 |
-| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.3.0 |
+| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.4.0 |
+| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-pubsub-ce/google | 0.4.0 |
 | <a name="module_raw_topic"></a> [raw\_topic](#module\_raw\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 
 ## Resources
@@ -50,6 +50,7 @@
 | <a name="input_region"></a> [region](#input\_region) | The name of the region to deploy within | `string` | n/a | yes |
 | <a name="input_ssh_ip_allowlist"></a> [ssh\_ip\_allowlist](#input\_ssh\_ip\_allowlist) | The list of CIDR ranges to allow SSH traffic from | `list(any)` | n/a | yes |
 | <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | The name of the sub-network to deploy within | `string` | n/a | yes |
+| <a name="input_accept_limited_use_license"></a> [accept\_limited\_use\_license](#input\_accept\_limited\_use\_license) | Acceptance of the SLULA terms (https://docs.snowplow.io/limited-use-license-1.0/) | `bool` | `false` | no |
 | <a name="input_bigquery_db_enabled"></a> [bigquery\_db\_enabled](#input\_bigquery\_db\_enabled) | Whether to enable loading into a BigQuery Dataset | `bool` | `false` | no |
 | <a name="input_bigquery_loader_dead_letter_bucket_deploy"></a> [bigquery\_loader\_dead\_letter\_bucket\_deploy](#input\_bigquery\_loader\_dead\_letter\_bucket\_deploy) | Whether this module should create a new bucket with the specified name - if the bucket already exists set this to false | `bool` | `true` | no |
 | <a name="input_bigquery_loader_dead_letter_bucket_name"></a> [bigquery\_loader\_dead\_letter\_bucket\_name](#input\_bigquery\_loader\_dead\_letter\_bucket\_name) | The name of the GCS bucket to use for dead-letter output of loader | `string` | `""` | no |
