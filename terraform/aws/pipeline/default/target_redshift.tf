@@ -9,7 +9,9 @@ resource "aws_sqs_queue" "rs_message_queue" {
 
 module "rs_transformer_stsv" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.3.9"
+  version = "0.4.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.redshift_enabled ? 1 : 0
 
@@ -46,7 +48,9 @@ module "rs_transformer_stsv" {
 
 module "rs_loader" {
   source  = "snowplow-devops/redshift-loader-ec2/aws"
-  version = "0.1.4"
+  version = "0.2.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.redshift_enabled ? 1 : 0
 
