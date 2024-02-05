@@ -1,6 +1,8 @@
 module "s3_loader_raw" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.4.3"
+  version = "0.5.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.s3_raw_enabled ? 1 : 0
 
@@ -32,7 +34,9 @@ module "s3_loader_raw" {
 
 module "s3_loader_bad" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.4.3"
+  version = "0.5.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.s3_bad_enabled ? 1 : 0
 
@@ -67,7 +71,9 @@ module "s3_loader_bad" {
 
 module "s3_loader_enriched" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.4.3"
+  version = "0.5.0"
+
+  accept_limited_use_license = var.accept_limited_use_license
 
   count = var.s3_enriched_enabled ? 1 : 0
 
