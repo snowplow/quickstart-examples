@@ -72,6 +72,17 @@ snowflake_warehouse       = "<WAREHOUSE>"
 # This controls how often data will be loading into Snowflake
 snowflake_transformer_window_period_min = 1
 
+# --- Target: Snowflake Streaming
+# Follow the guide to get input values for the loader:
+# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start-aws
+snowflake_streaming_enabled = false
+
+snowflake_streaming_account_url        = "<ACCOUNT>"
+snowflake_streaming_loader_user        = "<USER>"
+snowflake_streaming_loader_private_key = "<PRIVATE_KEY>"
+snowflake_streaming_database           = "<DATABASE>"
+snowflake_streaming_schema             = "<SCHEMA>"
+
 # --- Target: Databricks
 # Follow the guide to get input values for the loader:
 # https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start-aws
