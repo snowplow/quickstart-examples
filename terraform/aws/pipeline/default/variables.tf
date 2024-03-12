@@ -237,6 +237,45 @@ variable "snowflake_transformer_window_period_min" {
   default     = 5
 }
 
+# --- Target: SnowflakeDB Streaming
+
+variable "snowflake_streaming_enabled" {
+  description = "Whether to enable loading into a Snowflake Database with a Streaming Loader"
+  default     = false
+  type        = bool
+}
+
+variable "snowflake_streaming_account_url" {
+  description = "Snowflake account URL to use"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_streaming_loader_user" {
+  description = "The Snowflake user used by Snowflake Streaming Loader"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_streaming_loader_private_key" {
+  description = "The private key to use for the loader user"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "snowflake_streaming_database" {
+  description = "Snowflake database name"
+  type        = string
+  default     = ""
+}
+
+variable "snowflake_streaming_schema" {
+  description = "Snowflake schema name"
+  type        = string
+  default     = ""
+}
+
 # --- Target: Databricks
 
 variable "databricks_enabled" {

@@ -36,6 +36,7 @@
 | <a name="module_s3_pipeline_bucket"></a> [s3\_pipeline\_bucket](#module\_s3\_pipeline\_bucket) | snowplow-devops/s3-bucket/aws | 0.2.0 |
 | <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-ec2/aws | 0.3.0 |
 | <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
+| <a name="module_snowflake_streaming_loader_enriched"></a> [snowflake\_streaming\_loader\_enriched](#module\_snowflake\_streaming\_loader\_enriched) | snowplow-devops/snowflake-streaming-loader-ec2/aws | 0.1.0 |
 
 ## Resources
 
@@ -97,6 +98,12 @@
 | <a name="input_snowflake_loader_user"></a> [snowflake\_loader\_user](#input\_snowflake\_loader\_user) | The Snowflake user used by Snowflake Loader | `string` | `""` | no |
 | <a name="input_snowflake_region"></a> [snowflake\_region](#input\_snowflake\_region) | Region of Snowflake account | `string` | `""` | no |
 | <a name="input_snowflake_schema"></a> [snowflake\_schema](#input\_snowflake\_schema) | Snowflake schema name | `string` | `""` | no |
+| <a name="input_snowflake_streaming_account_url"></a> [snowflake\_streaming\_account\_url](#input\_snowflake\_streaming\_account\_url) | Snowflake account URL to use | `string` | `""` | no |
+| <a name="input_snowflake_streaming_database"></a> [snowflake\_streaming\_database](#input\_snowflake\_streaming\_database) | Snowflake database name | `string` | `""` | no |
+| <a name="input_snowflake_streaming_enabled"></a> [snowflake\_streaming\_enabled](#input\_snowflake\_streaming\_enabled) | Whether to enable loading into a Snowflake Database with a Streaming Loader | `bool` | `false` | no |
+| <a name="input_snowflake_streaming_loader_private_key"></a> [snowflake\_streaming\_loader\_private\_key](#input\_snowflake\_streaming\_loader\_private\_key) | The private key to use for the loader user | `string` | `""` | no |
+| <a name="input_snowflake_streaming_loader_user"></a> [snowflake\_streaming\_loader\_user](#input\_snowflake\_streaming\_loader\_user) | The Snowflake user used by Snowflake Streaming Loader | `string` | `""` | no |
+| <a name="input_snowflake_streaming_schema"></a> [snowflake\_streaming\_schema](#input\_snowflake\_streaming\_schema) | Snowflake schema name | `string` | `""` | no |
 | <a name="input_snowflake_transformer_window_period_min"></a> [snowflake\_transformer\_window\_period\_min](#input\_snowflake\_transformer\_window\_period\_min) | Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes | `number` | `5` | no |
 | <a name="input_snowflake_warehouse"></a> [snowflake\_warehouse](#input\_snowflake\_warehouse) | Snowflake warehouse name | `string` | `""` | no |
 | <a name="input_ssl_information"></a> [ssl\_information](#input\_ssl\_information) | The ARN of an Amazon Certificate Manager certificate to bind to the load balancer | <pre>object({<br>    enabled         = bool<br>    certificate_arn = string<br>  })</pre> | <pre>{<br>  "certificate_arn": "",<br>  "enabled": false<br>}</pre> | no |
