@@ -32,6 +32,27 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 | ![i1][install-image]                   |  ![i3][faq-image]        |
 | **[Installation Guide][installguide]** |  **[FAQ][faq]**          |
 
+### Estimating costs
+
+To estimate costs, use [infracost](https://www.infracost.io/docs/).
+
+For example:
+
+```bash
+cd terraform/aws
+infracost breakdown --config-file infracost.yml
+```
+
+To estimate costs accounting for usage-based pricing:
+
+```bash
+cd terraform/aws
+infracost breakdown --config-file infracost.yml --sync-usage-file
+# edit iglu_server/default/infracost-usage.yml
+# edit pipeline/default/infracost-usage.yml
+infracost breakdown --config-file infracost.yml
+```
+
 ### Updating READMEs
 
 To generate the READMEs, use [terraform-docs][tf-docs].
