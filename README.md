@@ -80,6 +80,6 @@ Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you a
 [discourse]: http://discourse.snowplow.io/
 
 [release]: https://github.com/snowplow/snowplow/releases
-[release-badge]: https://img.shields.io/badge/Snowplow-24.02-6638b8
+[release-badge]: https://img.shields.io/badge/Snowplow-24.02%20%28Patch.1%29-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
