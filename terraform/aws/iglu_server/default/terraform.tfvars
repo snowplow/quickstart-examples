@@ -52,3 +52,6 @@ tags = {}
 # --- CloudWatch logging to ensure logs are saved outside of the server
 cloudwatch_logs_enabled        = true
 cloudwatch_logs_retention_days = 7
+
+# --- Image Repositories
+private_ecr_registry = ""
