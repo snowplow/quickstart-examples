@@ -86,7 +86,7 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.9.0"
+  version = "0.9.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -115,12 +115,14 @@ module "collector_kinesis" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }
 
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.6.0"
+  version = "0.6.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -152,4 +154,6 @@ module "enrich_kinesis" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }

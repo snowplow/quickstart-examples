@@ -1,6 +1,6 @@
 module "s3_loader_raw" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.5.0"
+  version = "0.5.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -30,11 +30,13 @@ module "s3_loader_raw" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }
 
 module "s3_loader_bad" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.5.0"
+  version = "0.5.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -67,11 +69,13 @@ module "s3_loader_bad" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }
 
 module "s3_loader_enriched" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.5.0"
+  version = "0.5.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -103,4 +107,6 @@ module "s3_loader_enriched" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }

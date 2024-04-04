@@ -131,3 +131,6 @@ cloudwatch_logs_retention_days = 7
 
 # Extra Tags to append to created resources (optional)
 tags = {}
+
+# Image Repositories
+private_ecr_registry = ""

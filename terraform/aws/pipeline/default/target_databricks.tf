@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "db_message_queue" {
 
 module "db_transformer_wrp" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.4.0"
+  version = "0.4.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -44,11 +44,13 @@ module "db_transformer_wrp" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }
 
 module "db_loader" {
   source  = "snowplow-devops/databricks-loader-ec2/aws"
-  version = "0.2.0"
+  version = "0.2.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -82,4 +84,6 @@ module "db_loader" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }
