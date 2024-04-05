@@ -18,25 +18,25 @@
 |------|--------|---------|
 | <a name="module_bad_1_stream"></a> [bad\_1\_stream](#module\_bad\_1\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_bad_2_stream"></a> [bad\_2\_stream](#module\_bad\_2\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
-| <a name="module_collector_kinesis"></a> [collector\_kinesis](#module\_collector\_kinesis) | snowplow-devops/collector-kinesis-ec2/aws | 0.9.0 |
+| <a name="module_collector_kinesis"></a> [collector\_kinesis](#module\_collector\_kinesis) | snowplow-devops/collector-kinesis-ec2/aws | 0.9.1 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/alb/aws | 0.2.0 |
-| <a name="module_db_loader"></a> [db\_loader](#module\_db\_loader) | snowplow-devops/databricks-loader-ec2/aws | 0.2.0 |
-| <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
-| <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.6.0 |
+| <a name="module_db_loader"></a> [db\_loader](#module\_db\_loader) | snowplow-devops/databricks-loader-ec2/aws | 0.2.1 |
+| <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.1 |
+| <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.6.1 |
 | <a name="module_enriched_stream"></a> [enriched\_stream](#module\_enriched\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
-| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.0 |
+| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.1 |
+| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.1 |
 | <a name="module_postgres_loader_rds"></a> [postgres\_loader\_rds](#module\_postgres\_loader\_rds) | snowplow-devops/rds/aws | 0.4.0 |
 | <a name="module_raw_stream"></a> [raw\_stream](#module\_raw\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
-| <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.2.0 |
-| <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
-| <a name="module_s3_loader_bad"></a> [s3\_loader\_bad](#module\_s3\_loader\_bad) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_s3_loader_enriched"></a> [s3\_loader\_enriched](#module\_s3\_loader\_enriched) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_s3_loader_raw"></a> [s3\_loader\_raw](#module\_s3\_loader\_raw) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.0 |
+| <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.2.1 |
+| <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.1 |
+| <a name="module_s3_loader_bad"></a> [s3\_loader\_bad](#module\_s3\_loader\_bad) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.1 |
+| <a name="module_s3_loader_enriched"></a> [s3\_loader\_enriched](#module\_s3\_loader\_enriched) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.1 |
+| <a name="module_s3_loader_raw"></a> [s3\_loader\_raw](#module\_s3\_loader\_raw) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.1 |
 | <a name="module_s3_pipeline_bucket"></a> [s3\_pipeline\_bucket](#module\_s3\_pipeline\_bucket) | snowplow-devops/s3-bucket/aws | 0.2.0 |
-| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-ec2/aws | 0.3.0 |
-| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
-| <a name="module_snowflake_streaming_loader_enriched"></a> [snowflake\_streaming\_loader\_enriched](#module\_snowflake\_streaming\_loader\_enriched) | snowplow-devops/snowflake-streaming-loader-ec2/aws | 0.1.0 |
+| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-ec2/aws | 0.3.1 |
+| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.1 |
+| <a name="module_snowflake_streaming_loader_enriched"></a> [snowflake\_streaming\_loader\_enriched](#module\_snowflake\_streaming\_loader\_enriched) | snowplow-devops/snowflake-streaming-loader-ec2/aws | 0.1.2 |
 
 ## Resources
 
@@ -79,6 +79,7 @@
 | <a name="input_postgres_db_name"></a> [postgres\_db\_name](#input\_postgres\_db\_name) | The name of the database to connect to | `string` | `""` | no |
 | <a name="input_postgres_db_password"></a> [postgres\_db\_password](#input\_postgres\_db\_password) | The password to use to connect to the database | `string` | `""` | no |
 | <a name="input_postgres_db_username"></a> [postgres\_db\_username](#input\_postgres\_db\_username) | The username to use to connect to the database | `string` | `""` | no |
+| <a name="input_private_ecr_registry"></a> [private\_ecr\_registry](#input\_private\_ecr\_registry) | The URL of an ECR registry that the sub-account has access to (e.g. '000000000000.dkr.ecr.cn-north-1.amazonaws.com.cn/') | `string` | `""` | no |
 | <a name="input_redshift_database"></a> [redshift\_database](#input\_redshift\_database) | Redshift database name | `string` | `""` | no |
 | <a name="input_redshift_enabled"></a> [redshift\_enabled](#input\_redshift\_enabled) | Whether to enable loading into a Redshift Database | `bool` | `false` | no |
 | <a name="input_redshift_host"></a> [redshift\_host](#input\_redshift\_host) | Redshift cluster hostname | `string` | `""` | no |
