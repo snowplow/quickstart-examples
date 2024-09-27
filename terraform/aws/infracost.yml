@@ -1,0 +1,6 @@
+version: 0.1
+projects:
+  - path: iglu_server/default
+    usage_file: iglu_server/default/infracost-usage.yml
+  - path: pipeline/default
+    usage_file: pipeline/default/infracost-usage.yml
