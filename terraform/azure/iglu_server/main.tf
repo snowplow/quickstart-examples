@@ -39,6 +39,8 @@ module "iglu_server" {
 
   accept_limited_use_license = var.accept_limited_use_license
 
+  app_version = "0.13.1"
+
   name                = "${var.prefix}-iglu-server"
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
