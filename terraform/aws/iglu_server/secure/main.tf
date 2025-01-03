@@ -7,7 +7,7 @@ resource "aws_key_pair" "pipeline" {
 # 1. Deploy an Iglu Server stack
 module "iglu_rds" {
   source  = "snowplow-devops/rds/aws"
-  version = "0.4.0"
+  version = "0.5.0"
 
   name        = "${var.prefix}-iglu-rds"
   vpc_id      = var.vpc_id
@@ -15,6 +15,8 @@ module "iglu_rds" {
   db_name     = var.iglu_db_name
   db_username = var.iglu_db_username
   db_password = var.iglu_db_password
+
+  ca_cert_identifier = "rds-ca-rsa2048-g1"
 
   tags = var.tags
 }
