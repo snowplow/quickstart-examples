@@ -115,6 +115,8 @@ module "collector_eh" {
 
   accept_limited_use_license = var.accept_limited_use_license
 
+  app_version = "3.3.0"
+
   name                = "${var.prefix}-collector"
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id_servers
@@ -148,6 +150,8 @@ module "enrich_eh" {
   version = "0.3.0"
 
   accept_limited_use_license = var.accept_limited_use_license
+
+  app_version = "5.1.4"
 
   name                = "${var.prefix}-enrich"
   resource_group_name = var.resource_group_name

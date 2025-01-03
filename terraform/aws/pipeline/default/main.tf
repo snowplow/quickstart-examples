@@ -90,6 +90,8 @@ module "collector_kinesis" {
 
   accept_limited_use_license = var.accept_limited_use_license
 
+  app_version = "3.3.0"
+
   name               = "${var.prefix}-collector-server"
   vpc_id             = var.vpc_id
   subnet_ids         = var.public_subnet_ids
@@ -119,6 +121,8 @@ module "enrich_kinesis" {
   version = "0.6.0"
 
   accept_limited_use_license = var.accept_limited_use_license
+
+  app_version = "5.1.4"
 
   name                 = "${var.prefix}-enrich-server"
   vpc_id               = var.vpc_id
