@@ -12,7 +12,7 @@ locals {
 
 module "storage_account" {
   source  = "snowplow-devops/storage-account/azurerm"
-  version = "0.1.2"
+  version = "0.1.3"
 
   count = var.storage_account_deploy ? 1 : 0
 
