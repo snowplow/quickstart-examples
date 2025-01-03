@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "sf_message_queue" {
 
 module "sf_transformer_wrj" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.4.0"
+  version = "0.4.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -44,11 +44,13 @@ module "sf_transformer_wrj" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }
 
 module "sf_loader" {
   source  = "snowplow-devops/snowflake-loader-ec2/aws"
-  version = "0.3.0"
+  version = "0.3.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -83,4 +85,6 @@ module "sf_loader" {
 
   cloudwatch_logs_enabled        = var.cloudwatch_logs_enabled
   cloudwatch_logs_retention_days = var.cloudwatch_logs_retention_days
+
+  private_ecr_registry = var.private_ecr_registry
 }

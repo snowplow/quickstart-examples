@@ -121,6 +121,12 @@ variable "cloudwatch_logs_retention_days" {
   type        = number
 }
 
+variable "private_ecr_registry" {
+  description = "The URL of an ECR registry that the sub-account has access to (e.g. '000000000000.dkr.ecr.cn-north-1.amazonaws.com.cn/')"
+  type        = string
+  default     = ""
+}
+
 # --- Target: Amazon S3
 
 variable "s3_raw_enabled" {
