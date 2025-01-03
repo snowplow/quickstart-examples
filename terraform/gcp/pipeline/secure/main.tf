@@ -50,6 +50,8 @@ module "collector_pubsub" {
 
   accept_limited_use_license = var.accept_limited_use_license
 
+  app_version = "3.3.0"
+
   name = "${var.prefix}-collector"
 
   project_id = var.project_id
@@ -93,6 +95,8 @@ module "enrich_pubsub" {
   version = "0.3.0"
 
   accept_limited_use_license = var.accept_limited_use_license
+
+  app_version = "5.1.4"
 
   name = "${var.prefix}-enrich"
 
