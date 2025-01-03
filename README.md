@@ -72,7 +72,7 @@ Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you a
 [deploydbsum-azure]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=databricks&cloud=azure
 [deploysasum-azure]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=synapse&cloud=azure
 
-[license]: https://docs.snowplow.io/limited-use-license-1.0/
+[license]: https://docs.snowplow.io/limited-use-license-1.1/
 [license-image]: https://img.shields.io/badge/license-Snowplow--Limited--Use-blue.svg?style=flat
 [license-faq]: https://docs.snowplow.io/docs/contributing/limited-use-license-faq/
 
