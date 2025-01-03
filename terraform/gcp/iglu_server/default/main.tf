@@ -5,7 +5,7 @@ provider "google" {
 
 module "iglu_db" {
   source  = "snowplow-devops/cloud-sql/google"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-iglu-db"
 

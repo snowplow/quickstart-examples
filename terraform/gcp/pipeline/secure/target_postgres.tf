@@ -1,6 +1,6 @@
 module "postgres_db" {
   source  = "snowplow-devops/cloud-sql/google"
-  version = "0.3.0"
+  version = "0.3.1"
 
   count = var.postgres_db_enabled ? 1 : 0
 
