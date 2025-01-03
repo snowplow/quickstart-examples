@@ -1,6 +1,6 @@
 module "postgres_loader_rds" {
   source  = "snowplow-devops/rds/aws"
-  version = "0.4.0"
+  version = "0.5.0"
 
   count = var.postgres_db_enabled ? 1 : 0
 
@@ -13,6 +13,8 @@ module "postgres_loader_rds" {
 
   publicly_accessible     = var.postgres_db_publicly_accessible
   additional_ip_allowlist = var.postgres_db_ip_allowlist
+
+  ca_cert_identifier = "rds-ca-rsa2048-g1"
 
   tags = var.tags
 }
