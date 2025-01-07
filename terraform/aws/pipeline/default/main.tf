@@ -122,7 +122,7 @@ module "enrich_kinesis" {
 
   accept_limited_use_license = var.accept_limited_use_license
 
-  app_version = "5.1.4"
+  app_version = "5.2.0"
 
   name                 = "${var.prefix}-enrich-server"
   vpc_id               = var.vpc_id
