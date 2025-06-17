@@ -1,6 +1,6 @@
 module "postgres_db" {
   source  = "snowplow-devops/cloud-sql/google"
-  version = "0.3.1"
+  version = "0.4.1"
 
   count = var.postgres_db_enabled ? 1 : 0
 
@@ -20,7 +20,7 @@ module "postgres_db" {
 
 module "postgres_loader_enriched" {
   source  = "snowplow-devops/postgres-loader-pubsub-ce/google"
-  version = "0.4.0"
+  version = "0.5.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -57,7 +57,7 @@ module "postgres_loader_enriched" {
 
 module "postgres_loader_bad" {
   source  = "snowplow-devops/postgres-loader-pubsub-ce/google"
-  version = "0.4.0"
+  version = "0.5.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
