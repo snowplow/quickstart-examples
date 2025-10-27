@@ -18,15 +18,15 @@
 |------|--------|---------|
 | <a name="module_bad_1_stream"></a> [bad\_1\_stream](#module\_bad\_1\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_bad_2_stream"></a> [bad\_2\_stream](#module\_bad\_2\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
-| <a name="module_collector_kinesis"></a> [collector\_kinesis](#module\_collector\_kinesis) | snowplow-devops/collector-kinesis-ec2/aws | 0.9.0 |
+| <a name="module_collector_kinesis"></a> [collector\_kinesis](#module\_collector\_kinesis) | snowplow-devops/collector-kinesis-ec2/aws | 0.10.1 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/alb/aws | 0.2.0 |
 | <a name="module_db_loader"></a> [db\_loader](#module\_db\_loader) | snowplow-devops/databricks-loader-ec2/aws | 0.2.0 |
 | <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
-| <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.6.0 |
+| <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.7.1 |
 | <a name="module_enriched_stream"></a> [enriched\_stream](#module\_enriched\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.0 |
 | <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_postgres_loader_rds"></a> [postgres\_loader\_rds](#module\_postgres\_loader\_rds) | snowplow-devops/rds/aws | 0.4.0 |
+| <a name="module_postgres_loader_rds"></a> [postgres\_loader\_rds](#module\_postgres\_loader\_rds) | snowplow-devops/rds/aws | 0.5.0 |
 | <a name="module_raw_stream"></a> [raw\_stream](#module\_raw\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.2.0 |
 | <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
@@ -106,7 +106,7 @@
 | <a name="input_snowflake_streaming_schema"></a> [snowflake\_streaming\_schema](#input\_snowflake\_streaming\_schema) | Snowflake schema name | `string` | `""` | no |
 | <a name="input_snowflake_transformer_window_period_min"></a> [snowflake\_transformer\_window\_period\_min](#input\_snowflake\_transformer\_window\_period\_min) | Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes | `number` | `5` | no |
 | <a name="input_snowflake_warehouse"></a> [snowflake\_warehouse](#input\_snowflake\_warehouse) | Snowflake warehouse name | `string` | `""` | no |
-| <a name="input_ssl_information"></a> [ssl\_information](#input\_ssl\_information) | The ARN of an Amazon Certificate Manager certificate to bind to the load balancer | <pre>object({<br>    enabled         = bool<br>    certificate_arn = string<br>  })</pre> | <pre>{<br>  "certificate_arn": "",<br>  "enabled": false<br>}</pre> | no |
+| <a name="input_ssl_information"></a> [ssl\_information](#input\_ssl\_information) | The ARN of an Amazon Certificate Manager certificate to bind to the load balancer | <pre>object({<br/>    enabled         = bool<br/>    certificate_arn = string<br/>  })</pre> | <pre>{<br/>  "certificate_arn": "",<br/>  "enabled": false<br/>}</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to append to the resources in this module | `map(string)` | `{}` | no |
 | <a name="input_telemetry_enabled"></a> [telemetry\_enabled](#input\_telemetry\_enabled) | Whether or not to send telemetry information back to Snowplow Analytics Ltd | `bool` | `true` | no |
 | <a name="input_user_provided_id"></a> [user\_provided\_id](#input\_user\_provided\_id) | An optional unique identifier to identify the telemetry events emitted by this stack | `string` | `""` | no |

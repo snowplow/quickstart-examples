@@ -86,11 +86,9 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.9.0"
+  version = "0.10.1"
 
   accept_limited_use_license = var.accept_limited_use_license
-
-  app_version = "3.3.0"
 
   name               = "${var.prefix}-collector-server"
   vpc_id             = var.vpc_id
@@ -118,11 +116,9 @@ module "collector_kinesis" {
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.6.0"
+  version = "0.7.1"
 
   accept_limited_use_license = var.accept_limited_use_license
-
-  app_version = "5.2.0"
 
   name                 = "${var.prefix}-enrich-server"
   vpc_id               = var.vpc_id
