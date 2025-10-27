@@ -24,18 +24,12 @@
 | <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
 | <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.7.1 |
 | <a name="module_enriched_stream"></a> [enriched\_stream](#module\_enriched\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
-| <a name="module_postgres_loader_bad"></a> [postgres\_loader\_bad](#module\_postgres\_loader\_bad) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_postgres_loader_enriched"></a> [postgres\_loader\_enriched](#module\_postgres\_loader\_enriched) | snowplow-devops/postgres-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_postgres_loader_rds"></a> [postgres\_loader\_rds](#module\_postgres\_loader\_rds) | snowplow-devops/rds/aws | 0.5.0 |
 | <a name="module_raw_stream"></a> [raw\_stream](#module\_raw\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.2.0 |
 | <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
 | <a name="module_s3_loader_bad"></a> [s3\_loader\_bad](#module\_s3\_loader\_bad) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.0 |
 | <a name="module_s3_loader_enriched"></a> [s3\_loader\_enriched](#module\_s3\_loader\_enriched) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.0 |
-| <a name="module_s3_loader_raw"></a> [s3\_loader\_raw](#module\_s3\_loader\_raw) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.5.0 |
 | <a name="module_s3_pipeline_bucket"></a> [s3\_pipeline\_bucket](#module\_s3\_pipeline\_bucket) | snowplow-devops/s3-bucket/aws | 0.2.0 |
-| <a name="module_sf_loader"></a> [sf\_loader](#module\_sf\_loader) | snowplow-devops/snowflake-loader-ec2/aws | 0.3.0 |
-| <a name="module_sf_transformer_wrj"></a> [sf\_transformer\_wrj](#module\_sf\_transformer\_wrj) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
 | <a name="module_snowflake_streaming_loader_enriched"></a> [snowflake\_streaming\_loader\_enriched](#module\_snowflake\_streaming\_loader\_enriched) | snowplow-devops/snowflake-streaming-loader-ec2/aws | 0.1.0 |
 
 ## Resources
@@ -45,7 +39,6 @@
 | [aws_key_pair.pipeline](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_sqs_queue.db_message_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue.rs_message_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
-| [aws_sqs_queue.sf_message_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 
 ## Inputs
 
@@ -74,11 +67,6 @@
 | <a name="input_databricks_transformer_window_period_min"></a> [databricks\_transformer\_window\_period\_min](#input\_databricks\_transformer\_window\_period\_min) | Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes | `number` | `5` | no |
 | <a name="input_iam_permissions_boundary"></a> [iam\_permissions\_boundary](#input\_iam\_permissions\_boundary) | The permissions boundary ARN to set on IAM roles created | `string` | `""` | no |
 | <a name="input_pipeline_kcl_write_max_capacity"></a> [pipeline\_kcl\_write\_max\_capacity](#input\_pipeline\_kcl\_write\_max\_capacity) | Increasing this is important to increase throughput at very high pipeline volumes | `number` | `50` | no |
-| <a name="input_postgres_db_enabled"></a> [postgres\_db\_enabled](#input\_postgres\_db\_enabled) | Whether to enable loading into a Postgres Database | `bool` | `false` | no |
-| <a name="input_postgres_db_ip_allowlist"></a> [postgres\_db\_ip\_allowlist](#input\_postgres\_db\_ip\_allowlist) | An optional list of CIDR ranges to allow traffic from | `list(any)` | `[]` | no |
-| <a name="input_postgres_db_name"></a> [postgres\_db\_name](#input\_postgres\_db\_name) | The name of the database to connect to | `string` | `""` | no |
-| <a name="input_postgres_db_password"></a> [postgres\_db\_password](#input\_postgres\_db\_password) | The password to use to connect to the database | `string` | `""` | no |
-| <a name="input_postgres_db_username"></a> [postgres\_db\_username](#input\_postgres\_db\_username) | The username to use to connect to the database | `string` | `""` | no |
 | <a name="input_redshift_database"></a> [redshift\_database](#input\_redshift\_database) | Redshift database name | `string` | `""` | no |
 | <a name="input_redshift_enabled"></a> [redshift\_enabled](#input\_redshift\_enabled) | Whether to enable loading into a Redshift Database | `bool` | `false` | no |
 | <a name="input_redshift_host"></a> [redshift\_host](#input\_redshift\_host) | Redshift cluster hostname | `string` | `""` | no |
@@ -90,22 +78,12 @@
 | <a name="input_s3_bucket_deploy"></a> [s3\_bucket\_deploy](#input\_s3\_bucket\_deploy) | Whether this module should create a new bucket with the specified name - if the bucket already exists set this to false | `bool` | `true` | no |
 | <a name="input_s3_bucket_object_prefix"></a> [s3\_bucket\_object\_prefix](#input\_s3\_bucket\_object\_prefix) | An optional prefix under which Snowplow data will be saved (Note: your prefix must end with a trailing '/') | `string` | `""` | no |
 | <a name="input_s3_enriched_enabled"></a> [s3\_enriched\_enabled](#input\_s3\_enriched\_enabled) | Whether to enable loading of enriched data into S3 from Kinesis | `bool` | `true` | no |
-| <a name="input_s3_raw_enabled"></a> [s3\_raw\_enabled](#input\_s3\_raw\_enabled) | Whether to enable loading of raw data into S3 from Kinesis | `bool` | `false` | no |
-| <a name="input_snowflake_account"></a> [snowflake\_account](#input\_snowflake\_account) | Snowflake account to use | `string` | `""` | no |
-| <a name="input_snowflake_database"></a> [snowflake\_database](#input\_snowflake\_database) | Snowflake database name | `string` | `""` | no |
-| <a name="input_snowflake_enabled"></a> [snowflake\_enabled](#input\_snowflake\_enabled) | Whether to enable loading into a Snowflake Database | `bool` | `false` | no |
-| <a name="input_snowflake_loader_password"></a> [snowflake\_loader\_password](#input\_snowflake\_loader\_password) | The password to use for the loader user | `string` | `""` | no |
-| <a name="input_snowflake_loader_user"></a> [snowflake\_loader\_user](#input\_snowflake\_loader\_user) | The Snowflake user used by Snowflake Loader | `string` | `""` | no |
-| <a name="input_snowflake_region"></a> [snowflake\_region](#input\_snowflake\_region) | Region of Snowflake account | `string` | `""` | no |
-| <a name="input_snowflake_schema"></a> [snowflake\_schema](#input\_snowflake\_schema) | Snowflake schema name | `string` | `""` | no |
 | <a name="input_snowflake_streaming_account_url"></a> [snowflake\_streaming\_account\_url](#input\_snowflake\_streaming\_account\_url) | Snowflake account URL to use | `string` | `""` | no |
 | <a name="input_snowflake_streaming_database"></a> [snowflake\_streaming\_database](#input\_snowflake\_streaming\_database) | Snowflake database name | `string` | `""` | no |
 | <a name="input_snowflake_streaming_enabled"></a> [snowflake\_streaming\_enabled](#input\_snowflake\_streaming\_enabled) | Whether to enable loading into a Snowflake Database with a Streaming Loader | `bool` | `false` | no |
 | <a name="input_snowflake_streaming_loader_private_key"></a> [snowflake\_streaming\_loader\_private\_key](#input\_snowflake\_streaming\_loader\_private\_key) | The private key to use for the loader user | `string` | `""` | no |
 | <a name="input_snowflake_streaming_loader_user"></a> [snowflake\_streaming\_loader\_user](#input\_snowflake\_streaming\_loader\_user) | The Snowflake user used by Snowflake Streaming Loader | `string` | `""` | no |
 | <a name="input_snowflake_streaming_schema"></a> [snowflake\_streaming\_schema](#input\_snowflake\_streaming\_schema) | Snowflake schema name | `string` | `""` | no |
-| <a name="input_snowflake_transformer_window_period_min"></a> [snowflake\_transformer\_window\_period\_min](#input\_snowflake\_transformer\_window\_period\_min) | Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes | `number` | `5` | no |
-| <a name="input_snowflake_warehouse"></a> [snowflake\_warehouse](#input\_snowflake\_warehouse) | Snowflake warehouse name | `string` | `""` | no |
 | <a name="input_ssl_information"></a> [ssl\_information](#input\_ssl\_information) | The ARN of an Amazon Certificate Manager certificate to bind to the load balancer | <pre>object({<br/>    enabled         = bool<br/>    certificate_arn = string<br/>  })</pre> | <pre>{<br/>  "certificate_arn": "",<br/>  "enabled": false<br/>}</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to append to the resources in this module | `map(string)` | `{}` | no |
 | <a name="input_telemetry_enabled"></a> [telemetry\_enabled](#input\_telemetry\_enabled) | Whether or not to send telemetry information back to Snowplow Analytics Ltd | `bool` | `true` | no |
@@ -116,6 +94,3 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_collector_dns_name"></a> [collector\_dns\_name](#output\_collector\_dns\_name) | The ALB DNS name for the Pipeline Collector |
-| <a name="output_postgres_db_address"></a> [postgres\_db\_address](#output\_postgres\_db\_address) | The RDS DNS name where your data is being streamed |
-| <a name="output_postgres_db_id"></a> [postgres\_db\_id](#output\_postgres\_db\_id) | The ID of the RDS instance |
-| <a name="output_postgres_db_port"></a> [postgres\_db\_port](#output\_postgres\_db\_port) | The RDS port where your data is being streamed |

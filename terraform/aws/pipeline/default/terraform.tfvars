@@ -40,37 +40,8 @@ ssl_information = {
 # --- TARGETS CONFIGURATION ZONE --- #
 
 # --- Target: Amazon S3
-s3_raw_enabled      = false
 s3_bad_enabled      = true
 s3_enriched_enabled = true
-
-# --- Target: PostgreSQL
-postgres_db_enabled = false
-
-postgres_db_name     = "snowplow"
-postgres_db_username = "snowplow"
-# Change and keep this secret!
-postgres_db_password = "Hell0W0rld!2"
-# IP ranges that you want to query the Pipeline Postgres RDS from
-# Note: this exposes your data to the internet - take care to ensure your allowlist is strict enough
-#       or provide a way to access the database through the VPC instead
-postgres_db_publicly_accessible = true
-postgres_db_ip_allowlist        = ["999.999.999.999/32", "888.888.888.888/32"]
-
-# --- Target: Snowflake
-# Follow the guide to get input values for the loader:
-# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start-aws
-snowflake_enabled = false
-
-snowflake_account         = "<ACCOUNT>"
-snowflake_region          = "<REGION>"
-snowflake_loader_user     = "<USER>"
-snowflake_loader_password = "<PASSWORD>"
-snowflake_database        = "<DATABASE>"
-snowflake_schema          = "<SCHEMA>"
-snowflake_warehouse       = "<WAREHOUSE>"
-# This controls how often data will be loading into Snowflake
-snowflake_transformer_window_period_min = 1
 
 # --- Target: Snowflake Streaming
 # Follow the guide to get input values for the loader:

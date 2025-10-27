@@ -123,12 +123,6 @@ variable "cloudwatch_logs_retention_days" {
 
 # --- Target: Amazon S3
 
-variable "s3_raw_enabled" {
-  description = "Whether to enable loading of raw data into S3 from Kinesis"
-  default     = false
-  type        = bool
-}
-
 variable "s3_bad_enabled" {
   description = "Whether to enable loading of bad data into S3 from Kinesis"
   default     = true
@@ -139,102 +133,6 @@ variable "s3_enriched_enabled" {
   description = "Whether to enable loading of enriched data into S3 from Kinesis"
   default     = true
   type        = bool
-}
-
-# --- Target: PostgreSQL
-
-variable "postgres_db_enabled" {
-  description = "Whether to enable loading into a Postgres Database"
-  default     = false
-  type        = bool
-}
-
-variable "postgres_db_name" {
-  description = "The name of the database to connect to"
-  type        = string
-  default     = ""
-}
-
-variable "postgres_db_username" {
-  description = "The username to use to connect to the database"
-  type        = string
-  default     = ""
-}
-
-variable "postgres_db_password" {
-  description = "The password to use to connect to the database"
-  type        = string
-  sensitive   = true
-  default     = ""
-}
-
-variable "postgres_db_publicly_accessible" {
-  description = "Whether to make the Postgres RDS instance accessible over the internet"
-  type        = bool
-  default     = false
-}
-
-variable "postgres_db_ip_allowlist" {
-  description = "An optional list of CIDR ranges to allow traffic from"
-  type        = list(any)
-  default     = []
-}
-
-# --- Target: SnowflakeDB
-
-variable "snowflake_enabled" {
-  description = "Whether to enable loading into a Snowflake Database"
-  default     = false
-  type        = bool
-}
-
-variable "snowflake_account" {
-  description = "Snowflake account to use"
-  type        = string
-  default     = ""
-}
-
-variable "snowflake_region" {
-  description = "Region of Snowflake account"
-  type        = string
-  default     = ""
-}
-
-variable "snowflake_loader_password" {
-  description = "The password to use for the loader user"
-  type        = string
-  sensitive   = true
-  default     = ""
-}
-
-variable "snowflake_loader_user" {
-  description = "The Snowflake user used by Snowflake Loader"
-  type        = string
-  default     = ""
-}
-
-variable "snowflake_database" {
-  description = "Snowflake database name"
-  type        = string
-  default     = ""
-}
-
-variable "snowflake_schema" {
-  description = "Snowflake schema name"
-  type        = string
-  default     = ""
-}
-
-variable "snowflake_warehouse" {
-  description = "Snowflake warehouse name"
-  type        = string
-  default     = ""
-}
-
-variable "snowflake_transformer_window_period_min" {
-  description = "Frequency to emit transforming finished message - 5,10,15,20,30,60 etc minutes"
-  type        = number
-  default     = 5
 }
 
 # --- Target: SnowflakeDB Streaming
