@@ -1,6 +1,6 @@
 module "snowflake_streaming_loader_enriched" {
   source  = "snowplow-devops/snowflake-streaming-loader-ec2/aws"
-  version = "0.1.0"
+  version = "0.2.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
