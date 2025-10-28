@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "rs_message_queue" {
 
 module "rs_transformer_stsv" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.4.0"
+  version = "0.5.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -18,6 +18,8 @@ module "rs_transformer_stsv" {
   name       = "${var.prefix}-transformer-server-stsv"
   vpc_id     = var.vpc_id
   subnet_ids = var.public_subnet_ids
+
+  instance_type = "t3a.large"
 
   stream_name             = module.enriched_stream.name
   s3_bucket_name          = local.s3_pipeline_bucket_name
@@ -48,7 +50,7 @@ module "rs_transformer_stsv" {
 
 module "rs_loader" {
   source  = "snowplow-devops/redshift-loader-ec2/aws"
-  version = "0.2.0"
+  version = "0.4.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -57,6 +59,8 @@ module "rs_loader" {
   name       = "${var.prefix}-rs-loader-server"
   vpc_id     = var.vpc_id
   subnet_ids = var.public_subnet_ids
+
+  instance_type = "t3a.small"
 
   sqs_queue_name = aws_sqs_queue.rs_message_queue[0].name
 

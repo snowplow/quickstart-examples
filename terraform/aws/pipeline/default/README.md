@@ -20,13 +20,13 @@
 | <a name="module_bad_2_stream"></a> [bad\_2\_stream](#module\_bad\_2\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_collector_kinesis"></a> [collector\_kinesis](#module\_collector\_kinesis) | snowplow-devops/collector-kinesis-ec2/aws | 0.10.1 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/alb/aws | 0.2.0 |
-| <a name="module_db_loader"></a> [db\_loader](#module\_db\_loader) | snowplow-devops/databricks-loader-ec2/aws | 0.2.0 |
-| <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
+| <a name="module_db_loader"></a> [db\_loader](#module\_db\_loader) | snowplow-devops/databricks-loader-ec2/aws | 0.3.0 |
+| <a name="module_db_transformer_wrp"></a> [db\_transformer\_wrp](#module\_db\_transformer\_wrp) | snowplow-devops/transformer-kinesis-ec2/aws | 0.5.0 |
 | <a name="module_enrich_kinesis"></a> [enrich\_kinesis](#module\_enrich\_kinesis) | snowplow-devops/enrich-kinesis-ec2/aws | 0.7.1 |
 | <a name="module_enriched_stream"></a> [enriched\_stream](#module\_enriched\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
 | <a name="module_raw_stream"></a> [raw\_stream](#module\_raw\_stream) | snowplow-devops/kinesis-stream/aws | 0.3.0 |
-| <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.2.0 |
-| <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.4.0 |
+| <a name="module_rs_loader"></a> [rs\_loader](#module\_rs\_loader) | snowplow-devops/redshift-loader-ec2/aws | 0.4.0 |
+| <a name="module_rs_transformer_stsv"></a> [rs\_transformer\_stsv](#module\_rs\_transformer\_stsv) | snowplow-devops/transformer-kinesis-ec2/aws | 0.5.0 |
 | <a name="module_s3_loader_bad"></a> [s3\_loader\_bad](#module\_s3\_loader\_bad) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.6.0 |
 | <a name="module_s3_loader_enriched"></a> [s3\_loader\_enriched](#module\_s3\_loader\_enriched) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.6.0 |
 | <a name="module_s3_pipeline_bucket"></a> [s3\_pipeline\_bucket](#module\_s3\_pipeline\_bucket) | snowplow-devops/s3-bucket/aws | 0.2.0 |
