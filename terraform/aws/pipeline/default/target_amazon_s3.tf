@@ -1,6 +1,6 @@
 module "s3_loader_bad" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.5.0"
+  version = "0.6.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -35,7 +35,7 @@ module "s3_loader_bad" {
 
 module "s3_loader_enriched" {
   source  = "snowplow-devops/s3-loader-kinesis-ec2/aws"
-  version = "0.5.0"
+  version = "0.6.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
