@@ -30,7 +30,7 @@
 | <a name="module_s3_loader_bad"></a> [s3\_loader\_bad](#module\_s3\_loader\_bad) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.6.0 |
 | <a name="module_s3_loader_enriched"></a> [s3\_loader\_enriched](#module\_s3\_loader\_enriched) | snowplow-devops/s3-loader-kinesis-ec2/aws | 0.6.0 |
 | <a name="module_s3_pipeline_bucket"></a> [s3\_pipeline\_bucket](#module\_s3\_pipeline\_bucket) | snowplow-devops/s3-bucket/aws | 0.2.0 |
-| <a name="module_snowflake_streaming_loader_enriched"></a> [snowflake\_streaming\_loader\_enriched](#module\_snowflake\_streaming\_loader\_enriched) | snowplow-devops/snowflake-streaming-loader-ec2/aws | 0.1.0 |
+| <a name="module_snowflake_streaming_loader_enriched"></a> [snowflake\_streaming\_loader\_enriched](#module\_snowflake\_streaming\_loader\_enriched) | snowplow-devops/snowflake-streaming-loader-ec2/aws | 0.2.1 |
 
 ## Resources
 
