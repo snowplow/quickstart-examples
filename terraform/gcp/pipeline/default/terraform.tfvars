@@ -45,11 +45,6 @@ ssl_information = {
 # --- Target: BigQuery
 bigquery_db_enabled = false
 
-# To use an existing bucket set this to false
-bigquery_loader_dead_letter_bucket_deploy = true
-# Must be globally unique so will need to be updated before applying
-bigquery_loader_dead_letter_bucket_name = "sp-bq-loader-dead-letter"
-
 # --- ADVANCED CONFIGURATION ZONE --- #
 
 # See for more information: https://registry.terraform.io/modules/snowplow-devops/collector-pubsub-ce/google/latest#telemetry

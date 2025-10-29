@@ -17,11 +17,11 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_bad_1_topic"></a> [bad\_1\_topic](#module\_bad\_1\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
-| <a name="module_bigquery_loader"></a> [bigquery\_loader](#module\_bigquery\_loader) | snowplow-devops/bigquery-loader-pubsub-ce/google | 0.4.0 |
+| <a name="module_bigquery_loader"></a> [bigquery\_loader](#module\_bigquery\_loader) | snowplow-devops/bigquery-loader-pubsub-ce/google | 0.5.0 |
 | <a name="module_bq_bad_rows_topic"></a> [bq\_bad\_rows\_topic](#module\_bq\_bad\_rows\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 | <a name="module_collector_lb"></a> [collector\_lb](#module\_collector\_lb) | snowplow-devops/lb/google | 0.3.0 |
-| <a name="module_collector_pubsub"></a> [collector\_pubsub](#module\_collector\_pubsub) | snowplow-devops/collector-pubsub-ce/google | 0.6.0 |
-| <a name="module_enrich_pubsub"></a> [enrich\_pubsub](#module\_enrich\_pubsub) | snowplow-devops/enrich-pubsub-ce/google | 0.4.0 |
+| <a name="module_collector_pubsub"></a> [collector\_pubsub](#module\_collector\_pubsub) | snowplow-devops/collector-pubsub-ce/google | 0.7.0 |
+| <a name="module_enrich_pubsub"></a> [enrich\_pubsub](#module\_enrich\_pubsub) | snowplow-devops/enrich-pubsub-ce/google | 0.5.0 |
 | <a name="module_enriched_topic"></a> [enriched\_topic](#module\_enriched\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 | <a name="module_raw_topic"></a> [raw\_topic](#module\_raw\_topic) | snowplow-devops/pubsub-topic/google | 0.3.0 |
 
@@ -30,7 +30,6 @@
 | Name | Type |
 |------|------|
 | [google_bigquery_dataset.bigquery_db](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_dataset) | resource |
-| [google_storage_bucket.bq_loader_dead_letter_bucket](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket) | resource |
 
 ## Inputs
 
@@ -46,8 +45,6 @@
 | <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | The name of the sub-network to deploy within | `string` | n/a | yes |
 | <a name="input_accept_limited_use_license"></a> [accept\_limited\_use\_license](#input\_accept\_limited\_use\_license) | Acceptance of the SLULA terms (https://docs.snowplow.io/limited-use-license-1.0/) | `bool` | `false` | no |
 | <a name="input_bigquery_db_enabled"></a> [bigquery\_db\_enabled](#input\_bigquery\_db\_enabled) | Whether to enable loading into a BigQuery Dataset | `bool` | `false` | no |
-| <a name="input_bigquery_loader_dead_letter_bucket_deploy"></a> [bigquery\_loader\_dead\_letter\_bucket\_deploy](#input\_bigquery\_loader\_dead\_letter\_bucket\_deploy) | Whether this module should create a new bucket with the specified name - if the bucket already exists set this to false | `bool` | `true` | no |
-| <a name="input_bigquery_loader_dead_letter_bucket_name"></a> [bigquery\_loader\_dead\_letter\_bucket\_name](#input\_bigquery\_loader\_dead\_letter\_bucket\_name) | The name of the GCS bucket to use for dead-letter output of loader | `string` | `""` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | The labels to append to the resources in this module | `map(string)` | `{}` | no |
 | <a name="input_ssh_key_pairs"></a> [ssh\_key\_pairs](#input\_ssh\_key\_pairs) | The list of SSH key-pairs to add to the servers | <pre>list(object({<br/>    user_name  = string<br/>    public_key = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_ssl_information"></a> [ssl\_information](#input\_ssl\_information) | The ID of an Google Managed certificate to bind to the load balancer | <pre>object({<br/>    enabled        = bool<br/>    certificate_id = string<br/>  })</pre> | <pre>{<br/>  "certificate_id": "",<br/>  "enabled": false<br/>}</pre> | no |
@@ -60,5 +57,4 @@
 |------|-------------|
 | <a name="output_bigquery_db_dataset_id"></a> [bigquery\_db\_dataset\_id](#output\_bigquery\_db\_dataset\_id) | The ID of the BigQuery dataset where your data is being streamed |
 | <a name="output_bq_loader_bad_rows_topic_name"></a> [bq\_loader\_bad\_rows\_topic\_name](#output\_bq\_loader\_bad\_rows\_topic\_name) | The name of the topic for bad rows emitted from the BigQuery loader |
-| <a name="output_bq_loader_dead_letter_bucket_name"></a> [bq\_loader\_dead\_letter\_bucket\_name](#output\_bq\_loader\_dead\_letter\_bucket\_name) | The name of the GCS bucket for dead letter events emitted from the BigQuery loader |
 | <a name="output_collector_ip_address"></a> [collector\_ip\_address](#output\_collector\_ip\_address) | The IP address for the Pipeline Collector |
