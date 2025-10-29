@@ -19,11 +19,9 @@ module "iglu_db" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-ce/google"
-  version = "0.6.0"
+  version = "0.7.0"
 
   accept_limited_use_license = var.accept_limited_use_license
-
-  app_version = "0.14.0"
 
   name = "${var.prefix}-iglu-server"
 
