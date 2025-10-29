@@ -64,43 +64,6 @@ variable "iglu_super_api_key" {
   sensitive   = true
 }
 
-variable "postgres_db_enabled" {
-  description = "Whether to enable loading into a Postgres Database"
-  default     = false
-  type        = bool
-}
-
-variable "postgres_db_name" {
-  description = "The name of the database to connect to"
-  type        = string
-}
-
-variable "postgres_db_username" {
-  description = "The username to use to connect to the database"
-  type        = string
-}
-
-variable "postgres_db_password" {
-  description = "The password to use to connect to the database"
-  type        = string
-  sensitive   = true
-}
-
-variable "postgres_db_authorized_networks" {
-  description = "The list of CIDR ranges to allow access to the Pipeline Database over"
-  default     = []
-  type = list(object({
-    name  = string
-    value = string
-  }))
-}
-
-variable "postgres_db_tier" {
-  description = "The instance type to assign to the deployed Cloud SQL instance"
-  type        = string
-  default     = "db-g1-small"
-}
-
 variable "bigquery_db_enabled" {
   description = "Whether to enable loading into a BigQuery Dataset"
   default     = false

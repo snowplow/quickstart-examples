@@ -41,33 +41,6 @@ ssl_information = {
 
 # --- TARGETS CONFIGURATION ZONE --- #
 
-# --- Target: PostgreSQL
-postgres_db_enabled = false
-
-postgres_db_name     = "snowplow"
-postgres_db_username = "snowplow"
-# Change and keep this secret!
-postgres_db_password = "Hell0W0rld!2"
-# IP ranges that you want to query the Pipeline Postgres Cloud SQL instance from directly over the internet.  An alternative access method is to leverage
-# the Cloud SQL Proxy service which creates an IAM authenticated tunnel to the instance
-#
-# Details: https://cloud.google.com/sql/docs/postgres/sql-proxy
-#
-# Note: this exposes your data to the internet - take care to ensure your allowlist is strict enough
-postgres_db_authorized_networks = [
-  {
-    name  = "foo"
-    value = "999.999.999.999/32"
-  },
-  {
-    name  = "bar"
-    value = "888.888.888.888/32"
-  }
-]
-# Note: the size of the database instance determines the number of concurrent connections - each Postgres Loader instance creates 10 open connections so having
-# a sufficiently powerful database tier is important to not running out of connection slots
-postgres_db_tier = "db-g1-small"
-
 # --- Target: BigQuery
 bigquery_db_enabled = false
 
