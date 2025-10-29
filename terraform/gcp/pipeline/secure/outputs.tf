@@ -3,16 +3,6 @@ output "collector_ip_address" {
   value       = module.collector_lb.ip_address
 }
 
-output "postgres_db_address" {
-  description = "The IP address of the database where your data is being streamed"
-  value       = join("", module.postgres_db.*.first_ip_address)
-}
-
-output "postgres_db_port" {
-  description = "The port of the database where your data is being streamed"
-  value       = join("", module.postgres_db.*.port)
-}
-
 output "bigquery_db_dataset_id" {
   description = "The ID of the BigQuery dataset where your data is being streamed"
   value       = join("", google_bigquery_dataset.bigquery_db.*.dataset_id)
