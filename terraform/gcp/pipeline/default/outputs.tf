@@ -8,11 +8,6 @@ output "bigquery_db_dataset_id" {
   value       = join("", google_bigquery_dataset.bigquery_db.*.dataset_id)
 }
 
-output "bq_loader_dead_letter_bucket_name" {
-  description = "The name of the GCS bucket for dead letter events emitted from the BigQuery loader"
-  value       = join("", google_storage_bucket.bq_loader_dead_letter_bucket.*.name)
-}
-
 output "bq_loader_bad_rows_topic_name" {
   description = "The name of the topic for bad rows emitted from the BigQuery loader"
   value       = join("", module.bq_bad_rows_topic.*.name)

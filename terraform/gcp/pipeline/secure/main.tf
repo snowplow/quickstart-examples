@@ -46,7 +46,7 @@ module "enriched_topic" {
 # 2. Deploy Collector stack
 module "collector_pubsub" {
   source  = "snowplow-devops/collector-pubsub-ce/google"
-  version = "0.6.0"
+  version = "0.7.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -90,7 +90,7 @@ module "collector_lb" {
 # 3. Deploy Enrichment
 module "enrich_pubsub" {
   source  = "snowplow-devops/enrich-pubsub-ce/google"
-  version = "0.4.0"
+  version = "0.5.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
