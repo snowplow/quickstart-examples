@@ -10,7 +10,7 @@ module "lake_storage_container" {
 
 module "lake_loader" {
   source  = "snowplow-devops/lake-loader-vmss/azurerm"
-  version = "0.3.0"
+  version = "0.4.0"
 
   accept_limited_use_license = var.accept_limited_use_license
 
