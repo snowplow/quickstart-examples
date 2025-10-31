@@ -111,11 +111,9 @@ module "collector_lb" {
 
 module "collector_eh" {
   source  = "snowplow-devops/collector-event-hub-vmss/azurerm"
-  version = "0.3.0"
+  version = "0.4.0"
 
   accept_limited_use_license = var.accept_limited_use_license
-
-  app_version = "3.3.0"
 
   name                = "${var.prefix}-collector"
   resource_group_name = var.resource_group_name
@@ -147,11 +145,9 @@ module "collector_eh" {
 # 4. Deploy Enrich stack
 module "enrich_eh" {
   source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
-  version = "0.3.0"
+  version = "0.4.0"
 
   accept_limited_use_license = var.accept_limited_use_license
-
-  app_version = "5.2.0"
 
   name                = "${var.prefix}-enrich"
   resource_group_name = var.resource_group_name
