@@ -58,25 +58,9 @@ confluent_cloud_api_secret = ""
 confluent_cloud_bootstrap_server = ""
 
 # Names of the created topics within the deployed cluster
-confluent_cloud_raw_topic_name              = "raw"
-confluent_cloud_enriched_topic_name         = "enriched"
-confluent_cloud_bad_1_topic_name            = "bad-1"
-confluent_cloud_snowflake_loader_topic_name = "snowflake-loader"
-
-# --- Target: Snowflake
-# Follow the guide to get input values for the loader:
-# https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/quick-start/
-snowflake_enabled = false
-
-snowflake_account         = "<ACCOUNT>"
-snowflake_region          = "<REGION>"
-snowflake_loader_user     = "<USER>"
-snowflake_loader_password = "<PASSWORD>"
-snowflake_database        = "<DATABASE>"
-snowflake_schema          = "<SCHEMA>"
-snowflake_warehouse       = "<WAREHOUSE>"
-# This controls how often data will be loading into Snowflake
-snowflake_transformer_window_period_min = 1
+confluent_cloud_raw_topic_name      = "raw"
+confluent_cloud_enriched_topic_name = "enriched"
+confluent_cloud_bad_1_topic_name    = "bad-1"
 
 # --- Target: Lake
 # Follow the guide to get input values for the loader:
