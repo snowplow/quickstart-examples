@@ -13,15 +13,12 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 | Tool       | Cloud | Components                   | Status                                      | Deployment Summary                           |
 |------------|-------|------------------------------|---------------------------------------------|----------------------------------------------|
 | Terraform  | AWS   | Iglu Server                  | [Published](terraform/aws/iglu_server)      |                                              |
-| Terraform  | AWS   | Pipeline (PostgreSQL)        | [Published](terraform/aws/pipeline)         | [AWS PostgreSQL Summary][deploypgsum-aws]    |
 | Terraform  | AWS   | Pipeline (Snowflake)         | [Published](terraform/aws/pipeline)         | [AWS Snowflake Summary][deploysfsum-aws]     |
 | Terraform  | AWS   | Pipeline (Redshift)          | [Published](terraform/aws/pipeline)         | [AWS Redshift Summary][deployrssum-aws]      |
 | Terraform  | AWS   | Pipeline (Databricks)        | [Published](terraform/aws/pipeline)         | [AWS Databricks Summary][deploydbsum-aws]    |
 | Terraform  | GCP   | Iglu Server                  | [Published](terraform/gcp/iglu_server)      |                                              |
-| Terraform  | GCP   | Pipeline (PostgreSQL)        | [Published](terraform/gcp/pipeline)         | [GCP PostgreSQL Summary][deploypgsum-gcp]    |
 | Terraform  | GCP   | Pipeline (BigQuery)          | [Published](terraform/gcp/pipeline)         | [GCP BigQuery Summary][deploybqsum-gcp]      |
 | Terraform  | Azure | Iglu Server                  | [Published](terraform/azure/iglu_server)    |                                              |
-| Terraform  | Azure | Pipeline (Snowflake)         | [Published](terraform/azure/pipeline)       | [Azure Snowflake Summary][deploysfsum-azure] |
 | Terraform  | Azure | Pipeline (Databricks)        | [Published](terraform/azure/pipeline)       | [Azure Snowflake Summary][deploydbsum-azure] |
 | Terraform  | Azure | Pipeline (Synapse Analytics) | [Published](terraform/azure/pipeline)       | [Azure Snowflake Summary][deploysasum-azure] |
 
@@ -62,13 +59,10 @@ Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you a
 [installguide]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-quick-start/
 [faq]: https://docs.snowplow.io/docs/getting-started-on-community-edition/faq/
 
-[deploypgsum-aws]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=postgres&cloud=aws
 [deploysfsum-aws]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=snowflake&cloud=aws
 [deployrssum-aws]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=redshift&cloud=aws
 [deploydbsum-aws]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=databricks&cloud=aws
-[deploypgsum-gcp]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=postgres&cloud=gcp
 [deploybqsum-gcp]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=bigquery&cloud=gcp
-[deploysfsum-azure]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=snowflake&cloud=azure
 [deploydbsum-azure]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=databricks&cloud=azure
 [deploysasum-azure]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=synapse&cloud=azure
 
@@ -80,6 +74,6 @@ Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you a
 [discourse]: http://discourse.snowplow.io/
 
 [release]: https://github.com/snowplow/snowplow/releases
-[release-badge]: https://img.shields.io/badge/Snowplow-25.06-6638b8
+[release-badge]: https://img.shields.io/badge/Snowplow-25.10-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
