@@ -8,8 +8,14 @@ prefix = "snowplow"
 # The name of the resource group to deploy Iglu into
 resource_group_name = "<ADD_ME>"
 
+# ID of the VNet being deployed into
+vnet_id = "<SET_ME>"
+
 # ID of the dedicated subnet to deploy the load balancer into
 subnet_id_lb = "<SET_ME>"
+
+# ID of the subnet to deploy the actual Iglu Server database into
+subnet_id_database = "<SET_ME>"
 
 # ID of the subnet to deploy the actual Iglu Server application into
 subnet_id_servers = "<SET_ME>"
