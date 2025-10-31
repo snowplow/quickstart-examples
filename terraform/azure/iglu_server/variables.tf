@@ -19,13 +19,23 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "vnet_id" {
+  description = "The ID of the VNet being deployed into"
+  type        = string
+}
+
 variable "subnet_id_lb" {
   description = "The ID of the subnet to deploy the load balancer into (e.g. iglu-agw1)"
   type        = string
 }
 
+variable "subnet_id_database" {
+  description = "The ID of the subnet to deploy the database into (e.g. iglu1)"
+  type        = string
+}
+
 variable "subnet_id_servers" {
-  description = "The ID of the subnet to deploy the servers into (e.g. iglu1)"
+  description = "The ID of the subnet to deploy the servers into (e.g. iglu-vmss1)"
   type        = string
 }
 
@@ -64,12 +74,6 @@ variable "iglu_super_api_key" {
   description = "A UUIDv4 string to use as the master API key for Iglu Server management"
   type        = string
   sensitive   = true
-}
-
-variable "iglu_db_ip_allowlist" {
-  description = "An optional list of CIDR ranges to allow traffic from"
-  type        = list(any)
-  default     = []
 }
 
 variable "ssl_information" {

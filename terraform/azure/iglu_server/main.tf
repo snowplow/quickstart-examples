@@ -1,13 +1,12 @@
 module "iglu_db" {
   source  = "snowplow-devops/postgresql-server/azurerm"
-  version = "0.1.1"
+  version = "0.2.0"
 
   name                = "${var.prefix}-iglu-db"
   resource_group_name = var.resource_group_name
 
-  subnet_id = var.subnet_id_servers
-
-  additional_ip_allowlist = var.iglu_db_ip_allowlist
+  vnet_id   = var.vnet_id
+  subnet_id = var.subnet_id_database
 
   db_name     = var.iglu_db_name
   db_username = var.iglu_db_username
@@ -35,11 +34,9 @@ module "iglu_lb" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-vmss/azurerm"
-  version = "0.2.0"
+  version = "0.3.0"
 
   accept_limited_use_license = var.accept_limited_use_license
-
-  app_version = "0.14.0"
 
   name                = "${var.prefix}-iglu-server"
   resource_group_name = var.resource_group_name
