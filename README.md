@@ -2,7 +2,6 @@
 
 [![Release][release-badge]][release]
 [![License][license-image]][license]
-[![Discourse posts][discourse-image]][discourse]
 
 Examples of how to automate creating a [Snowplow Community pipeline](https://github.com/snowplow/snowplow).
 
@@ -69,9 +68,6 @@ Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you a
 [license]: https://docs.snowplow.io/limited-use-license-1.1/
 [license-image]: https://img.shields.io/badge/license-Snowplow--Limited--Use-blue.svg?style=flat
 [license-faq]: https://docs.snowplow.io/docs/contributing/limited-use-license-faq/
-
-[discourse-image]: https://img.shields.io/discourse/posts?server=https%3A%2F%2Fdiscourse.snowplow.io%2F
-[discourse]: http://discourse.snowplow.io/
 
 [release]: https://github.com/snowplow/snowplow/releases
 [release-badge]: https://img.shields.io/badge/Snowplow-25.10-6638b8
