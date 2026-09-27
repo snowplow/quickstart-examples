@@ -1,6 +1,6 @@
 module "lake_storage_container" {
   source  = "snowplow-devops/storage-container/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = var.lake_enabled ? 1 : 0
 
@@ -10,7 +10,7 @@ module "lake_storage_container" {
 
 module "lake_loader" {
   source  = "snowplow-devops/lake-loader-vmss/azurerm"
-  version = "0.4.0"
+  version = "0.4.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 

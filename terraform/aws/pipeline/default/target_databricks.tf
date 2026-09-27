@@ -9,7 +9,7 @@ resource "aws_sqs_queue" "db_message_queue" {
 
 module "db_transformer_wrp" {
   source  = "snowplow-devops/transformer-kinesis-ec2/aws"
-  version = "0.5.0"
+  version = "0.5.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -50,7 +50,7 @@ module "db_transformer_wrp" {
 
 module "db_loader" {
   source  = "snowplow-devops/databricks-loader-ec2/aws"
-  version = "0.3.0"
+  version = "0.3.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 

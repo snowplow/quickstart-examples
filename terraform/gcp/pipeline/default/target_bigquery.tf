@@ -1,6 +1,6 @@
 module "bq_bad_rows_topic" {
   source  = "snowplow-devops/pubsub-topic/google"
-  version = "0.3.0"
+  version = "0.3.1"
 
   count = var.bigquery_db_enabled ? 1 : 0
 
@@ -20,7 +20,7 @@ resource "google_bigquery_dataset" "bigquery_db" {
 
 module "bigquery_loader" {
   source  = "snowplow-devops/bigquery-loader-pubsub-ce/google"
-  version = "0.5.0"
+  version = "0.5.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
