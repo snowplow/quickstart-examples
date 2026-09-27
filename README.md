@@ -25,7 +25,6 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 | Installation Guide                     | FAQ                      |
 |----------------------------------------|--------------------------|
-| ![i1][install-image]                   |  ![i3][faq-image]        |
 | **[Installation Guide][installguide]** |  **[FAQ][faq]**          |
 
 ### Updating READMEs
@@ -51,11 +50,9 @@ Copyright (c) 2022-present Snowplow Analytics Ltd. All rights reserved.
 
 Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you are uncertain how it applies to your use case, check our answers to [frequently asked questions][license-faq].)_
 
-[install-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/techdocs.png
 [deploy-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/setup.png
-[faq-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/roadmap.png
 
-[installguide]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-quick-start/
+[installguide]: https://docs.snowplow.io/docs/get-started/self-hosted/quick-start/
 [faq]: https://docs.snowplow.io/docs/getting-started-on-community-edition/faq/
 
 [deploysfsum-aws]: https://docs.snowplow.io/docs/getting-started-on-community-edition/what-is-deployed/?warehouse=snowflake&cloud=aws
@@ -69,7 +66,7 @@ Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you a
 [license-image]: https://img.shields.io/badge/license-Snowplow--Limited--Use-blue.svg?style=flat
 [license-faq]: https://docs.snowplow.io/docs/contributing/limited-use-license-faq/
 
-[release]: https://github.com/snowplow/snowplow/releases
+[release]: https://github.com/snowplow/quickstart-examples/releases
 [release-badge]: https://img.shields.io/badge/Snowplow-25.10-6638b8
 
 [tf-docs]: https://github.com/terraform-docs/terraform-docs
