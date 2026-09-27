@@ -5,7 +5,7 @@ provider "google" {
 
 module "iglu_db" {
   source  = "snowplow-devops/cloud-sql/google"
-  version = "0.4.1"
+  version = "0.4.2"
 
   name = "${var.prefix}-iglu-db"
 
@@ -19,7 +19,7 @@ module "iglu_db" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-ce/google"
-  version = "0.7.0"
+  version = "0.7.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -49,7 +49,7 @@ module "iglu_server" {
 
 module "iglu_lb" {
   source  = "snowplow-devops/lb/google"
-  version = "0.3.0"
+  version = "0.4.2"
 
   name = "${var.prefix}-iglu-lb"
 
