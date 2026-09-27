@@ -17,13 +17,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: Get branch name
         id: branch-name
-        uses: tj-actions/branch-names@v8
+        uses: tj-actions/branch-names@5250492686b253f06fa55861556d1027b067aeb5 # v9.0.2
 
       - name: Get changed terraform modules
         id: get-changed-modules
@@ -47,14 +47,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: terraform validate
-        uses: dflook/terraform-validate@v1
+        uses: dflook/terraform-validate@29a791ea3e8c3a7c0157bb21aba5a6ca59a69d6d # v3.1.0
         with:
           path: "${{ matrix.module }}"
 
       - name: terraform fmt
-        uses: dflook/terraform-fmt-check@v1
+        uses: dflook/terraform-fmt-check@e3f43c85d3e0a6bb3adb7be8c423c22c42d572bd # v3.1.0
         with:
           path: "${{ matrix.module }}"
