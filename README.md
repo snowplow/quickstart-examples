@@ -26,6 +26,7 @@ These examples cover deploying an Iglu Server, for hosting your schemas, and a S
 
 | Installation Guide                     | FAQ                      |
 |----------------------------------------|--------------------------|
+| ![i1][install-image]                   |  ![i3][faq-image]        |
 | **[Installation Guide][installguide]** |  **[FAQ][faq]**          |
 
 ### Updating READMEs
@@ -53,6 +54,9 @@ terraform-docs -c .terraform-docs.yml terraform/azure/pipeline
 Copyright (c) 2021-current Snowplow Analytics Ltd. All rights reserved.
 
 Licensed under the [Snowplow Limited Use License Agreement][license]. _(If you are uncertain how it applies to your use case, check our answers to [frequently asked questions][license-faq].)_
+
+[install-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/techdocs.png
+[faq-image]: https://d3i6fms1cm1j0i.cloudfront.net/github/images/roadmap.png
 
 [installguide]: https://docs.snowplow.io/docs/get-started/self-hosted/quick-start/
 [faq]: https://docs.snowplow.io/docs/get-started/self-hosted/faq/
