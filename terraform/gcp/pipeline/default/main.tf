@@ -18,7 +18,7 @@ provider "google" {
 # 1. Deploy PubSub Topics
 module "raw_topic" {
   source  = "snowplow-devops/pubsub-topic/google"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-raw-topic"
 
@@ -27,7 +27,7 @@ module "raw_topic" {
 
 module "bad_1_topic" {
   source  = "snowplow-devops/pubsub-topic/google"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-bad-1-topic"
 
@@ -36,7 +36,7 @@ module "bad_1_topic" {
 
 module "enriched_topic" {
   source  = "snowplow-devops/pubsub-topic/google"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-enriched-topic"
 
@@ -46,7 +46,7 @@ module "enriched_topic" {
 # 2. Deploy Collector stack
 module "collector_pubsub" {
   source  = "snowplow-devops/collector-pubsub-ce/google"
-  version = "0.7.0"
+  version = "0.7.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -73,7 +73,7 @@ module "collector_pubsub" {
 
 module "collector_lb" {
   source  = "snowplow-devops/lb/google"
-  version = "0.3.0"
+  version = "0.4.2"
 
   name = "${var.prefix}-collector-lb"
 
@@ -88,7 +88,7 @@ module "collector_lb" {
 # 3. Deploy Enrichment
 module "enrich_pubsub" {
   source  = "snowplow-devops/enrich-pubsub-ce/google"
-  version = "0.5.0"
+  version = "0.5.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
