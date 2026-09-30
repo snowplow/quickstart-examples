@@ -42,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         module: ${{fromJson(needs.changes.outputs.modules)}}
 
