@@ -38,7 +38,7 @@ module "iglu_lb" {
 
 module "iglu_server" {
   source  = "snowplow-devops/iglu-server-ec2/aws"
-  version = "0.6.2"
+  version = "0.6.3"
 
   accept_limited_use_license = var.accept_limited_use_license
 

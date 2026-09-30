@@ -86,7 +86,7 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.10.2"
+  version = "0.10.3"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -118,7 +118,7 @@ module "collector_kinesis" {
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.7.2"
+  version = "0.7.3"
 
   accept_limited_use_license = var.accept_limited_use_license
 
