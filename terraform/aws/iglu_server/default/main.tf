@@ -7,7 +7,7 @@ resource "aws_key_pair" "pipeline" {
 # 1. Deploy an Iglu Server stack
 module "iglu_rds" {
   source  = "snowplow-devops/rds/aws"
-  version = "0.5.1"
+  version = "0.6.0"
 
   name        = "${var.prefix}-iglu-rds"
   vpc_id      = var.vpc_id
