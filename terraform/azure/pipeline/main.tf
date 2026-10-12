@@ -12,7 +12,7 @@ locals {
 
 module "storage_account" {
   source  = "snowplow-devops/storage-account/azurerm"
-  version = "0.1.3"
+  version = "0.1.4"
 
   count = var.storage_account_deploy ? 1 : 0
 
@@ -35,7 +35,7 @@ locals {
 # 1. Deploy EventHubs topics
 module "eh_namespace" {
   source  = "snowplow-devops/event-hub-namespace/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = local.use_azure_event_hubs ? 1 : 0
 
@@ -47,7 +47,7 @@ module "eh_namespace" {
 
 module "raw_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = local.use_azure_event_hubs ? 1 : 0
 
@@ -58,7 +58,7 @@ module "raw_eh_topic" {
 
 module "bad_1_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = local.use_azure_event_hubs ? 1 : 0
 
@@ -69,7 +69,7 @@ module "bad_1_eh_topic" {
 
 module "enriched_eh_topic" {
   source  = "snowplow-devops/event-hub/azurerm"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = local.use_azure_event_hubs ? 1 : 0
 
@@ -94,7 +94,7 @@ locals {
 # 3. Deploy Collector stack
 module "collector_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name                = "${var.prefix}-collector-lb"
   resource_group_name = var.resource_group_name
@@ -111,7 +111,7 @@ module "collector_lb" {
 
 module "collector_eh" {
   source  = "snowplow-devops/collector-event-hub-vmss/azurerm"
-  version = "0.4.0"
+  version = "0.4.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -145,7 +145,7 @@ module "collector_eh" {
 # 4. Deploy Enrich stack
 module "enrich_eh" {
   source  = "snowplow-devops/enrich-event-hub-vmss/azurerm"
-  version = "0.4.0"
+  version = "0.4.1"
 
   accept_limited_use_license = var.accept_limited_use_license
 

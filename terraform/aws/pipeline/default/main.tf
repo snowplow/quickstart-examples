@@ -12,7 +12,7 @@ locals {
 
 module "s3_pipeline_bucket" {
   source  = "snowplow-devops/s3-bucket/aws"
-  version = "0.2.0"
+  version = "0.2.1"
 
   count = var.s3_bucket_deploy ? 1 : 0
 
@@ -34,7 +34,7 @@ resource "aws_key_pair" "pipeline" {
 # 1. Deploy Kinesis streams
 module "raw_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-raw-stream"
 
@@ -43,7 +43,7 @@ module "raw_stream" {
 
 module "bad_1_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-bad-1-stream"
 
@@ -52,7 +52,7 @@ module "bad_1_stream" {
 
 module "enriched_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-enriched-stream"
 
@@ -61,7 +61,7 @@ module "enriched_stream" {
 
 module "bad_2_stream" {
   source  = "snowplow-devops/kinesis-stream/aws"
-  version = "0.3.0"
+  version = "0.3.1"
 
   name = "${var.prefix}-bad-2-stream"
 
@@ -71,7 +71,7 @@ module "bad_2_stream" {
 # 2. Deploy Collector stack
 module "collector_lb" {
   source  = "snowplow-devops/alb/aws"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name              = "${var.prefix}-collector-lb"
   vpc_id            = var.vpc_id
@@ -86,7 +86,7 @@ module "collector_lb" {
 
 module "collector_kinesis" {
   source  = "snowplow-devops/collector-kinesis-ec2/aws"
-  version = "0.10.1"
+  version = "0.10.3"
 
   accept_limited_use_license = var.accept_limited_use_license
 
@@ -116,7 +116,7 @@ module "collector_kinesis" {
 # 3. Deploy Enrichment
 module "enrich_kinesis" {
   source  = "snowplow-devops/enrich-kinesis-ec2/aws"
-  version = "0.7.1"
+  version = "0.7.3"
 
   accept_limited_use_license = var.accept_limited_use_license
 
